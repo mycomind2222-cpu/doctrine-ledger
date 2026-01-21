@@ -84,6 +84,32 @@ export const Hero = () => {
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto text-center"
         >
+          {/* Glowing title with pulsing effect */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="relative mb-8"
+          >
+            {/* Pulsing glow behind text */}
+            <motion.div
+              className="absolute inset-0 blur-2xl bg-classified/30 rounded-full"
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <h1 className="relative font-serif text-4xl md:text-6xl font-bold tracking-tight">
+              <span className="text-foreground">BLACK</span>
+              <span className="text-classified">FILES</span>
+            </h1>
+          </motion.div>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
