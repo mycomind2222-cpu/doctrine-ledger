@@ -5,23 +5,25 @@ import heroBanner from "@/assets/hero-banner.png";
 
 const Ember = ({ delay, duration, left, size }: { delay: number; duration: number; left: string; size: number }) => (
   <motion.div
-    className="absolute rounded-full bg-classified/60 blur-[1px]"
+    className="absolute rounded-full"
     style={{
       width: size,
       height: size,
       left,
-      bottom: -10,
+      bottom: -20,
+      background: 'radial-gradient(circle, hsl(var(--classified)) 0%, transparent 70%)',
+      boxShadow: '0 0 6px 2px hsl(var(--classified) / 0.8)',
     }}
     animate={{
-      y: [0, -800],
-      opacity: [0, 0.8, 0.6, 0],
-      scale: [1, 0.8, 0.5],
+      y: [0, -1000],
+      opacity: [0, 1, 0.8, 0],
+      scale: [0.5, 1, 0.6],
     }}
     transition={{
       duration,
       delay,
       repeat: Infinity,
-      ease: "easeOut",
+      ease: "linear",
     }}
   />
 );
@@ -37,13 +39,13 @@ export const Hero = () => {
     delay: Math.random() * 8,
     duration: 6 + Math.random() * 4,
     left: `${5 + Math.random() * 90}%`,
-    size: 2 + Math.random() * 3,
+    size: 4 + Math.random() * 6,
   }));
 
   return (
     <section className="relative min-h-[90vh] flex flex-col overflow-hidden">
       {/* Rising embers */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-30">
         {embers.map((ember) => (
           <Ember key={ember.id} {...ember} />
         ))}
@@ -93,13 +95,16 @@ export const Hero = () => {
           >
             {/* Pulsing glow behind text */}
             <motion.div
-              className="absolute inset-0 blur-2xl bg-classified/30 rounded-full"
+              className="absolute -inset-8 blur-3xl rounded-full"
+              style={{
+                background: 'radial-gradient(ellipse at center, hsl(var(--classified) / 0.5) 0%, transparent 70%)',
+              }}
               animate={{
-                opacity: [0.3, 0.6, 0.3],
-                scale: [1, 1.1, 1],
+                opacity: [0.4, 0.8, 0.4],
+                scale: [0.9, 1.15, 0.9],
               }}
               transition={{
-                duration: 3,
+                duration: 2.5,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
