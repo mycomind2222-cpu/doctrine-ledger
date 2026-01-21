@@ -3,13 +3,52 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import heroBanner from "@/assets/hero-banner.png";
 
+const Ember = ({ delay, duration, left, size }: { delay: number; duration: number; left: string; size: number }) => (
+  <motion.div
+    className="absolute rounded-full bg-classified/60 blur-[1px]"
+    style={{
+      width: size,
+      height: size,
+      left,
+      bottom: -10,
+    }}
+    animate={{
+      y: [0, -800],
+      opacity: [0, 0.8, 0.6, 0],
+      scale: [1, 0.8, 0.5],
+    }}
+    transition={{
+      duration,
+      delay,
+      repeat: Infinity,
+      ease: "easeOut",
+    }}
+  />
+);
+
 export const Hero = () => {
   const scrollToIssues = () => {
     document.getElementById('issues')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Generate ember particles with random properties
+  const embers = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    delay: Math.random() * 8,
+    duration: 6 + Math.random() * 4,
+    left: `${5 + Math.random() * 90}%`,
+    size: 2 + Math.random() * 3,
+  }));
+
   return (
     <section className="relative min-h-[90vh] flex flex-col overflow-hidden">
+      {/* Rising embers */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
+        {embers.map((ember) => (
+          <Ember key={ember.id} {...ember} />
+        ))}
+      </div>
+
       {/* Hero Banner Image */}
       <div className="relative w-full">
         <motion.div
