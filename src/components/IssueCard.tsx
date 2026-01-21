@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import { ArrowRight, Lock } from "lucide-react";
 import { type Issue } from "@/data/issues";
 import { AccessBadge } from "./AccessBadge";
+import issue01Cover from "@/assets/covers/issue-01.png";
+
+const coverImages: Record<string, string> = {
+  "issue-01": issue01Cover,
+};
 
 interface IssueCardProps {
   issue: Issue;
@@ -13,6 +18,8 @@ export const IssueCard = ({ issue, index }: IssueCardProps) => {
   const hasRestricted = issue.sections.some(s => s.audienceLevel === 'restricted');
   const hasProfessional = issue.sections.some(s => s.audienceLevel === 'professional');
   const highestLevel = hasRestricted ? 'restricted' : hasProfessional ? 'professional' : 'public';
+  
+  const coverImage = issue.coverImage ? coverImages[issue.coverImage] : null;
 
   return (
     <motion.article
@@ -23,14 +30,22 @@ export const IssueCard = ({ issue, index }: IssueCardProps) => {
     >
       <Link to={`/issues/${issue.number}`} className="block">
         <div className="relative aspect-[3/4] overflow-hidden bg-secondary">
+          {coverImage ? (
+            <img 
+              src={coverImage} 
+              alt={`Issue ${issue.number} cover`}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="font-serif text-8xl font-bold text-muted/20">
+                {String(issue.number).padStart(2, '0')}
+              </span>
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/90" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="font-serif text-8xl font-bold text-muted/20">
-              {String(issue.number).padStart(2, '0')}
-            </span>
-          </div>
           <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-            <span className="font-mono text-xs text-muted-foreground">
+            <span className="font-mono text-xs text-white/80 drop-shadow-lg">
               ISSUE {String(issue.number).padStart(2, '0')}
             </span>
             <AccessBadge level={highestLevel} />

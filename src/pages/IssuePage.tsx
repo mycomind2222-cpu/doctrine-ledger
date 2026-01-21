@@ -6,6 +6,64 @@ import { Footer } from "@/components/Footer";
 import { AccessBadge } from "@/components/AccessBadge";
 import { Button } from "@/components/ui/button";
 import { getIssue, type Section, type AccessLevel } from "@/data/issues";
+import issue01Cover from "@/assets/covers/issue-01.png";
+
+const coverImages: Record<string, string> = {
+  "issue-01": issue01Cover,
+};
+
+const renderContent = (content: string) => {
+  return content.split('\n\n').map((paragraph, i) => {
+    // Handle bold headers like **Title:**
+    if (paragraph.startsWith('**') && paragraph.includes(':**')) {
+      const parts = paragraph.split(':**');
+      const title = parts[0].replace(/\*\*/g, '');
+      const rest = parts.slice(1).join(':**');
+      return (
+        <div key={i} className="mb-4">
+          <h4 className="font-semibold text-foreground mb-2">{title}:</h4>
+          <p>{rest}</p>
+        </div>
+      );
+    }
+    
+    // Handle numbered lists
+    if (/^\d+\.\s\*\*/.test(paragraph)) {
+      const items = paragraph.split(/\n/).filter(Boolean);
+      return (
+        <ol key={i} className="list-decimal list-inside space-y-2 mb-4">
+          {items.map((item, j) => {
+            const cleaned = item.replace(/^\d+\.\s/, '').replace(/\*\*/g, '');
+            const [title, ...rest] = cleaned.split(':');
+            return (
+              <li key={j}>
+                <strong className="text-foreground">{title}:</strong>
+                {rest.join(':')}
+              </li>
+            );
+          })}
+        </ol>
+      );
+    }
+    
+    // Handle inline bold
+    if (paragraph.includes('**')) {
+      const parts = paragraph.split(/(\*\*[^*]+\*\*)/);
+      return (
+        <p key={i} className="mb-4">
+          {parts.map((part, j) => {
+            if (part.startsWith('**') && part.endsWith('**')) {
+              return <strong key={j} className="text-foreground">{part.slice(2, -2)}</strong>;
+            }
+            return part;
+          })}
+        </p>
+      );
+    }
+    
+    return <p key={i} className="mb-4">{paragraph}</p>;
+  });
+};
 
 const SectionContent = ({ section, isLocked }: { section: Section; isLocked: boolean }) => {
   const sectionLabels: Record<string, string> = {
@@ -33,39 +91,41 @@ const SectionContent = ({ section, isLocked }: { section: Section; isLocked: boo
         <AccessBadge level={section.audienceLevel} />
       </div>
       
+      {section.title && (
+        <h2 className="font-serif text-2xl font-semibold text-foreground mb-6">
+          {section.title}
+        </h2>
+      )}
+      
       <div className={`relative ${isLocked ? 'content-restricted' : ''}`}>
         <div className="prose-blackfiles">
-          {section.content.split('\n\n').map((paragraph, i) => {
-            if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
-              return (
-                <h3 key={i} className="font-serif text-xl font-semibold text-foreground mb-4">
-                  {paragraph.replace(/\*\*/g, '')}
-                </h3>
-              );
-            }
-            if (paragraph.startsWith('**')) {
-              const parts = paragraph.split('**');
-              return (
-                <p key={i}>
-                  <strong className="text-foreground">{parts[1]}</strong>
-                  {parts[2]}
-                </p>
-              );
-            }
-            return <p key={i}>{paragraph}</p>;
-          })}
+          {renderContent(section.content)}
         </div>
         
-        {section.sidebarElements && section.sidebarElements.length > 0 && (
+        {section.sidebarElements && section.sidebarElements.length > 0 && !isLocked && (
           <div className="mt-8 space-y-4">
             {section.sidebarElements.map((el, i) => (
               <div key={i} className="sidebar-element">
                 <span className="font-mono text-xs uppercase tracking-widest text-classified block mb-2">
                   {el.type.replace('_', ' ')}
                 </span>
-                <p className={el.type === 'pull_quote' ? 'pull-quote' : 'text-sm text-muted-foreground font-mono'}>
-                  {el.content}
-                </p>
+                {el.type === 'pull_quote' ? (
+                  <p className="pull-quote">{el.content}</p>
+                ) : el.type === 'mini_timeline' ? (
+                  <div className="text-sm text-muted-foreground">
+                    {el.content.split('\n').map((line, j) => {
+                      if (line.startsWith('**') && line.endsWith('**')) {
+                        return <p key={j} className="font-semibold text-foreground mb-2">{line.replace(/\*\*/g, '')}</p>;
+                      }
+                      if (line.startsWith('•')) {
+                        return <p key={j} className="ml-2 mb-1">{line}</p>;
+                      }
+                      return <p key={j}>{line}</p>;
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-sm text-muted-foreground font-mono">{el.content}</p>
+                )}
               </div>
             ))}
           </div>
@@ -112,12 +172,27 @@ const IssuePage = () => {
     return levels.indexOf(sectionLevel) > levels.indexOf(userAccessLevel);
   };
 
+  const coverImage = issue.coverImage ? coverImages[issue.coverImage] : null;
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="pt-24 pb-16">
-        <article className="container mx-auto px-6">
+      <main className="pt-16">
+        {/* Hero with cover image */}
+        {coverImage && (
+          <div className="relative h-[50vh] min-h-[400px] overflow-hidden">
+            <img 
+              src={coverImage} 
+              alt={`Issue ${issue.number} cover`}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
+          </div>
+        )}
+        
+        <article className={`container mx-auto px-6 ${coverImage ? '-mt-32 relative z-10' : 'pt-8'}`}>
           {/* Back link */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -148,6 +223,9 @@ const IssuePage = () => {
               <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                 {issue.theme}
               </span>
+              <span className="classified-stamp ml-auto hidden sm:flex">
+                DOCTRINE EDITION
+              </span>
             </div>
             
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
@@ -167,7 +245,7 @@ const IssuePage = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Tag className="w-4 h-4" />
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                   {issue.tags.map(tag => (
                     <span key={tag} className="font-mono text-xs">
                       #{tag}
