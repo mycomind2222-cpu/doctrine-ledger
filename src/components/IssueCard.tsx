@@ -5,12 +5,26 @@ import { type Issue } from "@/data/issues";
 import { AccessBadge } from "./AccessBadge";
 import issue01Cover from "@/assets/covers/issue-01.png";
 import issue02Cover from "@/assets/covers/issue-02.png";
+import issue03Cover from "@/assets/covers/issue-03.png";
 import issue04Cover from "@/assets/covers/issue-04.png";
+import issue05Cover from "@/assets/covers/issue-05.png";
+import issue06Cover from "@/assets/covers/issue-06.png";
+import issue07Cover from "@/assets/covers/issue-07.png";
+import issue08Cover from "@/assets/covers/issue-08.png";
+import issue09Cover from "@/assets/covers/issue-09.png";
+import issue10Cover from "@/assets/covers/issue-10.png";
 
 const coverImages: Record<string, string> = {
   "issue-01": issue01Cover,
   "issue-02": issue02Cover,
+  "issue-03": issue03Cover,
   "issue-04": issue04Cover,
+  "issue-05": issue05Cover,
+  "issue-06": issue06Cover,
+  "issue-07": issue07Cover,
+  "issue-08": issue08Cover,
+  "issue-09": issue09Cover,
+  "issue-10": issue10Cover,
 };
 
 interface IssueCardProps {
