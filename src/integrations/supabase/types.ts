@@ -19,6 +19,7 @@ export type Database = {
           access_level: Database["public"]["Enums"]["access_level"]
           created_at: string
           id: string
+          is_admin: boolean
           updated_at: string
           user_id: string
         }
@@ -26,6 +27,7 @@ export type Database = {
           access_level?: Database["public"]["Enums"]["access_level"]
           created_at?: string
           id?: string
+          is_admin?: boolean
           updated_at?: string
           user_id: string
         }
@@ -33,6 +35,7 @@ export type Database = {
           access_level?: Database["public"]["Enums"]["access_level"]
           created_at?: string
           id?: string
+          is_admin?: boolean
           updated_at?: string
           user_id?: string
         }
@@ -54,6 +57,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_admin: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
       access_level: "public" | "professional" | "restricted"
