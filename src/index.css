@@ -2,95 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* BLACKFILES Design System */
+    --background: 240 6% 4%;
+    --background-secondary: 240 5% 6%;
+    --foreground: 0 0% 100%;
+    
+    --card: 240 5% 6%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 240 5% 8%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 359 100% 65%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 240 4% 12%;
+    --secondary-foreground: 240 4% 82%;
+    
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 4% 72%;
+    
+    --accent: 359 100% 65%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 359 100% 65%;
+    
+    --radius: 0.25rem;
+    
+    /* Custom BLACKFILES tokens */
+    --classified: 359 100% 65%;
+    --classified-foreground: 0 0% 100%;
+    --professional: 45 100% 51%;
+    --professional-foreground: 0 0% 0%;
+    --restricted: 359 100% 50%;
+    --restricted-foreground: 0 0% 100%;
+    --public: 142 76% 36%;
+    --public-foreground: 0 0% 100%;
+    
+    /* Typography */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Gradients */
+    --gradient-classified: linear-gradient(135deg, hsl(359 100% 65% / 0.2), transparent);
+    --gradient-dark: linear-gradient(180deg, hsl(240 6% 4%), hsl(240 5% 2%));
+    --gradient-vignette: radial-gradient(ellipse at center, transparent 0%, hsl(240 6% 4% / 0.8) 100%);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 240 6% 4%;
+    --foreground: 0 0% 100%;
   }
 }
 
@@ -98,8 +67,219 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    background-image: var(--gradient-dark);
+    min-height: 100vh;
+  }
+  
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 1000;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  
+  code, pre {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  /* Classified stamp effect */
+  .classified-stamp {
+    @apply relative inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold uppercase tracking-widest;
+    background: hsl(var(--classified) / 0.15);
+    border: 1px solid hsl(var(--classified) / 0.4);
+    color: hsl(var(--classified));
+    font-family: var(--font-mono);
+  }
+  
+  .classified-stamp::before {
+    content: '●';
+    animation: pulse-dot 2s infinite;
+  }
+  
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  
+  /* Access level badges */
+  .badge-public {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium uppercase tracking-wider rounded-sm;
+    background: hsl(var(--public) / 0.15);
+    border: 1px solid hsl(var(--public) / 0.3);
+    color: hsl(var(--public));
+  }
+  
+  .badge-professional {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium uppercase tracking-wider rounded-sm;
+    background: hsl(var(--professional) / 0.15);
+    border: 1px solid hsl(var(--professional) / 0.3);
+    color: hsl(var(--professional));
+  }
+  
+  .badge-restricted {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium uppercase tracking-wider rounded-sm;
+    background: hsl(var(--restricted) / 0.15);
+    border: 1px solid hsl(var(--restricted) / 0.3);
+    color: hsl(var(--restricted));
+  }
+  
+  /* Blur overlay for restricted content */
+  .content-restricted {
+    @apply relative;
+    filter: blur(8px);
+    user-select: none;
+  }
+  
+  .content-restricted-overlay {
+    @apply absolute inset-0 flex flex-col items-center justify-center gap-4 z-10;
+    background: hsl(var(--background) / 0.6);
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Issue card */
+  .issue-card {
+    @apply relative overflow-hidden rounded-sm transition-all duration-300;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .issue-card:hover {
+    border-color: hsl(var(--classified) / 0.4);
+    box-shadow: 0 0 40px -10px hsl(var(--classified) / 0.2);
+  }
+  
+  /* Scanline effect */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      hsl(0 0% 0% / 0.03) 1px,
+      hsl(0 0% 0% / 0.03) 2px
+    );
+    pointer-events: none;
+  }
+  
+  /* Reading prose */
+  .prose-blackfiles {
+    @apply text-base leading-relaxed;
+    color: hsl(var(--muted-foreground));
+    font-family: var(--font-sans);
+  }
+  
+  .prose-blackfiles h2 {
+    @apply mt-12 mb-6 text-2xl font-semibold;
+    color: hsl(var(--foreground));
+  }
+  
+  .prose-blackfiles h3 {
+    @apply mt-8 mb-4 text-xl font-medium;
+    color: hsl(var(--foreground));
+  }
+  
+  .prose-blackfiles p {
+    @apply mb-6;
+  }
+  
+  .prose-blackfiles blockquote {
+    @apply pl-6 my-8 border-l-2;
+    border-color: hsl(var(--classified));
+    color: hsl(var(--foreground));
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.125rem;
+  }
+  
+  .prose-blackfiles code {
+    @apply px-1.5 py-0.5 rounded text-sm;
+    background: hsl(var(--muted));
+    color: hsl(var(--classified));
+    font-family: var(--font-mono);
+  }
+  
+  /* Sidebar elements */
+  .sidebar-element {
+    @apply p-4 my-6 rounded-sm;
+    background: hsl(var(--secondary));
+    border-left: 2px solid hsl(var(--classified));
+  }
+  
+  .pull-quote {
+    @apply text-lg italic;
+    font-family: var(--font-serif);
+    color: hsl(var(--foreground));
+  }
+  
+  /* Redacted text effect */
+  .redacted {
+    @apply relative inline-block;
+    background: hsl(var(--foreground));
+    color: transparent;
+    user-select: none;
+    border-radius: 1px;
+  }
+  
+  /* Navigation */
+  .nav-link {
+    @apply text-sm font-medium transition-colors;
+    color: hsl(var(--muted-foreground));
+    letter-spacing: 0.05em;
+  }
+  
+  .nav-link:hover {
+    color: hsl(var(--foreground));
+  }
+  
+  .nav-link.active {
+    color: hsl(var(--classified));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+  
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  
+  .gradient-classified {
+    background: var(--gradient-classified);
+  }
+  
+  .text-classified {
+    color: hsl(var(--classified));
+  }
+  
+  .border-classified {
+    border-color: hsl(var(--classified));
   }
 }
