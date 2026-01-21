@@ -23,11 +23,15 @@ export const Hero = () => {
             alt="The Black Files - Emerging Shadow Economies: The Foundation of Exploit Fusion"
             className="w-full h-auto object-cover"
           />
+          {/* Dark moody overlay */}
+          <div 
+            className="absolute inset-0 pointer-events-none bg-background/40"
+          />
           {/* Gradient fade at bottom */}
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'linear-gradient(to bottom, transparent 60%, hsl(var(--background)) 100%)',
+              background: 'linear-gradient(to bottom, transparent 50%, hsl(var(--background)) 95%)',
             }}
           />
         </motion.div>
