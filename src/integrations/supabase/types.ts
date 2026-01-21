@@ -14,16 +14,49 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      user_roles: {
+        Row: {
+          access_level: Database["public"]["Enums"]["access_level"]
+          created_at: string
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          access_level?: Database["public"]["Enums"]["access_level"]
+          created_at?: string
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          access_level?: Database["public"]["Enums"]["access_level"]
+          created_at?: string
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_access_level: {
+        Args: { _user_id: string }
+        Returns: Database["public"]["Enums"]["access_level"]
+      }
+      has_access_level: {
+        Args: {
+          _required_level: Database["public"]["Enums"]["access_level"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      access_level: "public" | "professional" | "restricted"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +183,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      access_level: ["public", "professional", "restricted"],
+    },
   },
 } as const

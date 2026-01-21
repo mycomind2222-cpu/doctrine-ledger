@@ -1,17 +1,35 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Lock, Clock, Tag } from "lucide-react";
+import { ArrowLeft, Clock, Tag } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AccessBadge } from "@/components/AccessBadge";
+import { LockedContentOverlay } from "@/components/LockedContentOverlay";
 import { Button } from "@/components/ui/button";
-import { getIssue, type Section, type AccessLevel } from "@/data/issues";
+import { useAuth } from "@/contexts/AuthContext";
+import { getIssue, type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
 import issue01Cover from "@/assets/covers/issue-01.png";
 import issue02Cover from "@/assets/covers/issue-02.png";
+import issue03Cover from "@/assets/covers/issue-03.png";
+import issue04Cover from "@/assets/covers/issue-04.png";
+import issue05Cover from "@/assets/covers/issue-05.png";
+import issue06Cover from "@/assets/covers/issue-06.png";
+import issue07Cover from "@/assets/covers/issue-07.png";
+import issue08Cover from "@/assets/covers/issue-08.png";
+import issue09Cover from "@/assets/covers/issue-09.png";
+import issue10Cover from "@/assets/covers/issue-10.png";
 
 const coverImages: Record<string, string> = {
   "issue-01": issue01Cover,
   "issue-02": issue02Cover,
+  "issue-03": issue03Cover,
+  "issue-04": issue04Cover,
+  "issue-05": issue05Cover,
+  "issue-06": issue06Cover,
+  "issue-07": issue07Cover,
+  "issue-08": issue08Cover,
+  "issue-09": issue09Cover,
+  "issue-10": issue10Cover,
 };
 
 const renderContent = (content: string) => {
@@ -67,7 +85,7 @@ const renderContent = (content: string) => {
   });
 };
 
-const SectionContent = ({ section, isLocked }: { section: Section; isLocked: boolean }) => {
+const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section; isLocked: boolean; requiredLevel: IssueAccessLevel }) => {
   const sectionLabels: Record<string, string> = {
     executive_summary: "Executive Summary",
     doctrine_preview: "Doctrine Preview",
@@ -134,15 +152,7 @@ const SectionContent = ({ section, isLocked }: { section: Section; isLocked: boo
         )}
         
         {isLocked && (
-          <div className="content-restricted-overlay">
-            <Lock className="w-8 h-8 text-classified" />
-            <span className="font-mono text-sm uppercase tracking-widest">
-              Restricted Content
-            </span>
-            <Button variant="classified" size="sm">
-              Request Access
-            </Button>
-          </div>
+          <LockedContentOverlay requiredLevel={requiredLevel} />
         )}
       </div>
     </motion.div>
@@ -151,6 +161,7 @@ const SectionContent = ({ section, isLocked }: { section: Section; isLocked: boo
 
 const IssuePage = () => {
   const { issueNumber } = useParams();
+  const { hasAccess } = useAuth();
   const issue = getIssue(Number(issueNumber));
 
   if (!issue) {
@@ -166,12 +177,8 @@ const IssuePage = () => {
     );
   }
 
-  // Simulate access level - in real app this would come from auth
-  const userAccessLevel: AccessLevel = 'public';
-  
-  const isLocked = (sectionLevel: AccessLevel) => {
-    const levels: AccessLevel[] = ['public', 'professional', 'restricted'];
-    return levels.indexOf(sectionLevel) > levels.indexOf(userAccessLevel);
+  const isLocked = (sectionLevel: IssueAccessLevel) => {
+    return !hasAccess(sectionLevel);
   };
 
   const coverImage = issue.coverImage ? coverImages[issue.coverImage] : null;
@@ -265,6 +272,7 @@ const IssuePage = () => {
                 key={section.id} 
                 section={section} 
                 isLocked={isLocked(section.audienceLevel)}
+                requiredLevel={section.audienceLevel}
               />
             ))}
           </div>
