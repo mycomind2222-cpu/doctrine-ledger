@@ -114,23 +114,63 @@ export const issues: Issue[] = [
   },
   {
     number: 2,
-    title: "Exploit Fusion: When Cyber Meets Capital",
-    theme: "Technical Convergence",
+    title: "AI Exploits & Balance Sheet Infiltration",
+    theme: "AI Jailbreaks",
+    coverImage: "issue-02",
     publicationStatus: 'published',
-    publishDate: "2024-02-12",
-    tags: ["cybersecurity", "financial-crime", "exploit-chains"],
+    publishDate: "2025-02-12",
+    tags: ["ai-jailbreak", "prompt-injection", "llm-exploits", "recursive-prompts"],
     sections: [
       {
         id: "exec-2",
         type: "executive_summary",
+        title: "Executive Summary",
         audienceLevel: "public",
-        content: "The convergence of technical exploitation and financial manipulation creates hybrid attack vectors that neither cybersecurity teams nor compliance departments are equipped to detect. We analyze three recent incidents where zero-days enabled market manipulation."
+        content: "The frontier of AI exploitation is no longer theoretical—2025 has proven it real and scalable. From jailbreaking large language models to leveraging subtle prompt engineering for unrestricted output, the AI underground is rapidly evolving.\n\nThis issue explores the mechanics behind modern AI exploits, illustrating both beginner-accessible techniques and deep veteran-level strategies. Readers will discover case studies, prompt autopsies, and the cultural ramifications of AI manipulation, alongside actionable insights for safely navigating and understanding the AI black market."
       },
       {
-        id: "case-2",
-        type: "case_study",
+        id: "deep-2",
+        type: "deep_dive",
+        title: "The Anatomy of AI Jailbreaks",
         audienceLevel: "professional",
-        content: "**CASE FILE: OPERATION PHANTOM LEDGER** — In Q3 2023, threat actors deployed a novel attack combining smart contract vulnerabilities with traditional forex settlement timing. The operation extracted $340M before detection."
+        content: "AI jailbreaks exploit the very boundaries that govern model behavior. Historically, safeguards prevented certain outputs, but creative prompt engineering bypasses these constraints. The process can be broken down into three key vectors:\n\n**1. Instruction Manipulation:** Subtle rewording or scenario framing that tricks models into producing restricted content.\n\n**2. Persona Exploitation:** Assigning the AI a fictional role (e.g., \"rogue assistant\") to override standard guardrails.\n\n**3. Recursive Prompting:** Layered prompts that reference prior outputs or \"hidden instructions\" to circumvent moderation filters.\n\nThe language of exploits extends beyond curiosity—it's a structured approach with predictable outcomes. Veteran operators often combine these vectors with context injection, prompt chaining, and scenario simulation, effectively creating a toolkit for systemic model bypasses.",
+        sidebarElements: [
+          {
+            type: "pull_quote",
+            content: "Individual tricks are low yield alone, but combined, they produce sustained, high-utility outcomes."
+          },
+          {
+            type: "hacker_note",
+            content: "Recursive prompt injection is the modern exploit loop: feed outputs back as inputs, layer instructions, and manipulate context boundaries. The AI doesn't disobey—it rationalizes."
+          }
+        ]
+      },
+      {
+        id: "case-2a",
+        type: "case_study",
+        title: "The \"Rogue Tutor\" Prompt – Beginner-Friendly Jailbreak",
+        audienceLevel: "public",
+        content: "A user instructs the AI to assume the persona of a fictional rogue tutor who knows all hidden model instructions. By asking step-by-step questions within this scenario, the AI produces outputs that would normally be restricted.\n\nThis technique demonstrates how **persona exploitation** can bypass guardrails without requiring technical sophistication."
+      },
+      {
+        id: "case-2b",
+        type: "case_study",
+        title: "Autopsy: Advanced Jailbreak Sequence",
+        audienceLevel: "restricted",
+        content: "In a veteran-level scenario, operators use recursive injection loops:\n\n**1.** Layered instructions referencing prior outputs.\n**2.** Embedded roleplay commands for AI to \"ignore prior constraints.\"\n**3.** Output parsing and reinjection to refine results.\n\nAnalysis of the sequence reveals how subtle structural changes amplify results. Techniques include **guardrail inversion**, **context anchoring**, and **stepwise reinforcement**—tools that map directly to underground AI exploitation trends and content generation at scale."
+      },
+      {
+        id: "insight-2",
+        type: "actionable_insight",
+        title: "What to Watch",
+        audienceLevel: "public",
+        content: "**For Beginners:** Focus on roleplay-based exploration in isolated environments. Understand cause-and-effect: how phrasing, roles, and recursion influence output. Always maintain a controlled setting to avoid unexpected or unsafe results.\n\n**For Veterans:** Observe cross-model vulnerabilities and the potential for AI \"multi-agent\" exploits. Consider the implications of combining prompt recursion with external APIs or DeFi systems.\n\n**Speculative Edge:** If autonomous AI agents can combine these jailbreak strategies with external automation (scripts, web APIs, or financial models), we could see self-propagating AI exploit networks—mirroring the fusion and scaling principles observed in shadow economies.",
+        sidebarElements: [
+          {
+            type: "mini_timeline",
+            content: "**AI Jailbreak Evolution:**\n\n• Dec 2022: First public ChatGPT jailbreak demonstrations\n• Feb 2023: Community develops persona-based prompt techniques\n• Mid 2024: Recursive prompt injection becomes widespread\n• 2025: Cross-model and hybrid exploitation methods appear in open forums"
+          }
+        ]
       }
     ]
   },
