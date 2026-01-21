@@ -7,9 +7,11 @@ import { AccessBadge } from "@/components/AccessBadge";
 import { Button } from "@/components/ui/button";
 import { getIssue, type Section, type AccessLevel } from "@/data/issues";
 import issue01Cover from "@/assets/covers/issue-01.png";
+import issue02Cover from "@/assets/covers/issue-02.png";
 
 const coverImages: Record<string, string> = {
   "issue-01": issue01Cover,
+  "issue-02": issue02Cover,
 };
 
 const renderContent = (content: string) => {

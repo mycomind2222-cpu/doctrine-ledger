@@ -4,9 +4,11 @@ import { ArrowRight, Lock } from "lucide-react";
 import { type Issue } from "@/data/issues";
 import { AccessBadge } from "./AccessBadge";
 import issue01Cover from "@/assets/covers/issue-01.png";
+import issue02Cover from "@/assets/covers/issue-02.png";
 
 const coverImages: Record<string, string> = {
   "issue-01": issue01Cover,
+  "issue-02": issue02Cover,
 };
 
 interface IssueCardProps {
