@@ -9,6 +9,7 @@ import IssuePage from "./pages/IssuePage";
 import Archive from "./pages/Archive";
 import Doctrine from "./pages/Doctrine";
 import Auth from "./pages/Auth";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/archive" element={<Archive />} />
             <Route path="/doctrine" element={<Doctrine />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { LogIn, LogOut, User } from "lucide-react";
+import { LogIn, LogOut, User, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,7 @@ const navLinks = [
 export const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, accessLevel, signOut, loading } = useAuth();
+  const { user, accessLevel, isAdmin, signOut, loading } = useAuth();
 
   const handleSignOut = async () => {
     await signOut();
@@ -62,6 +62,18 @@ export const Header = () => {
                       <User className="w-4 h-4 text-muted-foreground" />
                       <AccessBadge level={accessLevel} />
                     </div>
+                    {isAdmin && (
+                      <Link to="/admin">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="gap-2 text-primary hover:text-primary"
+                        >
+                          <Shield className="w-4 h-4" />
+                          <span className="hidden sm:inline">Admin</span>
+                        </Button>
+                      </Link>
+                    )}
                     <Button
                       variant="ghost"
                       size="sm"

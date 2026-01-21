@@ -8,6 +8,7 @@ interface AuthContextType {
   user: User | null;
   session: Session | null;
   accessLevel: AccessLevel;
+  isAdmin: boolean;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
   signUp: (email: string, password: string) => Promise<{ error: Error | null }>;
@@ -29,19 +30,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [accessLevel, setAccessLevel] = useState<AccessLevel>('public');
+  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const fetchAccessLevel = async (userId: string) => {
+  const fetchUserRole = async (userId: string) => {
     const { data, error } = await supabase
       .from('user_roles')
-      .select('access_level')
+      .select('access_level, is_admin')
       .eq('user_id', userId)
       .maybeSingle();
     
     if (data && !error) {
       setAccessLevel(data.access_level as AccessLevel);
+      setIsAdmin(data.is_admin ?? false);
     } else {
       setAccessLevel('public');
+      setIsAdmin(false);
     }
   };
 
@@ -55,10 +59,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         // Defer Supabase call with setTimeout
         if (session?.user) {
           setTimeout(() => {
-            fetchAccessLevel(session.user.id);
+            fetchUserRole(session.user.id);
           }, 0);
         } else {
           setAccessLevel('public');
+          setIsAdmin(false);
         }
         
         setLoading(false);
@@ -71,7 +76,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(session?.user ?? null);
       
       if (session?.user) {
-        fetchAccessLevel(session.user.id);
+        fetchUserRole(session.user.id);
       }
       
       setLoading(false);
@@ -104,6 +109,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const signOut = async () => {
     await supabase.auth.signOut();
     setAccessLevel('public');
+    setIsAdmin(false);
   };
 
   const hasAccess = (requiredLevel: AccessLevel): boolean => {
@@ -117,6 +123,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         user,
         session,
         accessLevel,
+        isAdmin,
         loading,
         signIn,
         signUp,
