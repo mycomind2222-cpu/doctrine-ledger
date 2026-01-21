@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      founding_members: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          source: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          source?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          source?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           access_level: Database["public"]["Enums"]["access_level"]
