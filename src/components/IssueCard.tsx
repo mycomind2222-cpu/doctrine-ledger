@@ -5,10 +5,12 @@ import { type Issue } from "@/data/issues";
 import { AccessBadge } from "./AccessBadge";
 import issue01Cover from "@/assets/covers/issue-01.png";
 import issue02Cover from "@/assets/covers/issue-02.png";
+import issue04Cover from "@/assets/covers/issue-04.png";
 
 const coverImages: Record<string, string> = {
   "issue-01": issue01Cover,
   "issue-02": issue02Cover,
+  "issue-04": issue04Cover,
 };
 
 interface IssueCardProps {
