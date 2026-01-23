@@ -6,7 +6,16 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { supabase } from '@/integrations/supabase/client';
 
-const emailSchema = z.string().email('Invalid email address');
+// Enhanced email validation with length limits and sanitization
+const emailSchema = z.string()
+  .trim()
+  .min(1, 'Email is required')
+  .max(255, 'Email must be less than 255 characters')
+  .email('Invalid email address')
+  .refine(
+    (email) => !/<|>|script|javascript:/i.test(email),
+    'Invalid characters in email'
+  );
 
 // Launch date - set to 30 days from now for demo
 const LAUNCH_DATE = new Date('2026-02-20T00:00:00Z');
@@ -89,7 +98,7 @@ export const FoundingMemberCampaign = () => {
           setError('This email is already registered for early access.');
         } else {
           setError('Failed to register. Please try again.');
-          console.error('Subscription error:', insertError);
+          if (import.meta.env.DEV) console.error('Subscription error:', insertError);
         }
       } else {
         setIsSubscribed(true);
@@ -97,7 +106,7 @@ export const FoundingMemberCampaign = () => {
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.');
-      console.error('Unexpected error:', err);
+      if (import.meta.env.DEV) console.error('Unexpected error:', err);
     } finally {
       setIsLoading(false);
     }
