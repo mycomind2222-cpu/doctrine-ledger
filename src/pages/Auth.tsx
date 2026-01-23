@@ -11,8 +11,24 @@ import { Label } from '@/components/ui/label';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 
-const emailSchema = z.string().email('Invalid email address');
-const passwordSchema = z.string().min(6, 'Password must be at least 6 characters');
+// Enhanced validation with length limits and sanitization
+const emailSchema = z.string()
+  .trim()
+  .min(1, 'Email is required')
+  .max(255, 'Email must be less than 255 characters')
+  .email('Invalid email address')
+  .refine(
+    (email) => !/<|>|script|javascript:/i.test(email),
+    'Invalid characters in email'
+  );
+
+const passwordSchema = z.string()
+  .min(6, 'Password must be at least 6 characters')
+  .max(128, 'Password must be less than 128 characters')
+  .refine(
+    (password) => !/[\x00-\x1F\x7F]/.test(password),
+    'Password contains invalid characters'
+  );
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);

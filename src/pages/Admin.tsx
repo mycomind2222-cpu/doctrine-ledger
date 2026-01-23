@@ -49,7 +49,7 @@ const Admin = () => {
 
     if (error) {
       toast.error('Failed to fetch users');
-      console.error(error);
+      if (import.meta.env.DEV) console.error('Fetch users error:', error);
     } else {
       setUsers(data || []);
     }
@@ -65,7 +65,7 @@ const Admin = () => {
 
     if (error) {
       toast.error('Failed to update access level');
-      console.error(error);
+      if (import.meta.env.DEV) console.error('Update access level error:', error);
     } else {
       toast.success('Access level updated');
       setUsers(users.map(u => 
