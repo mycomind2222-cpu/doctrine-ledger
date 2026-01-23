@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { LogIn, LogOut, User, Shield } from "lucide-react";
+import { LogIn, LogOut, User, Shield, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -57,7 +57,7 @@ export const Header = () => {
             {!loading && (
               <>
                 {user ? (
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3">
                     <div className="hidden md:flex items-center gap-2">
                       <User className="w-4 h-4 text-muted-foreground" />
                       <AccessBadge level={accessLevel} />
@@ -74,6 +74,16 @@ export const Header = () => {
                         </Button>
                       </Link>
                     )}
+                    <Link to="/account">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="gap-2 text-muted-foreground hover:text-foreground"
+                      >
+                        <Settings className="w-4 h-4" />
+                        <span className="hidden sm:inline">Account</span>
+                      </Button>
+                    </Link>
                     <Button
                       variant="ghost"
                       size="sm"
