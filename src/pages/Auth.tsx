@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { Eye, EyeOff, Lock, Mail, AlertCircle } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -127,7 +128,13 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title={isLogin ? "Sign In" : "Create Account"}
+        description="Access BLACKFILES intelligence briefings. Sign in or create an account to unlock professional and restricted content."
+        path="/auth"
+      />
+      <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-32 pb-24">
@@ -266,7 +273,8 @@ const Auth = () => {
       </main>
       
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

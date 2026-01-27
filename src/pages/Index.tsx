@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { DoctrineIntro } from "@/components/DoctrineIntro";
 import { IssueCard } from "@/components/IssueCard";
 import { FoundingMemberCampaign } from "@/components/FoundingMemberCampaign";
+import { SEO } from "@/components/SEO";
 import { issues } from "@/data/issues";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -14,7 +15,9 @@ const Index = () => {
   const publishedIssues = issues.filter(i => i.publicationStatus === 'published');
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO path="/" />
+      <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-16">
@@ -68,7 +71,8 @@ const Index = () => {
       </main>
       
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

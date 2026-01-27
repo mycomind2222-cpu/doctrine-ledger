@@ -1,10 +1,17 @@
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { SEO } from '@/components/SEO';
 import { motion } from 'framer-motion';
 
 const Terms = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <>
+      <SEO
+        title="Terms of Service"
+        description="Review the terms and conditions for using BLACKFILES intelligence publication. Subscription tiers, intellectual property, and user obligations."
+        path="/terms"
+      />
+      <div className="min-h-screen bg-background flex flex-col">
       <Header />
       
       <main className="flex-1 pt-24 pb-16">
@@ -161,7 +168,8 @@ const Terms = () => {
       </main>
       
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { SEO } from '@/components/SEO';
 import { useAuth } from '@/contexts/AuthContext';
 import { AccessBadge } from '@/components/AccessBadge';
 import { Button } from '@/components/ui/button';
@@ -56,7 +57,13 @@ const Account = () => {
   const currentPlan = subscriptionDetails[accessLevel];
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <>
+      <SEO
+        title="Account"
+        description="Manage your BLACKFILES account, subscription, and billing settings."
+        path="/account"
+      />
+      <div className="min-h-screen bg-background flex flex-col">
       <Header />
       
       <main className="flex-1 pt-24 pb-16">
@@ -221,7 +228,8 @@ const Account = () => {
       </main>
       
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 
