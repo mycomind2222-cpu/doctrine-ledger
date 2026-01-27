@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AccessBadge } from "@/components/AccessBadge";
 import { LockedContentOverlay } from "@/components/LockedContentOverlay";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { getIssue, type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
@@ -184,7 +185,16 @@ const IssuePage = () => {
   const coverImage = issue.coverImage ? coverImages[issue.coverImage] : null;
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title={`Issue #${String(issue.number).padStart(2, '0')}: ${issue.title}`}
+        description={issue.sections[0]?.content.slice(0, 155) + "..." || `BLACKFILES Issue ${issue.number} - ${issue.theme}`}
+        path={`/issues/${issue.number}`}
+        type="article"
+        publishedTime={issue.publishDate}
+        tags={issue.tags}
+      />
+      <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-16">
@@ -303,11 +313,12 @@ const IssuePage = () => {
               )}
             </div>
           </motion.div>
-        </article>
+      </article>
       </main>
       
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -1,10 +1,17 @@
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { SEO } from '@/components/SEO';
 import { motion } from 'framer-motion';
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <>
+      <SEO
+        title="Privacy Policy"
+        description="Learn how BLACKFILES collects, uses, and protects your personal information. Our commitment to data privacy and security."
+        path="/privacy"
+      />
+      <div className="min-h-screen bg-background flex flex-col">
       <Header />
       
       <main className="flex-1 pt-24 pb-16">
@@ -136,7 +143,8 @@ const PrivacyPolicy = () => {
       </main>
       
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

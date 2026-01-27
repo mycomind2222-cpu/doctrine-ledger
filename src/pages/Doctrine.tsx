@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 
 const doctrineStatements = [
   {
@@ -47,7 +48,13 @@ const doctrineStatements = [
 
 const Doctrine = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="Our Doctrine"
+        description="Core analytical principles guiding BLACKFILES intelligence production. Foundational framework for understanding shadow economies and systemic risk."
+        path="/doctrine"
+      />
+      <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-24 pb-16">
@@ -117,7 +124,8 @@ const Doctrine = () => {
       </main>
       
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

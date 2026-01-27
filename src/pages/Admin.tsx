@@ -4,6 +4,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -96,7 +97,13 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <>
+      <SEO
+        title="Admin Panel"
+        description="BLACKFILES administration panel for user access management."
+        path="/admin"
+      />
+      <div className="min-h-screen bg-background flex flex-col">
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">
@@ -179,7 +186,8 @@ const Admin = () => {
       </main>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

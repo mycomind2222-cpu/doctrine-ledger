@@ -4,6 +4,7 @@ import { Search, Filter, X } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { IssueCard } from "@/components/IssueCard";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { issues, type AccessLevel } from "@/data/issues";
@@ -40,7 +41,13 @@ const Archive = () => {
   const hasActiveFilters = searchQuery || selectedTheme || selectedTag;
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="Intelligence Archive"
+        description="Browse all BLACKFILES intelligence briefings by theme, tag, or keyword. Complete index of doctrine-driven analysis."
+        path="/archive"
+      />
+      <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-24 pb-16">
@@ -176,7 +183,8 @@ const Archive = () => {
       </main>
       
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 
