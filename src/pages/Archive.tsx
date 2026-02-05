@@ -1,25 +1,34 @@
-import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
-import { Search, Filter, X } from "lucide-react";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { IssueCard } from "@/components/IssueCard";
-import { SEO } from "@/components/SEO";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { issues, type AccessLevel } from "@/data/issues";
-
-const themes = [...new Set(issues.map(i => i.theme))];
-const allTags = [...new Set(issues.flatMap(i => i.tags))];
-
-const Archive = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [showFilters, setShowFilters] = useState(false);
-
-  const filteredIssues = useMemo(() => {
-    return issues.filter(issue => {
+ import { useState, useMemo } from "react";
+ import { motion } from "framer-motion";
+ import { Search, Filter, X, Loader2 } from "lucide-react";
+ import { Header } from "@/components/Header";
+ import { Footer } from "@/components/Footer";
+ import { IssueCard } from "@/components/IssueCard";
+ import { SEO } from "@/components/SEO";
+ import { Button } from "@/components/ui/button";
+ import { Input } from "@/components/ui/input";
+ import { Skeleton } from "@/components/ui/skeleton";
+ import { useAllIssues } from "@/hooks/useIssues";
+ 
+ const Archive = () => {
+   const { data: allIssues, isLoading } = useAllIssues();
+   const [searchQuery, setSearchQuery] = useState("");
+   const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
+   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+   const [showFilters, setShowFilters] = useState(false);
+ 
+   const themes = useMemo(() => 
+     [...new Set((allIssues || []).map(i => i.theme))],
+     [allIssues]
+   );
+   
+   const allTags = useMemo(() => 
+     [...new Set((allIssues || []).flatMap(i => i.tags))],
+     [allIssues]
+   );
+ 
+   const filteredIssues = useMemo(() => {
+     return (allIssues || []).filter(issue => {
       const matchesSearch = searchQuery === "" || 
         issue.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         issue.theme.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -29,8 +38,8 @@ const Archive = () => {
       const matchesTag = !selectedTag || issue.tags.includes(selectedTag);
       
       return matchesSearch && matchesTheme && matchesTag;
-    });
-  }, [searchQuery, selectedTheme, selectedTag]);
+     });
+   }, [allIssues, searchQuery, selectedTheme, selectedTag]);
 
   const clearFilters = () => {
     setSearchQuery("");
@@ -165,13 +174,23 @@ const Archive = () => {
             </span>
           </div>
           
-          {filteredIssues.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredIssues.map((issue, index) => (
-                <IssueCard key={issue.number} issue={issue} index={index} />
-              ))}
-            </div>
-          ) : (
+           {isLoading ? (
+             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+               {Array.from({ length: 8 }).map((_, i) => (
+                 <div key={i} className="space-y-3">
+                   <Skeleton className="aspect-[3/4] w-full" />
+                   <Skeleton className="h-4 w-3/4" />
+                   <Skeleton className="h-3 w-1/2" />
+                 </div>
+               ))}
+             </div>
+           ) : filteredIssues.length > 0 ? (
+             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+               {filteredIssues.map((issue, index) => (
+                 <IssueCard key={issue.number} issue={issue} index={index} />
+               ))}
+             </div>
+           ) : (
             <div className="text-center py-16">
               <p className="text-muted-foreground mb-4">No issues match your criteria.</p>
               <Button variant="outline" onClick={clearFilters}>
