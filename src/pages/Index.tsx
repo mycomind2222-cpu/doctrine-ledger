@@ -1,18 +1,20 @@
-import { motion } from "framer-motion";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
-import { DoctrineIntro } from "@/components/DoctrineIntro";
-import { IssueCard } from "@/components/IssueCard";
-import { FoundingMemberCampaign } from "@/components/FoundingMemberCampaign";
-import { SEO } from "@/components/SEO";
-import { issues } from "@/data/issues";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+ import { motion } from "framer-motion";
+ import { Header } from "@/components/Header";
+ import { Footer } from "@/components/Footer";
+ import { Hero } from "@/components/Hero";
+ import { DoctrineIntro } from "@/components/DoctrineIntro";
+ import { IssueCard } from "@/components/IssueCard";
+ import { FoundingMemberCampaign } from "@/components/FoundingMemberCampaign";
+ import { SEO } from "@/components/SEO";
+ import { useAllIssues } from "@/hooks/useIssues";
+ import { Skeleton } from "@/components/ui/skeleton";
+ import { Button } from "@/components/ui/button";
+ import { ArrowRight } from "lucide-react";
+ import { Link } from "react-router-dom";
 
-const Index = () => {
-  const publishedIssues = issues.filter(i => i.publicationStatus === 'published');
+ const Index = () => {
+   const { data: allIssues, isLoading } = useAllIssues();
+   const publishedIssues = (allIssues || []).filter(i => i.publicationStatus === 'published');
 
   return (
     <>
@@ -50,11 +52,21 @@ const Index = () => {
               </Link>
             </motion.div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {publishedIssues.slice(0, 8).map((issue, index) => (
-                <IssueCard key={issue.number} issue={issue} index={index} />
-              ))}
-            </div>
+             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+               {isLoading ? (
+                 Array.from({ length: 8 }).map((_, i) => (
+                   <div key={i} className="space-y-3">
+                     <Skeleton className="aspect-[3/4] w-full" />
+                     <Skeleton className="h-4 w-3/4" />
+                     <Skeleton className="h-3 w-1/2" />
+                   </div>
+                 ))
+               ) : (
+                 publishedIssues.slice(0, 8).map((issue, index) => (
+                   <IssueCard key={issue.number} issue={issue} index={index} />
+                 ))
+               )}
+             </div>
             
             <div className="mt-12 text-center sm:hidden">
               <Link to="/archive">

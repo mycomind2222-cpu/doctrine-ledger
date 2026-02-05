@@ -1,14 +1,15 @@
-import { useParams, Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowLeft, Clock, Tag } from "lucide-react";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { AccessBadge } from "@/components/AccessBadge";
-import { LockedContentOverlay } from "@/components/LockedContentOverlay";
-import { SEO } from "@/components/SEO";
-import { Button } from "@/components/ui/button";
-import { useAuth } from "@/contexts/AuthContext";
-import { getIssue, type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
+ import { useParams, Link } from "react-router-dom";
+ import { motion } from "framer-motion";
+ import { ArrowLeft, Clock, Tag, Loader2 } from "lucide-react";
+ import { Header } from "@/components/Header";
+ import { Footer } from "@/components/Footer";
+ import { AccessBadge } from "@/components/AccessBadge";
+ import { LockedContentOverlay } from "@/components/LockedContentOverlay";
+ import { SEO } from "@/components/SEO";
+ import { Button } from "@/components/ui/button";
+ import { useAuth } from "@/contexts/AuthContext";
+ import { useIssue, useAllIssues } from "@/hooks/useIssues";
+ import { type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
 import issue01Cover from "@/assets/covers/issue-01.png";
 import issue02Cover from "@/assets/covers/issue-02.png";
 import issue03Cover from "@/assets/covers/issue-03.png";
@@ -160,10 +161,20 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
   );
 };
 
-const IssuePage = () => {
-  const { issueNumber } = useParams();
-  const { hasAccess } = useAuth();
-  const issue = getIssue(Number(issueNumber));
+ const IssuePage = () => {
+   const { issueNumber } = useParams();
+   const { hasAccess } = useAuth();
+   const { data: issue, isLoading } = useIssue(Number(issueNumber));
+   const { data: allIssues } = useAllIssues();
+   const maxIssueNumber = allIssues?.length ? Math.max(...allIssues.map(i => i.number)) : 10;
+ 
+   if (isLoading) {
+     return (
+       <div className="min-h-screen bg-background flex items-center justify-center">
+         <Loader2 className="h-8 w-8 animate-spin text-primary" />
+       </div>
+     );
+   }
 
   if (!issue) {
     return (
@@ -303,7 +314,7 @@ const IssuePage = () => {
                   </Button>
                 </Link>
               )}
-              {issue.number < 10 && (
+               {issue.number < maxIssueNumber && (
                 <Link to={`/issues/${issue.number + 1}`} className="ml-auto">
                   <Button variant="ghost" className="gap-2">
                     Next Issue
