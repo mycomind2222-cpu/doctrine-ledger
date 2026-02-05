@@ -35,6 +35,51 @@ export type Database = {
         }
         Relationships: []
       }
+      issues: {
+        Row: {
+          cover_image: string | null
+          created_at: string
+          generated_by: string | null
+          id: string
+          number: number
+          publication_status: string
+          publish_date: string
+          sections: Json
+          tags: string[]
+          theme: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          cover_image?: string | null
+          created_at?: string
+          generated_by?: string | null
+          id?: string
+          number: number
+          publication_status?: string
+          publish_date?: string
+          sections?: Json
+          tags?: string[]
+          theme: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          cover_image?: string | null
+          created_at?: string
+          generated_by?: string | null
+          id?: string
+          number?: number
+          publication_status?: string
+          publish_date?: string
+          sections?: Json
+          tags?: string[]
+          theme?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           access_level: Database["public"]["Enums"]["access_level"]
