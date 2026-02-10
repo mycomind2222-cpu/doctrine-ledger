@@ -13,6 +13,7 @@ import issue07Cover from "@/assets/covers/issue-07.png";
 import issue08Cover from "@/assets/covers/issue-08.png";
 import issue09Cover from "@/assets/covers/issue-09.png";
 import issue10Cover from "@/assets/covers/issue-10.png";
+import issue11Cover from "@/assets/covers/issue-11.png";
 
 const coverImages: Record<string, string> = {
   "issue-01": issue01Cover,
@@ -25,6 +26,7 @@ const coverImages: Record<string, string> = {
   "issue-08": issue08Cover,
   "issue-09": issue09Cover,
   "issue-10": issue10Cover,
+  "issue-11": issue11Cover,
 };
 
 interface IssueCardProps {
