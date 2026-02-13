@@ -193,7 +193,10 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
     return !hasAccess(sectionLevel);
   };
 
-  const coverImage = issue.coverImage ? coverImages[issue.coverImage] : null;
+  // Support both static imports (e.g. "issue-01") and full URLs from storage
+  const coverImage = issue.coverImage
+    ? issue.coverImage.startsWith("http") ? issue.coverImage : coverImages[issue.coverImage] || null
+    : null;
 
   return (
     <>
