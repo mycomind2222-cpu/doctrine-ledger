@@ -39,7 +39,10 @@ export const IssueCard = ({ issue, index }: IssueCardProps) => {
   const hasProfessional = issue.sections.some(s => s.audienceLevel === 'professional');
   const highestLevel = hasRestricted ? 'restricted' : hasProfessional ? 'professional' : 'public';
   
-  const coverImage = issue.coverImage ? coverImages[issue.coverImage] : null;
+  // Support both static imports (e.g. "issue-01") and full URLs from storage
+  const coverImage = issue.coverImage
+    ? issue.coverImage.startsWith("http") ? issue.coverImage : coverImages[issue.coverImage] || null
+    : null;
 
   return (
     <motion.article
