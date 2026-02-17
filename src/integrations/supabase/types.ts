@@ -44,6 +44,8 @@ export type Database = {
           number: number
           publication_status: string
           publish_date: string
+          quality_notes: string | null
+          quality_score: number | null
           sections: Json
           tags: string[]
           theme: string
@@ -58,6 +60,8 @@ export type Database = {
           number: number
           publication_status?: string
           publish_date?: string
+          quality_notes?: string | null
+          quality_score?: number | null
           sections?: Json
           tags?: string[]
           theme: string
@@ -72,6 +76,8 @@ export type Database = {
           number?: number
           publication_status?: string
           publish_date?: string
+          quality_notes?: string | null
+          quality_score?: number | null
           sections?: Json
           tags?: string[]
           theme?: string

@@ -257,7 +257,7 @@ serve(async (req) => {
         number: nextNumber,
         title: issueData.title,
         theme: issueData.theme,
-        publication_status: "published",
+        publication_status: "draft",
         publish_date: publishDateStr,
         tags: issueData.tags || [],
         sections: issueData.sections || [],
