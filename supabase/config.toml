@@ -1,4 +1,7 @@
  project_id = "izkulrftnpkdsncbujqv"
  
- [functions.generate-issue]
- verify_jwt = false
+[functions.generate-issue]
+verify_jwt = false
+
+[functions.review-issue]
+verify_jwt = false
