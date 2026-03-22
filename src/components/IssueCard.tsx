@@ -39,64 +39,66 @@ export const IssueCard = ({ issue, index }: IssueCardProps) => {
   const hasProfessional = issue.sections.some(s => s.audienceLevel === 'professional');
   const highestLevel = hasRestricted ? 'restricted' : hasProfessional ? 'professional' : 'public';
   
-  // Support both static imports (e.g. "issue-01") and full URLs from storage
   const coverImage = issue.coverImage
     ? issue.coverImage.startsWith("http") ? issue.coverImage : coverImages[issue.coverImage] || null
     : null;
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
+      transition={{ delay: index * 0.08, duration: 0.5, ease: "easeOut" }}
       className="issue-card group"
     >
       <Link to={`/issues/${issue.number}`} className="block">
-        <div className="relative aspect-[3/4] overflow-hidden bg-secondary">
+        <div className="relative aspect-[3/4] overflow-hidden rounded-t-xl">
           {coverImage ? (
             <img 
               src={coverImage} 
               alt={`Issue ${issue.number} cover`}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             />
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center bg-secondary/50">
               <span className="font-serif text-8xl font-bold text-muted/20">
                 {String(issue.number).padStart(2, '0')}
               </span>
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/90" />
-          <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-            <span className="font-mono text-xs text-white/80 drop-shadow-lg">
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background/95" />
+          
+          {/* Top bar with glass effect */}
+          <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span className="glass px-2.5 py-1 rounded-md font-mono text-xs text-foreground/90">
               ISSUE {String(issue.number).padStart(2, '0')}
             </span>
             <AccessBadge level={highestLevel} />
           </div>
+          
           {issue.publicationStatus === 'draft' && (
-            <div className="absolute top-4 right-4 flex items-center gap-1 px-2 py-0.5 bg-muted/80 rounded-sm">
+            <div className="absolute top-3 right-3 flex items-center gap-1 glass-accent px-2.5 py-1 rounded-md">
               <Lock className="w-3 h-3" />
               <span className="font-mono text-xs">DRAFT</span>
             </div>
           )}
         </div>
         
-        <div className="p-6">
-          <div className="mb-3">
-            <span className="font-mono text-xs uppercase tracking-widest text-classified">
+        <div className="p-5 sm:p-6">
+          <div className="mb-2">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-classified">
               {issue.theme}
             </span>
           </div>
           
-          <h3 className="font-serif text-xl font-semibold mb-3 text-foreground group-hover:text-classified transition-colors">
+          <h3 className="font-serif text-lg sm:text-xl font-semibold mb-3 text-foreground group-hover:text-classified transition-colors duration-300 line-clamp-2">
             {issue.title}
           </h3>
           
-          <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+          <p className="text-sm text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
             {issue.sections[0]?.content.slice(0, 120)}...
           </p>
           
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pt-3 border-t border-border/50">
             <span className="font-mono text-xs text-muted-foreground">
               {new Date(issue.publishDate).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -104,7 +106,7 @@ export const IssueCard = ({ issue, index }: IssueCardProps) => {
                 day: 'numeric',
               })}
             </span>
-            <span className="flex items-center gap-1 text-xs font-medium text-classified opacity-0 group-hover:opacity-100 transition-opacity">
+            <span className="flex items-center gap-1 text-xs font-medium text-classified opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-4px] group-hover:translate-x-0">
               READ <ArrowRight className="w-3 h-3" />
             </span>
           </div>
