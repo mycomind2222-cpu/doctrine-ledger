@@ -189,8 +189,9 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
     );
   }
 
-  const isLocked = (sectionLevel: IssueAccessLevel) => {
-    return !hasAccess(sectionLevel);
+  const isLocked = (_sectionLevel: IssueAccessLevel) => {
+    // Temporarily unlocked for all users
+    return false;
   };
 
   // Support both static imports (e.g. "issue-01") and full URLs from storage
