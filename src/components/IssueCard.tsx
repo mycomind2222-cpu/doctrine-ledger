@@ -76,7 +76,7 @@ export const IssueCard = ({ issue, index }: IssueCardProps) => {
           </div>
           
           {issue.publicationStatus === 'draft' && (
-            <div className="absolute top-3 right-3 flex items-center gap-1 glass-accent px-2.5 py-1 rounded-md">
+            <div className="absolute bottom-3 left-3 flex items-center gap-1 glass-accent px-2.5 py-1 rounded-md">
               <Lock className="w-3 h-3" />
               <span className="font-mono text-xs">DRAFT</span>
             </div>
