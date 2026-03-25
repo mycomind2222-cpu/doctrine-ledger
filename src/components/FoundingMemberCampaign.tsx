@@ -16,7 +16,7 @@ const emailSchema = z.string()
     'Invalid characters in email'
   );
 
-const LAUNCH_DATE = new Date('2026-02-20T00:00:00Z');
+const LAUNCH_DATE = new Date('2026-06-01T00:00:00Z');
 
 interface TimeLeft {
   days: number;
