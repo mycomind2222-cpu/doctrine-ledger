@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { ArrowRight, Lock, ThumbsUp } from "lucide-react";
 import { type Issue } from "@/data/issues";
 import { useIssueVoteCounts } from "@/hooks/useVoteCounts";
