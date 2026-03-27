@@ -39,6 +39,8 @@ interface IssueCardProps {
 export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index }, ref) => {
   const { data: voteCounts } = useIssueVoteCounts();
   const upvotes = voteCounts?.[issue.number]?.up || 0;
+  const totalWords = issue.sections.reduce((sum, s) => sum + s.content.split(/\s+/).length, 0);
+  const readingTime = Math.max(1, Math.round(totalWords / 200));
   const hasRestricted = issue.sections.some(s => s.audienceLevel === 'restricted');
   const hasProfessional = issue.sections.some(s => s.audienceLevel === 'professional');
   const highestLevel = hasRestricted ? 'restricted' : hasProfessional ? 'professional' : 'public';
