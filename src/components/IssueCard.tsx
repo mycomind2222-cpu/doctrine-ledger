@@ -126,4 +126,6 @@ export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index
       </Link>
     </motion.article>
   );
-};
+});
+
+IssueCard.displayName = 'IssueCard';
