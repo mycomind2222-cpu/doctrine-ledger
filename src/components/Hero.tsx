@@ -138,7 +138,7 @@ export const Hero = () => {
       
       {/* Content overlay — parallax at different speed */}
       <motion.div 
-        className="relative z-10 flex-1 flex items-end pb-16 md:pb-24"
+        className="relative z-10 flex-1 flex items-end pb-10 md:pb-16"
         style={{ y: contentY, opacity: contentOpacity }}
       >
         <div className="container mx-auto px-4 sm:px-6">
