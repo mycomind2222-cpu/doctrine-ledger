@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Lock } from "lucide-react";
+import { ArrowRight, Lock, ThumbsUp } from "lucide-react";
 import { type Issue } from "@/data/issues";
+import { useIssueVoteCounts } from "@/hooks/useVoteCounts";
 import { AccessBadge } from "./AccessBadge";
 import issue01Cover from "@/assets/covers/issue-01.png";
 import issue02Cover from "@/assets/covers/issue-02.png";
@@ -35,6 +36,8 @@ interface IssueCardProps {
 }
 
 export const IssueCard = ({ issue, index }: IssueCardProps) => {
+  const { data: voteCounts } = useIssueVoteCounts();
+  const upvotes = voteCounts?.[issue.number]?.up || 0;
   const hasRestricted = issue.sections.some(s => s.audienceLevel === 'restricted');
   const hasProfessional = issue.sections.some(s => s.audienceLevel === 'professional');
   const highestLevel = hasRestricted ? 'restricted' : hasProfessional ? 'professional' : 'public';
@@ -99,13 +102,21 @@ export const IssueCard = ({ issue, index }: IssueCardProps) => {
           </p>
           
           <div className="flex items-center justify-between pt-3 border-t border-border/50">
-            <span className="font-mono text-xs text-muted-foreground">
-              {new Date(issue.publishDate).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              })}
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-xs text-muted-foreground">
+                {new Date(issue.publishDate).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </span>
+              {upvotes > 0 && (
+                <span className="flex items-center gap-1 text-xs text-muted-foreground font-mono">
+                  <ThumbsUp className="w-3 h-3" />
+                  {upvotes}
+                </span>
+              )}
+            </div>
             <span className="flex items-center gap-1 text-xs font-medium text-classified opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-[-4px] group-hover:translate-x-0">
               READ <ArrowRight className="w-3 h-3" />
             </span>
