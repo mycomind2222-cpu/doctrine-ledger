@@ -7,8 +7,9 @@
  import { LockedContentOverlay } from "@/components/LockedContentOverlay";
  import { SEO } from "@/components/SEO";
  import { Button } from "@/components/ui/button";
- import { useAuth } from "@/contexts/AuthContext";
- import { useIssue, useAllIssues } from "@/hooks/useIssues";
+import { useAuth } from "@/contexts/AuthContext";
+import { useIssue, useAllIssues } from "@/hooks/useIssues";
+import { IssueVoting } from "@/components/IssueVoting";
  import { type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
 import issue01Cover from "@/assets/covers/issue-01.png";
 import issue02Cover from "@/assets/covers/issue-02.png";
@@ -267,6 +268,7 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
             </h1>
             
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+              <IssueVoting issueNumber={issue.number} />
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
                 <time>
