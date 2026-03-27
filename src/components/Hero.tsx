@@ -295,17 +295,14 @@ export const Hero = () => {
         </div>
       </motion.div>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+      {/* Scroll indicator — hidden on mobile to save space */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 hidden md:block">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.5 }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="font-mono text-[10px] text-muted-foreground/60 uppercase tracking-widest">
-            Scroll
-          </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
