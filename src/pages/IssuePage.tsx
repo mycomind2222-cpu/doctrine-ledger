@@ -268,6 +268,7 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
             </h1>
             
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+              <IssueVoting issueNumber={issue.number} />
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
                 <time>
