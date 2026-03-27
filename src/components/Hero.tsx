@@ -94,7 +94,7 @@ export const Hero = () => {
   }));
 
   return (
-    <section ref={sectionRef} className="relative min-h-[95vh] flex flex-col overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-[70vh] md:min-h-[80vh] flex flex-col overflow-hidden">
       {/* Rising embers */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-30">
         {embers.map((ember) => (
