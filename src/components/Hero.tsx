@@ -196,7 +196,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.75, duration: 0.6 }}
-                className="text-sm sm:text-base text-muted-foreground max-w-xl mb-8 leading-relaxed"
+                className="text-sm sm:text-base text-muted-foreground max-w-xl mb-6 leading-relaxed"
               >
                 Doctrine-driven intelligence analyzing shadow economies, 
                 exploit fusion, and systemic financial risk. 
