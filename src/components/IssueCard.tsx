@@ -36,7 +36,7 @@ interface IssueCardProps {
   index: number;
 }
 
-export const IssueCard = ({ issue, index }: IssueCardProps) => {
+export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index }, ref) => {
   const { data: voteCounts } = useIssueVoteCounts();
   const upvotes = voteCounts?.[issue.number]?.up || 0;
   const hasRestricted = issue.sections.some(s => s.audienceLevel === 'restricted');
