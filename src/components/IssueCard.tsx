@@ -36,6 +36,8 @@ interface IssueCardProps {
 }
 
 export const IssueCard = ({ issue, index }: IssueCardProps) => {
+  const { data: voteCounts } = useIssueVoteCounts();
+  const upvotes = voteCounts?.[issue.number]?.up || 0;
   const hasRestricted = issue.sections.some(s => s.audienceLevel === 'restricted');
   const hasProfessional = issue.sections.some(s => s.audienceLevel === 'professional');
   const highestLevel = hasRestricted ? 'restricted' : hasProfessional ? 'professional' : 'public';
