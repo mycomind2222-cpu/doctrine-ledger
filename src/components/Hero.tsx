@@ -94,7 +94,7 @@ export const Hero = () => {
   }));
 
   return (
-    <section ref={sectionRef} className="relative min-h-[95vh] flex flex-col overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-[70vh] md:min-h-[80vh] flex flex-col overflow-hidden">
       {/* Rising embers */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-30">
         {embers.map((ember) => (
@@ -138,7 +138,7 @@ export const Hero = () => {
       
       {/* Content overlay — parallax at different speed */}
       <motion.div 
-        className="relative z-10 flex-1 flex items-end pb-16 md:pb-24"
+        className="relative z-10 flex-1 flex items-end pb-10 md:pb-16"
         style={{ y: contentY, opacity: contentOpacity }}
       >
         <div className="container mx-auto px-4 sm:px-6">
@@ -185,7 +185,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.65, duration: 0.6 }}
-                className="glass px-4 py-2.5 rounded-lg inline-block mb-10"
+                className="glass px-4 py-2.5 rounded-lg inline-block mb-6"
               >
                 <span className="font-mono text-xs sm:text-sm tracking-wider text-muted-foreground">
                   The foundation of exploit fusion
@@ -196,7 +196,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.75, duration: 0.6 }}
-                className="text-sm sm:text-base text-muted-foreground max-w-xl mb-8 leading-relaxed"
+                className="text-sm sm:text-base text-muted-foreground max-w-xl mb-6 leading-relaxed"
               >
                 Doctrine-driven intelligence analyzing shadow economies, 
                 exploit fusion, and systemic financial risk. 
@@ -295,17 +295,14 @@ export const Hero = () => {
         </div>
       </motion.div>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10">
+      {/* Scroll indicator — hidden on mobile to save space */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 hidden md:block">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.5 }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="font-mono text-[10px] text-muted-foreground/60 uppercase tracking-widest">
-            Scroll
-          </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}

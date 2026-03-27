@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Lock, ThumbsUp } from "lucide-react";
@@ -35,9 +36,11 @@ interface IssueCardProps {
   index: number;
 }
 
-export const IssueCard = ({ issue, index }: IssueCardProps) => {
+export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index }, ref) => {
   const { data: voteCounts } = useIssueVoteCounts();
   const upvotes = voteCounts?.[issue.number]?.up || 0;
+  const totalWords = issue.sections.reduce((sum, s) => sum + s.content.split(/\s+/).length, 0);
+  const readingTime = Math.max(1, Math.round(totalWords / 200));
   const hasRestricted = issue.sections.some(s => s.audienceLevel === 'restricted');
   const hasProfessional = issue.sections.some(s => s.audienceLevel === 'professional');
   const highestLevel = hasRestricted ? 'restricted' : hasProfessional ? 'professional' : 'public';
@@ -104,11 +107,7 @@ export const IssueCard = ({ issue, index }: IssueCardProps) => {
           <div className="flex items-center justify-between pt-3 border-t border-border/50">
             <div className="flex items-center gap-3">
               <span className="font-mono text-xs text-muted-foreground">
-                {new Date(issue.publishDate).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric',
-                })}
+                {readingTime} min read
               </span>
               {upvotes > 0 && (
                 <span className="flex items-center gap-1 text-xs text-muted-foreground font-mono">
@@ -125,4 +124,6 @@ export const IssueCard = ({ issue, index }: IssueCardProps) => {
       </Link>
     </motion.article>
   );
-};
+});
+
+IssueCard.displayName = 'IssueCard';

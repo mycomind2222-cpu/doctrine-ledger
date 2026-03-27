@@ -1,8 +1,9 @@
+import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 
-export const Footer = () => {
+export const Footer = forwardRef<HTMLElement>((_, ref) => {
   return (
-    <footer className="relative border-t border-border/30">
+    <footer ref={ref} className="relative border-t border-border/30">
       <div className="glass-strong">
         <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
@@ -60,7 +61,7 @@ export const Footer = () => {
                 Protocol
               </h4>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                No advertising. No social features. No comments. 
+                No advertising. No social features. 
                 Content-first intelligence distribution.
               </p>
             </div>
@@ -78,4 +79,6 @@ export const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';
