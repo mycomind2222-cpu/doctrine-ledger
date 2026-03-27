@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Lock } from "lucide-react";
+import { ArrowRight, Lock, ThumbsUp } from "lucide-react";
 import { type Issue } from "@/data/issues";
+import { useIssueVoteCounts } from "@/hooks/useVoteCounts";
 import { AccessBadge } from "./AccessBadge";
 import issue01Cover from "@/assets/covers/issue-01.png";
 import issue02Cover from "@/assets/covers/issue-02.png";
