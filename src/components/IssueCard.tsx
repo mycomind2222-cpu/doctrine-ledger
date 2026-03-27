@@ -107,11 +107,7 @@ export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index
           <div className="flex items-center justify-between pt-3 border-t border-border/50">
             <div className="flex items-center gap-3">
               <span className="font-mono text-xs text-muted-foreground">
-                {new Date(issue.publishDate).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric',
-                })}
+                {readingTime} min read
               </span>
               {upvotes > 0 && (
                 <span className="flex items-center gap-1 text-xs text-muted-foreground font-mono">
