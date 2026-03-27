@@ -185,7 +185,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.65, duration: 0.6 }}
-                className="glass px-4 py-2.5 rounded-lg inline-block mb-10"
+                className="glass px-4 py-2.5 rounded-lg inline-block mb-6"
               >
                 <span className="font-mono text-xs sm:text-sm tracking-wider text-muted-foreground">
                   The foundation of exploit fusion
