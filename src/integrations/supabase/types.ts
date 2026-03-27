@@ -35,6 +35,30 @@ export type Database = {
         }
         Relationships: []
       }
+      issue_votes: {
+        Row: {
+          created_at: string
+          id: string
+          issue_number: number
+          user_id: string
+          vote_type: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          issue_number: number
+          user_id: string
+          vote_type?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          issue_number?: number
+          user_id?: string
+          vote_type?: string
+        }
+        Relationships: []
+      }
       issues: {
         Row: {
           cover_image: string | null
