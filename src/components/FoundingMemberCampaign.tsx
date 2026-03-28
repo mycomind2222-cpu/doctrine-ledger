@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { z } from 'zod';
-import { Mail, Shield, Clock, Users, AlertCircle, CheckCircle } from 'lucide-react';
+import { Mail, Shield, Users, Clock, AlertCircle, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { supabase } from '@/integrations/supabase/client';
@@ -16,50 +16,11 @@ const emailSchema = z.string()
     'Invalid characters in email'
   );
 
-const LAUNCH_DATE = new Date('2026-06-01T00:00:00Z');
-
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
-
-const calculateTimeLeft = (): TimeLeft => {
-  const difference = LAUNCH_DATE.getTime() - new Date().getTime();
-  if (difference <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  return {
-    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((difference / 1000 / 60) % 60),
-    seconds: Math.floor((difference / 1000) % 60),
-  };
-};
-
-const CountdownUnit = ({ value, label }: { value: number; label: string }) => (
-  <div className="flex flex-col items-center">
-    <div className="glass-card w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center">
-      <span className="font-mono text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
-        {value.toString().padStart(2, '0')}
-      </span>
-    </div>
-    <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground mt-2">
-      {label}
-    </span>
-  </div>
-);
-
 export const FoundingMemberCampaign = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
-
-  useEffect(() => {
-    const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
