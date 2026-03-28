@@ -114,13 +114,12 @@ export const FoundingMemberCampaign = () => {
           </motion.div>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            Join the <span className="text-classified">Inner Circle</span>
+            The <span className="text-classified">Vault</span> Is Coming
           </h2>
           
           <p className="text-base sm:text-lg text-muted-foreground mb-12 max-w-xl mx-auto px-2">
-            Be among the first to access classified intelligence briefings. 
-            Founding members receive <span className="text-foreground font-medium">lifetime priority access</span> and 
-            <span className="text-foreground font-medium"> exclusive founding rates</span>.
+            Vault launching soon — Join the free Signal List to get new briefings 
+            <span className="text-foreground font-medium"> delivered first</span>.
           </p>
 
           {/* Countdown Timer */}
