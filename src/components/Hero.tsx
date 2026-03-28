@@ -1,7 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Zap, Activity, TrendingUp, Fingerprint } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { ArrowDown, Zap, Activity, TrendingUp, Fingerprint, Mail, CheckCircle, AlertCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
 import heroBanner from "@/assets/hero-banner.png";
 
 const Ember = ({ delay, duration, left, size }: { delay: number; duration: number; left: string; size: number }) => (
