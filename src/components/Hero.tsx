@@ -182,63 +182,78 @@ export const Hero = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.7 }}
-                className="mb-6"
+                className="mb-4"
               >
-                <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
                   <span 
                     className="text-foreground/90"
                     style={{ textShadow: '0 0 40px hsl(var(--classified) / 0.3)' }}
                   >
-                    BLACK
+                    BLACKFILES
                   </span>
-                  <span 
-                    className="text-classified/90"
-                    style={{ textShadow: '0 0 40px hsl(var(--classified) / 0.4)' }}
-                  >
-                    FILES
+                  <span className="text-classified/60"> — </span>
+                  <span className="text-foreground/70 text-2xl sm:text-3xl md:text-4xl">
+                    Classified Intelligence on Engineered Markets
                   </span>
                 </h1>
-              </motion.div>
-
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.7 }}
-                className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground/95 tracking-tight leading-tight mb-4"
-              >
-                Emerging Shadow Economies
-              </motion.h2>
-
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.65, duration: 0.6 }}
-                className="glass px-4 py-2.5 rounded-lg inline-block mb-6"
-              >
-                <span className="font-mono text-xs sm:text-sm tracking-wider text-muted-foreground">
-                  The foundation of exploit fusion
-                </span>
               </motion.div>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.75, duration: 0.6 }}
-                className="text-sm sm:text-base text-muted-foreground max-w-xl mb-6 leading-relaxed"
+                transition={{ delay: 0.5, duration: 0.7 }}
+                className="text-sm sm:text-base text-muted-foreground max-w-xl mb-5 leading-relaxed"
               >
-                Weekly doctrine briefings on shadow economies, AI autonomy, exploit fusion, and synthetic sovereignty.
-                <span className="text-foreground/80 font-medium"> Currently free and fully public.</span>
+                Weekly doctrine briefings on shadow economies, AI autonomy, exploit fusion, synthetic sovereignty and post-firewall systems.
+                <span className="text-foreground/80 font-medium"> Markets are not discovered — they are engineered.</span>
               </motion.p>
+
+              {/* Value proposition */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+                className="glass px-4 py-3 rounded-lg mb-6 max-w-xl"
+              >
+                <p className="font-mono text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                  <span className="text-foreground/90 font-medium">First issue fully free to read.</span>{' '}
+                  Professional tier unlocks full deep dives and archive.{' '}
+                  Restricted tier for raw signals and early briefings.
+                </p>
+              </motion.div>
+
+              {/* Primary CTA */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.6 }}
+                className="flex flex-col sm:flex-row items-start gap-3 mb-8"
+              >
+                <Button 
+                  variant="classified" 
+                  size="lg"
+                  asChild
+                  className="group rounded-xl shadow-lg shadow-classified/20 hover:shadow-classified/30 transition-shadow"
+                >
+                  <a href="/issues/1">
+                    <Zap className="w-4 h-4 mr-2" />
+                    Read Free Sample Issue #01
+                    <ArrowDown className="w-4 h-4 ml-2 group-hover:translate-y-1 transition-transform" />
+                  </a>
+                </Button>
+                <Button variant="ghost" size="lg" asChild className="rounded-xl glass hover:bg-muted/30">
+                  <a href="/doctrine">Read Doctrine</a>
+                </Button>
+              </motion.div>
               
-              {/* Signal Brief email signup */}
+              {/* Signal Brief email signup — moved lower */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.85, duration: 0.6 }}
-                className="mb-5"
               >
                 <p className="font-mono text-xs text-muted-foreground mb-3 tracking-wide">
-                  Get the weekly BLACKFILES Signal Brief delivered to your inbox →
+                  Get the weekly Signal Brief delivered free →
                 </p>
                 {signalDone ? (
                   <div className="flex items-center gap-2 text-classified font-mono text-sm">
@@ -267,27 +282,6 @@ export const Hero = () => {
                     <AlertCircle className="w-3 h-3" /> {signalError}
                   </p>
                 )}
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0, duration: 0.6 }}
-                className="flex flex-col sm:flex-row items-start gap-3"
-              >
-                <Button 
-                  variant="classified" 
-                  size="lg"
-                  onClick={scrollToIssues}
-                  className="group rounded-xl shadow-lg shadow-classified/20 hover:shadow-classified/30 transition-shadow"
-                >
-                  <Zap className="w-4 h-4 mr-2" />
-                  Access Issues
-                  <ArrowDown className="w-4 h-4 ml-2 group-hover:translate-y-1 transition-transform" />
-                </Button>
-                <Button variant="ghost" size="lg" asChild className="rounded-xl glass hover:bg-muted/30">
-                  <a href="/doctrine">Read Doctrine</a>
-                </Button>
               </motion.div>
             </motion.div>
 

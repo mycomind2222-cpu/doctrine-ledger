@@ -100,8 +100,8 @@ export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index
             {issue.title}
           </h3>
           
-          <p className="text-sm text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
-            {issue.sections[0]?.content.slice(0, 120)}...
+          <p className="text-sm text-muted-foreground mb-4 line-clamp-4 leading-relaxed">
+            {issue.sections[0]?.content.slice(0, 600).split(/\s+/).slice(0, 130).join(' ')}…
           </p>
           
           <div className="flex items-center justify-between pt-3 border-t border-border/50">
