@@ -114,32 +114,13 @@ export const FoundingMemberCampaign = () => {
           </motion.div>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            The <span className="text-classified">Vault</span> Is Coming
+            The <span className="text-classified">Vault</span> Is Now Open
           </h2>
           
-          <p className="text-base sm:text-lg text-muted-foreground mb-12 max-w-xl mx-auto px-2">
-            Vault launching soon — Join the free Signal List to get new briefings 
+          <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-xl mx-auto px-2">
+            Paid access tiers are live. Join the free Signal List to get new briefings
             <span className="text-foreground font-medium"> delivered first</span>.
           </p>
-
-          {/* Countdown Timer */}
-          <div className="mb-12">
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <Clock className="w-4 h-4 text-classified" />
-              <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                Launch Countdown
-              </span>
-            </div>
-            <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6">
-              <CountdownUnit value={timeLeft.days} label="Days" />
-              <span className="text-xl sm:text-2xl text-muted-foreground/50 font-mono self-start mt-3 sm:mt-4">:</span>
-              <CountdownUnit value={timeLeft.hours} label="Hours" />
-              <span className="text-xl sm:text-2xl text-muted-foreground/50 font-mono self-start mt-3 sm:mt-4">:</span>
-              <CountdownUnit value={timeLeft.minutes} label="Min" />
-              <span className="text-xl sm:text-2xl text-muted-foreground/50 font-mono self-start mt-3 sm:mt-4">:</span>
-              <CountdownUnit value={timeLeft.seconds} label="Sec" />
-            </div>
-          </div>
 
           {/* Email Form */}
           {isSubscribed ? (

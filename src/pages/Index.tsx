@@ -26,28 +26,33 @@ const Index = () => {
         <main className="pt-14">
           <Hero />
           
-          {/* Quick stats bar — social proof */}
+          {/* Social proof bar */}
           <section className="py-6 border-y border-border/30">
             <div className="container mx-auto px-4 sm:px-6">
-              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12">
-                <div className="flex items-center gap-2">
-                  <BookOpen className="w-4 h-4 text-classified" />
-                  <span className="font-mono text-sm text-muted-foreground">
-                    <span className="text-foreground font-semibold">{publishedIssues.length}</span> Intelligence Briefings
-                  </span>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-12">
+                <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12">
+                  <div className="flex items-center gap-2">
+                    <BookOpen className="w-4 h-4 text-classified" />
+                    <span className="font-mono text-sm text-muted-foreground">
+                      <span className="text-foreground font-semibold">{publishedIssues.length}</span> Intelligence Briefings
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-classified" />
+                    <span className="font-mono text-sm text-muted-foreground">
+                      Updated <span className="text-foreground font-semibold">Weekly</span>
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-classified" />
+                    <span className="font-mono text-sm text-muted-foreground">
+                      Issue #01 <span className="text-foreground font-semibold">Fully Free</span>
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-classified" />
-                  <span className="font-mono text-sm text-muted-foreground">
-                    Updated <span className="text-foreground font-semibold">Weekly</span>
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-classified" />
-                  <span className="font-mono text-sm text-muted-foreground">
-                    <span className="text-foreground font-semibold">Free</span> Public Access
-                  </span>
-                </div>
+                <p className="font-mono text-[11px] text-muted-foreground/70 text-center">
+                  Read by analysts, operators, and allocators tracking shadow finance and AI sovereignty.
+                </p>
               </div>
             </div>
           </section>
