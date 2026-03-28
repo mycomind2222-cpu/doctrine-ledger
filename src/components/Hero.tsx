@@ -71,8 +71,33 @@ const GlassPanel = ({ label, icon: Icon, children, delay, className = "" }: Glas
   </motion.div>
 );
 
+const emailSchema = z.string().trim().min(1).max(255).email();
+
 export const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [signalEmail, setSignalEmail] = useState('');
+  const [signalLoading, setSignalLoading] = useState(false);
+  const [signalDone, setSignalDone] = useState(false);
+  const [signalError, setSignalError] = useState<string | null>(null);
+
+  const handleSignalSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSignalError(null);
+    const result = emailSchema.safeParse(signalEmail);
+    if (!result.success) { setSignalError('Please enter a valid email.'); return; }
+    setSignalLoading(true);
+    try {
+      const { error } = await supabase.from('founding_members').insert({ email: signalEmail.toLowerCase().trim(), source: 'hero-signal' });
+      if (error) {
+        setSignalError(error.code === '23505' ? 'Already on the list!' : 'Something went wrong.');
+      } else {
+        setSignalDone(true);
+        setSignalEmail('');
+      }
+    } catch { setSignalError('Unexpected error.'); }
+    finally { setSignalLoading(false); }
+  };
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
