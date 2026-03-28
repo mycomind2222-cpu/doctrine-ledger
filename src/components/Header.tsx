@@ -89,14 +89,7 @@ export const Header = () => {
                         <span className="hidden lg:inline">Sign Out</span>
                       </Button>
                     </div>
-                  ) : (
-                    <Link to="/auth">
-                      <Button variant="classified" size="sm" className="gap-2 rounded-lg">
-                        <LogIn className="w-4 h-4" />
-                        <span className="hidden sm:inline">Sign In</span>
-                      </Button>
-                    </Link>
-                  )}
+                  ) : null}
                 </>
               )}
 

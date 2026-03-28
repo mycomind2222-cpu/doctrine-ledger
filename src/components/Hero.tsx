@@ -230,10 +230,49 @@ export const Hero = () => {
                 <span className="text-foreground/80 font-medium"> Currently free and fully public.</span>
               </motion.p>
               
+              {/* Signal Brief email signup */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
+                transition={{ delay: 0.85, duration: 0.6 }}
+                className="mb-5"
+              >
+                <p className="font-mono text-xs text-muted-foreground mb-3 tracking-wide">
+                  Get the weekly BLACKFILES Signal Brief delivered to your inbox →
+                </p>
+                {signalDone ? (
+                  <div className="flex items-center gap-2 text-classified font-mono text-sm">
+                    <CheckCircle className="w-4 h-4" /> You're on the list.
+                  </div>
+                ) : (
+                  <form onSubmit={handleSignalSubmit} className="flex gap-2 max-w-md">
+                    <div className="relative flex-1">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                      <Input
+                        type="email"
+                        value={signalEmail}
+                        onChange={(e) => { setSignalEmail(e.target.value); setSignalError(null); }}
+                        placeholder="your@email.com"
+                        className="pl-10 glass border-border/50 focus:border-classified h-10 rounded-lg text-sm"
+                        disabled={signalLoading}
+                      />
+                    </div>
+                    <Button type="submit" variant="classified" size="sm" className="rounded-lg px-5 h-10" disabled={signalLoading}>
+                      {signalLoading ? '...' : 'Subscribe'}
+                    </Button>
+                  </form>
+                )}
+                {signalError && (
+                  <p className="mt-2 text-xs text-destructive flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3" /> {signalError}
+                  </p>
+                )}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.0, duration: 0.6 }}
                 className="flex flex-col sm:flex-row items-start gap-3"
               >
                 <Button 
