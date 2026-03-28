@@ -201,9 +201,8 @@ export const Hero = () => {
                 transition={{ delay: 0.75, duration: 0.6 }}
                 className="text-sm sm:text-base text-muted-foreground max-w-xl mb-6 leading-relaxed"
               >
-                Doctrine-driven intelligence analyzing shadow economies, 
-                exploit fusion, and systemic financial risk. 
-                <span className="text-foreground/80 font-medium"> No advertising. No social features. Content-first.</span>
+                Weekly doctrine briefings on shadow economies, AI autonomy, exploit fusion, and synthetic sovereignty.
+                <span className="text-foreground/80 font-medium"> Currently free and fully public.</span>
               </motion.p>
               
               <motion.div
