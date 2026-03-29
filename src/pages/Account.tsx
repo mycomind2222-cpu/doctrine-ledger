@@ -174,10 +174,10 @@ const Account = () => {
                     <div className="space-y-2">
                       <Button variant="classified" className="w-full gap-2" disabled>
                         <Lock className="w-4 h-4" />
-                        Upgrade to Restricted — Coming Soon
+                        Upgrade to Restricted
                       </Button>
                       <p className="text-xs text-center text-muted-foreground">
-                        Stripe integration pending
+                        Paid tiers launching soon
                       </p>
                     </div>
                   )}
