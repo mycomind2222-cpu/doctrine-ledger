@@ -13,6 +13,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useIssue, useAllIssues } from "@/hooks/useIssues";
 import { IssueVoting } from "@/components/IssueVoting";
  import { type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
+import { getPlainSummary } from "@/data/plainSummaries";
 import issue01Cover from "@/assets/covers/issue-01.png";
 import issue02Cover from "@/assets/covers/issue-02.png";
 import issue03Cover from "@/assets/covers/issue-03.png";
