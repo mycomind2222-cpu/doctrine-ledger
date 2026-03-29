@@ -205,8 +205,8 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
   return (
     <>
       <SEO
-        title={`Issue #${String(issue.number).padStart(2, '0')}: ${issue.title}`}
-        description={issue.sections[0]?.content.slice(0, 155) + "..." || `BLACKFILES Issue ${issue.number} - ${issue.theme}`}
+        title={`Issue #${String(issue.number).padStart(2, '0')}: ${issue.title} — ${issue.theme} Analysis`}
+        description={issue.sections[0]?.content.slice(0, 155).replace(/\n/g, ' ') + "..." || `BLACKFILES Issue ${issue.number} — ${issue.theme} intelligence briefing on shadow economies and engineered markets.`}
         path={`/issues/${issue.number}`}
         type="article"
         publishedTime={issue.publishDate}
@@ -214,6 +214,7 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
       />
       <div className="min-h-screen bg-background">
       <Header />
+      <ReadingProgressBar />
       
       <main className="pt-16">
         {/* Hero with cover image */}
