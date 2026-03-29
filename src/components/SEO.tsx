@@ -8,11 +8,12 @@ interface SEOProps {
   type?: "website" | "article";
   publishedTime?: string;
   tags?: string[];
+  jsonLd?: Record<string, unknown>;
 }
 
 const BASE_URL = "https://doctrine-ledger.lovable.app";
-const DEFAULT_TITLE = "BLACKFILES | Intelligence Publication";
-const DEFAULT_DESCRIPTION = "Doctrine-driven intelligence analyzing shadow economies, exploit fusion, and systemic financial risk.";
+const DEFAULT_TITLE = "BLACKFILES | Shadow Economy Intelligence & Engineered Markets";
+const DEFAULT_DESCRIPTION = "Weekly intelligence briefings on shadow economies, AI exploits, synthetic identity fraud, DeFi vulnerabilities, and engineered financial markets. Free Issue #01 available.";
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
 
 export const SEO = ({
@@ -23,10 +24,34 @@ export const SEO = ({
   type = "website",
   publishedTime,
   tags,
+  jsonLd,
 }: SEOProps) => {
   const fullTitle = title ? `${title} | BLACKFILES` : DEFAULT_TITLE;
   const canonicalUrl = `${BASE_URL}${path}`;
   const imageUrl = image.startsWith("http") ? image : `${BASE_URL}${image}`;
+
+  // Build Article JSON-LD for issue pages
+  const articleJsonLd = type === "article" ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title || DEFAULT_TITLE,
+    "description": description,
+    "url": canonicalUrl,
+    "image": imageUrl,
+    "datePublished": publishedTime,
+    "publisher": {
+      "@type": "Organization",
+      "name": "BLACKFILES",
+      "url": BASE_URL,
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "BLACKFILES",
+    },
+    ...(tags && { "keywords": tags.join(", ") }),
+  } : null;
+
+  const ldJson = jsonLd || articleJsonLd;
 
   return (
     <Helmet>
@@ -61,6 +86,13 @@ export const SEO = ({
       {type === "article" && tags && tags.map((tag) => (
         <meta key={tag} property="article:tag" content={tag} />
       ))}
+
+      {/* JSON-LD structured data */}
+      {ldJson && (
+        <script type="application/ld+json">
+          {JSON.stringify(ldJson)}
+        </script>
+      )}
     </Helmet>
   );
 };
