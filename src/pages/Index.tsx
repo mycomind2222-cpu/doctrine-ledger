@@ -19,7 +19,19 @@ const Index = () => {
 
   return (
     <>
-      <SEO path="/" />
+      <SEO 
+        path="/" 
+        title="Shadow Economy Intelligence & Engineered Markets Analysis"
+        description="Weekly intelligence briefings on shadow economies, AI exploits, synthetic identity fraud, DeFi vulnerabilities, and engineered financial markets. Read Issue #01 free."
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "BLACKFILES Intelligence Briefings",
+          "description": "Weekly doctrine briefings on shadow economies, AI autonomy, exploit fusion, and synthetic sovereignty.",
+          "url": "https://doctrine-ledger.lovable.app/",
+          "publisher": { "@type": "Organization", "name": "BLACKFILES" },
+        }}
+      />
       <div className="min-h-screen bg-background relative z-10">
         <Header />
         

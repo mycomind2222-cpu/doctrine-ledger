@@ -1,16 +1,19 @@
- import { useParams, Link } from "react-router-dom";
- import { motion } from "framer-motion";
- import { ArrowLeft, Clock, Tag, Loader2 } from "lucide-react";
- import { Header } from "@/components/Header";
- import { Footer } from "@/components/Footer";
- import { AccessBadge } from "@/components/AccessBadge";
- import { LockedContentOverlay } from "@/components/LockedContentOverlay";
- import { SEO } from "@/components/SEO";
- import { Button } from "@/components/ui/button";
+import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowLeft, Clock, Tag, Loader2 } from "lucide-react";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { AccessBadge } from "@/components/AccessBadge";
+import { LockedContentOverlay } from "@/components/LockedContentOverlay";
+import { SEO } from "@/components/SEO";
+import { ReadingProgressBar } from "@/components/ReadingProgressBar";
+import { SocialShareBar } from "@/components/SocialShareBar";
+import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIssue, useAllIssues } from "@/hooks/useIssues";
 import { IssueVoting } from "@/components/IssueVoting";
  import { type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
+import { getPlainSummary } from "@/data/plainSummaries";
 import issue01Cover from "@/assets/covers/issue-01.png";
 import issue02Cover from "@/assets/covers/issue-02.png";
 import issue03Cover from "@/assets/covers/issue-03.png";
@@ -203,8 +206,8 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
   return (
     <>
       <SEO
-        title={`Issue #${String(issue.number).padStart(2, '0')}: ${issue.title}`}
-        description={issue.sections[0]?.content.slice(0, 155) + "..." || `BLACKFILES Issue ${issue.number} - ${issue.theme}`}
+        title={`Issue #${String(issue.number).padStart(2, '0')}: ${issue.title} — ${issue.theme} Analysis`}
+        description={issue.sections[0]?.content.slice(0, 155).replace(/\n/g, ' ') + "..." || `BLACKFILES Issue ${issue.number} — ${issue.theme} intelligence briefing on shadow economies and engineered markets.`}
         path={`/issues/${issue.number}`}
         type="article"
         publishedTime={issue.publishDate}
@@ -212,6 +215,7 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
       />
       <div className="min-h-screen bg-background">
       <Header />
+      <ReadingProgressBar />
       
       <main className="pt-16">
         {/* Hero with cover image */}
@@ -271,7 +275,7 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
               <IssueVoting issueNumber={issue.number} />
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
-                <time>
+                <time dateTime={issue.publishDate}>
                   {new Date(issue.publishDate).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -290,8 +294,31 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
                 </div>
               </div>
             </div>
+            <div className="mt-4">
+              <SocialShareBar 
+                title={`BLACKFILES Issue #${String(issue.number).padStart(2, '0')}: ${issue.title}`}
+                url={`/issues/${issue.number}`}
+              />
+            </div>
           </motion.header>
           
+          {/* Plain English TL;DR */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="max-w-3xl mb-12"
+          >
+            <div className="glass-card p-6 sm:p-8 border-l-2 border-classified">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-classified">TL;DR — Plain English</span>
+              </div>
+              <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">
+                {getPlainSummary(issue.number, issue.sections.find(s => s.type === 'executive_summary')?.content)}
+              </p>
+            </div>
+          </motion.div>
+
           {/* Issue content */}
           <div className="max-w-3xl">
             {issue.sections.map((section) => (

@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://doctrine-ledger.lovable.app/sitemap.xml

@@ -52,8 +52,8 @@
   return (
     <>
       <SEO
-        title="Intelligence Archive"
-        description="Browse all BLACKFILES intelligence briefings by theme, tag, or keyword. Complete index of doctrine-driven analysis."
+        title="Intelligence Archive — All Shadow Economy Briefings"
+        description="Browse all BLACKFILES intelligence briefings on shadow economies, AI exploits, synthetic identity fraud, and engineered markets. Search by theme or keyword."
         path="/archive"
       />
       <div className="min-h-screen bg-background">
