@@ -302,6 +302,23 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
             </div>
           </motion.header>
           
+          {/* Plain English TL;DR */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="max-w-3xl mb-12"
+          >
+            <div className="glass-card p-6 sm:p-8 border-l-2 border-classified">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-classified">TL;DR — Plain English</span>
+              </div>
+              <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">
+                {getPlainSummary(issue.number, issue.sections.find(s => s.type === 'executive_summary')?.content)}
+              </p>
+            </div>
+          </motion.div>
+
           {/* Issue content */}
           <div className="max-w-3xl">
             {issue.sections.map((section) => (
