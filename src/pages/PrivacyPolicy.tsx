@@ -59,9 +59,8 @@ const PrivacyPolicy = () => {
               <section>
                 <h2>3. Data Storage & Security</h2>
                 <p>
-                  Your data is stored securely using industry-standard encryption. We utilize 
-                  Supabase for authentication and data management, which employs enterprise-grade 
-                  security measures including:
+                  Your data is stored securely using industry-standard encryption. Our backend 
+                  infrastructure employs enterprise-grade security measures including:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                   <li>TLS encryption for data in transit</li>

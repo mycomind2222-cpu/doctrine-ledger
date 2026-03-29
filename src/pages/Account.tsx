@@ -212,12 +212,12 @@ const Account = () => {
                     </div>
                     <h3 className="font-serif text-lg mb-2">No payment methods</h3>
                     <p className="text-sm text-muted-foreground mb-4 max-w-sm">
-                      Payment processing will be available once Stripe integration is complete. 
+                      Payment processing will be available soon. 
                       You'll be able to add credit cards and manage billing here.
                     </p>
                     <Button variant="outline" disabled className="gap-2">
                       <CreditCard className="w-4 h-4" />
-                      Add Payment Method — Coming Soon
+                      Add Payment Method
                     </Button>
                   </div>
                 </CardContent>
