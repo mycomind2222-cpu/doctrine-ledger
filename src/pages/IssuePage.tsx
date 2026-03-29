@@ -274,7 +274,7 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
               <IssueVoting issueNumber={issue.number} />
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
-                <time>
+                <time dateTime={issue.publishDate}>
                   {new Date(issue.publishDate).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -292,6 +292,12 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
                   ))}
                 </div>
               </div>
+            </div>
+            <div className="mt-4">
+              <SocialShareBar 
+                title={`BLACKFILES Issue #${String(issue.number).padStart(2, '0')}: ${issue.title}`}
+                url={`/issues/${issue.number}`}
+              />
             </div>
           </motion.header>
           
