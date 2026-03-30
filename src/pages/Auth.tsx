@@ -31,6 +31,9 @@ const passwordSchema = z.string()
     'Password contains invalid characters'
   );
 
+const MAX_ATTEMPTS = 5;
+const BASE_DELAY_MS = 1000;
+
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
@@ -38,6 +41,8 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const [failedAttempts, setFailedAttempts] = useState(0);
+  const [lockedUntil, setLockedUntil] = useState<number | null>(null);
   
   const { user, signIn, signUp } = useAuth();
   const navigate = useNavigate();
@@ -71,6 +76,17 @@ const Auth = () => {
     e.preventDefault();
     
     if (!validate()) return;
+
+    // Check if locked out
+    if (lockedUntil && Date.now() < lockedUntil) {
+      const secondsLeft = Math.ceil((lockedUntil - Date.now()) / 1000);
+      toast({
+        title: 'Too many attempts',
+        description: `Please wait ${secondsLeft} seconds before trying again.`,
+        variant: 'destructive',
+      });
+      return;
+    }
     
     setIsLoading(true);
     
@@ -78,20 +94,23 @@ const Auth = () => {
       if (isLogin) {
         const { error } = await signIn(email, password);
         if (error) {
-          if (error.message.includes('Invalid login credentials')) {
-            toast({
-              title: 'Access Denied',
-              description: 'Invalid email or password. Check your credentials.',
-              variant: 'destructive',
-            });
-          } else {
-            toast({
-              title: 'Authentication Failed',
-              description: error.message,
-              variant: 'destructive',
-            });
+          const newAttempts = failedAttempts + 1;
+          setFailedAttempts(newAttempts);
+          
+          if (newAttempts >= MAX_ATTEMPTS) {
+            const delay = BASE_DELAY_MS * Math.pow(2, Math.min(newAttempts - MAX_ATTEMPTS, 5));
+            setLockedUntil(Date.now() + delay);
           }
+
+          // Use generic error message to prevent user enumeration
+          toast({
+            title: 'Authentication Failed',
+            description: 'Invalid email or password. Check your credentials.',
+            variant: 'destructive',
+          });
         } else {
+          setFailedAttempts(0);
+          setLockedUntil(null);
           toast({
             title: 'Access Granted',
             description: 'Welcome to BLACKFILES.',
@@ -101,19 +120,12 @@ const Auth = () => {
       } else {
         const { error } = await signUp(email, password);
         if (error) {
-          if (error.message.includes('User already registered')) {
-            toast({
-              title: 'Registration Failed',
-              description: 'This email is already registered. Try signing in.',
-              variant: 'destructive',
-            });
-          } else {
-            toast({
-              title: 'Registration Failed',
-              description: error.message,
-              variant: 'destructive',
-            });
-          }
+          // Generic error to prevent user enumeration
+          toast({
+            title: 'Registration Failed',
+            description: 'Could not create account. Please try again or use a different email.',
+            variant: 'destructive',
+          });
         } else {
           toast({
             title: 'Registration Complete',
