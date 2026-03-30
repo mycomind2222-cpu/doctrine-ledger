@@ -142,10 +142,19 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_issue_vote_counts: {
+        Args: never
+        Returns: {
+          downvotes: number
+          issue_number: number
+          upvotes: number
+        }[]
+      }
       get_user_access_level: {
         Args: { _user_id: string }
         Returns: Database["public"]["Enums"]["access_level"]
       }
+      get_user_vote: { Args: { p_issue_number: number }; Returns: string }
       has_access_level: {
         Args: {
           _required_level: Database["public"]["Enums"]["access_level"]
