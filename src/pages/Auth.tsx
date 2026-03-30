@@ -120,19 +120,12 @@ const Auth = () => {
       } else {
         const { error } = await signUp(email, password);
         if (error) {
-          if (error.message.includes('User already registered')) {
-            toast({
-              title: 'Registration Failed',
-              description: 'This email is already registered. Try signing in.',
-              variant: 'destructive',
-            });
-          } else {
-            toast({
-              title: 'Registration Failed',
-              description: error.message,
-              variant: 'destructive',
-            });
-          }
+          // Generic error to prevent user enumeration
+          toast({
+            title: 'Registration Failed',
+            description: 'Could not create account. Please try again or use a different email.',
+            variant: 'destructive',
+          });
         } else {
           toast({
             title: 'Registration Complete',
