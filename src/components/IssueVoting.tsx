@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThumbsUp, ThumbsDown } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "@/hooks/use-toast";
-import { Link } from "react-router-dom";
 
 interface IssueVotingProps {
   issueNumber: number;
@@ -15,28 +13,38 @@ export const IssueVoting = ({ issueNumber }: IssueVotingProps) => {
   const { user } = useAuth();
   const queryClient = useQueryClient();
 
-  const { data: votes } = useQuery({
-    queryKey: ["issue-votes", issueNumber],
+  // Get aggregated vote counts via RPC (no user_id exposed)
+  const { data: voteCounts } = useQuery({
+    queryKey: ["issue-votes", "counts", issueNumber],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("issue_votes")
-        .select("vote_type, user_id")
-        .eq("issue_number", issueNumber);
+      const { data, error } = await supabase.rpc("get_issue_vote_counts");
       if (error) throw error;
-      return data || [];
+      const row = (data || []).find((r: any) => r.issue_number === issueNumber);
+      return { up: Number(row?.upvotes ?? 0), down: Number(row?.downvotes ?? 0) };
     },
   });
 
-  const upvotes = votes?.filter((v) => v.vote_type === "upvote").length || 0;
-  const downvotes = votes?.filter((v) => v.vote_type === "downvote").length || 0;
-  const userVote = votes?.find((v) => v.user_id === user?.id)?.vote_type || null;
+  // Get current user's vote via secure RPC
+  const { data: userVote } = useQuery({
+    queryKey: ["issue-votes", "user-vote", issueNumber],
+    enabled: !!user,
+    queryFn: async () => {
+      const { data, error } = await supabase.rpc("get_user_vote", {
+        p_issue_number: issueNumber,
+      });
+      if (error) throw error;
+      return data as string | null;
+    },
+  });
+
+  const upvotes = voteCounts?.up ?? 0;
+  const downvotes = voteCounts?.down ?? 0;
 
   const voteMutation = useMutation({
     mutationFn: async (voteType: "upvote" | "downvote") => {
       if (!user) throw new Error("Must be logged in");
 
       if (userVote === voteType) {
-        // Remove vote
         const { error } = await supabase
           .from("issue_votes")
           .delete()
@@ -44,7 +52,6 @@ export const IssueVoting = ({ issueNumber }: IssueVotingProps) => {
           .eq("issue_number", issueNumber);
         if (error) throw error;
       } else if (userVote) {
-        // Change vote
         const { error } = await supabase
           .from("issue_votes")
           .update({ vote_type: voteType })
@@ -52,7 +59,6 @@ export const IssueVoting = ({ issueNumber }: IssueVotingProps) => {
           .eq("issue_number", issueNumber);
         if (error) throw error;
       } else {
-        // New vote
         const { error } = await supabase
           .from("issue_votes")
           .insert({ user_id: user.id, issue_number: issueNumber, vote_type: voteType });
@@ -60,7 +66,7 @@ export const IssueVoting = ({ issueNumber }: IssueVotingProps) => {
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["issue-votes", issueNumber] });
+      queryClient.invalidateQueries({ queryKey: ["issue-votes"] });
     },
     onError: () => {
       toast({ title: "Failed to vote", description: "Please try again.", variant: "destructive" });

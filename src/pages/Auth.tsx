@@ -76,6 +76,17 @@ const Auth = () => {
     e.preventDefault();
     
     if (!validate()) return;
+
+    // Check if locked out
+    if (lockedUntil && Date.now() < lockedUntil) {
+      const secondsLeft = Math.ceil((lockedUntil - Date.now()) / 1000);
+      toast({
+        title: 'Too many attempts',
+        description: `Please wait ${secondsLeft} seconds before trying again.`,
+        variant: 'destructive',
+      });
+      return;
+    }
     
     setIsLoading(true);
     
@@ -83,20 +94,23 @@ const Auth = () => {
       if (isLogin) {
         const { error } = await signIn(email, password);
         if (error) {
-          if (error.message.includes('Invalid login credentials')) {
-            toast({
-              title: 'Access Denied',
-              description: 'Invalid email or password. Check your credentials.',
-              variant: 'destructive',
-            });
-          } else {
-            toast({
-              title: 'Authentication Failed',
-              description: error.message,
-              variant: 'destructive',
-            });
+          const newAttempts = failedAttempts + 1;
+          setFailedAttempts(newAttempts);
+          
+          if (newAttempts >= MAX_ATTEMPTS) {
+            const delay = BASE_DELAY_MS * Math.pow(2, Math.min(newAttempts - MAX_ATTEMPTS, 5));
+            setLockedUntil(Date.now() + delay);
           }
+
+          // Use generic error message to prevent user enumeration
+          toast({
+            title: 'Authentication Failed',
+            description: 'Invalid email or password. Check your credentials.',
+            variant: 'destructive',
+          });
         } else {
+          setFailedAttempts(0);
+          setLockedUntil(null);
           toast({
             title: 'Access Granted',
             description: 'Welcome to BLACKFILES.',
