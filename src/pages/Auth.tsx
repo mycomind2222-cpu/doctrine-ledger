@@ -31,6 +31,9 @@ const passwordSchema = z.string()
     'Password contains invalid characters'
   );
 
+const MAX_ATTEMPTS = 5;
+const BASE_DELAY_MS = 1000;
+
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
@@ -38,6 +41,8 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const [failedAttempts, setFailedAttempts] = useState(0);
+  const [lockedUntil, setLockedUntil] = useState<number | null>(null);
   
   const { user, signIn, signUp } = useAuth();
   const navigate = useNavigate();
