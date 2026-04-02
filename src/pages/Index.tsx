@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { DoctrineIntro } from "@/components/DoctrineIntro";
 import { IssueCard } from "@/components/IssueCard";
 import { FoundingMemberCampaign } from "@/components/FoundingMemberCampaign";
+import { TrendingBriefings } from "@/components/TrendingBriefings";
 import { SEO } from "@/components/SEO";
 import { useAllIssues } from "@/hooks/useIssues";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -114,6 +115,9 @@ const Index = () => {
             </section>
           )}
           
+          {/* Trending */}
+          <TrendingBriefings issues={publishedIssues} />
+
           <DoctrineIntro />
           
           {/* Issue Index */}

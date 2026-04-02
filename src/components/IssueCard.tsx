@@ -45,6 +45,9 @@ export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index
   const hasProfessional = issue.sections.some(s => s.audienceLevel === 'professional');
   const highestLevel = hasRestricted ? 'restricted' : hasProfessional ? 'professional' : 'public';
   
+  // Check if issue is recent (published within last 7 days)
+  const isNew = issue.publishDate && (Date.now() - new Date(issue.publishDate).getTime()) < 7 * 24 * 60 * 60 * 1000;
+  
   const coverImage = issue.coverImage
     ? issue.coverImage.startsWith("http") ? issue.coverImage : coverImages[issue.coverImage] || null
     : null;
@@ -86,6 +89,20 @@ export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index
               <Lock className="w-3 h-3" />
               <span className="font-mono text-xs">DRAFT</span>
             </div>
+          )}
+          
+          {isNew && (
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: [0.8, 1.05, 1] }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="absolute bottom-3 right-3"
+            >
+              <span className="relative flex items-center gap-1 bg-classified text-classified-foreground px-2 py-0.5 rounded-md font-mono text-[10px] font-bold uppercase">
+                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-classified rounded-full animate-ping" />
+                NEW
+              </span>
+            </motion.div>
           )}
         </div>
         

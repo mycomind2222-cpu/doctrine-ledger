@@ -1,4 +1,5 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, Tag, Loader2 } from "lucide-react";
 import { Header } from "@/components/Header";
@@ -8,11 +9,13 @@ import { LockedContentOverlay } from "@/components/LockedContentOverlay";
 import { SEO } from "@/components/SEO";
 import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 import { SocialShareBar } from "@/components/SocialShareBar";
+import { ReadNextCards } from "@/components/ReadNextCards";
+import { ClickToTweet } from "@/components/ClickToTweet";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIssue, useAllIssues } from "@/hooks/useIssues";
 import { IssueVoting } from "@/components/IssueVoting";
- import { type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
+import { type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
 import { getPlainSummary } from "@/data/plainSummaries";
 import issue01Cover from "@/assets/covers/issue-01.png";
 import issue02Cover from "@/assets/covers/issue-02.png";
@@ -167,10 +170,24 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
 
  const IssuePage = () => {
    const { issueNumber } = useParams();
+   const navigate = useNavigate();
    const { hasAccess } = useAuth();
    const { data: issue, isLoading } = useIssue(Number(issueNumber));
    const { data: allIssues } = useAllIssues();
-   const maxIssueNumber = allIssues?.length ? Math.max(...allIssues.map(i => i.number)) : 10;
+   const publishedIssues = (allIssues || []).filter(i => i.publicationStatus === 'published');
+   const maxIssueNumber = publishedIssues.length ? Math.max(...publishedIssues.map(i => i.number)) : 10;
+ 
+   // Keyboard navigation: ← → between issues
+   useEffect(() => {
+     const handleKey = (e: KeyboardEvent) => {
+       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+       const num = Number(issueNumber);
+       if (e.key === 'ArrowLeft' && num > 1) navigate(`/issues/${num - 1}`);
+       if (e.key === 'ArrowRight' && num < maxIssueNumber) navigate(`/issues/${num + 1}`);
+     };
+     window.addEventListener('keydown', handleKey);
+     return () => window.removeEventListener('keydown', handleKey);
+   }, [issueNumber, maxIssueNumber, navigate]);
  
    if (isLoading) {
      return (
@@ -321,15 +338,28 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
 
           {/* Issue content */}
           <div className="max-w-3xl">
-            {issue.sections.map((section) => (
-              <SectionContent 
-                key={section.id} 
-                section={section} 
-                isLocked={isLocked(section.audienceLevel)}
-                requiredLevel={section.audienceLevel}
-              />
+            {issue.sections.map((section, sIdx) => (
+              <div key={section.id}>
+                <SectionContent 
+                  section={section} 
+                  isLocked={isLocked(section.audienceLevel)}
+                  requiredLevel={section.audienceLevel}
+                />
+                {/* Add a shareable quote after the first section */}
+                {sIdx === 0 && section.content.length > 100 && (() => {
+                  // Extract a punchy sentence for sharing
+                  const sentences = section.content.replace(/\*\*/g, '').split(/(?<=[.!?])\s+/).filter(s => s.length > 30 && s.length < 200);
+                  const bestQuote = sentences[1] || sentences[0];
+                  return bestQuote ? <ClickToTweet quote={bestQuote} issueNumber={issue.number} /> : null;
+                })()}
+              </div>
             ))}
           </div>
+          
+          {/* Read Next recommendations */}
+          {publishedIssues.length > 1 && (
+            <ReadNextCards currentIssueNumber={issue.number} allIssues={publishedIssues} />
+          )}
           
           {/* Navigation */}
           <motion.div
