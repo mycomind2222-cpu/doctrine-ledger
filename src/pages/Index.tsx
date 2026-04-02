@@ -115,6 +115,9 @@ const Index = () => {
             </section>
           )}
           
+          {/* Trending */}
+          <TrendingBriefings issues={publishedIssues} />
+
           <DoctrineIntro />
           
           {/* Issue Index */}
