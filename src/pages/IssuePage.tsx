@@ -338,15 +338,28 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
 
           {/* Issue content */}
           <div className="max-w-3xl">
-            {issue.sections.map((section) => (
-              <SectionContent 
-                key={section.id} 
-                section={section} 
-                isLocked={isLocked(section.audienceLevel)}
-                requiredLevel={section.audienceLevel}
-              />
+            {issue.sections.map((section, sIdx) => (
+              <div key={section.id}>
+                <SectionContent 
+                  section={section} 
+                  isLocked={isLocked(section.audienceLevel)}
+                  requiredLevel={section.audienceLevel}
+                />
+                {/* Add a shareable quote after the first section */}
+                {sIdx === 0 && section.content.length > 100 && (() => {
+                  // Extract a punchy sentence for sharing
+                  const sentences = section.content.replace(/\*\*/g, '').split(/(?<=[.!?])\s+/).filter(s => s.length > 30 && s.length < 200);
+                  const bestQuote = sentences[1] || sentences[0];
+                  return bestQuote ? <ClickToTweet quote={bestQuote} issueNumber={issue.number} /> : null;
+                })()}
+              </div>
             ))}
           </div>
+          
+          {/* Read Next recommendations */}
+          {publishedIssues.length > 1 && (
+            <ReadNextCards currentIssueNumber={issue.number} allIssues={publishedIssues} />
+          )}
           
           {/* Navigation */}
           <motion.div
