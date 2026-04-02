@@ -45,6 +45,9 @@ export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index
   const hasProfessional = issue.sections.some(s => s.audienceLevel === 'professional');
   const highestLevel = hasRestricted ? 'restricted' : hasProfessional ? 'professional' : 'public';
   
+  // Check if issue is recent (published within last 7 days)
+  const isNew = issue.publishDate && (Date.now() - new Date(issue.publishDate).getTime()) < 7 * 24 * 60 * 60 * 1000;
+  
   const coverImage = issue.coverImage
     ? issue.coverImage.startsWith("http") ? issue.coverImage : coverImages[issue.coverImage] || null
     : null;
