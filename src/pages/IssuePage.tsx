@@ -170,10 +170,24 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
 
  const IssuePage = () => {
    const { issueNumber } = useParams();
+   const navigate = useNavigate();
    const { hasAccess } = useAuth();
    const { data: issue, isLoading } = useIssue(Number(issueNumber));
    const { data: allIssues } = useAllIssues();
-   const maxIssueNumber = allIssues?.length ? Math.max(...allIssues.map(i => i.number)) : 10;
+   const publishedIssues = (allIssues || []).filter(i => i.publicationStatus === 'published');
+   const maxIssueNumber = publishedIssues.length ? Math.max(...publishedIssues.map(i => i.number)) : 10;
+ 
+   // Keyboard navigation: ← → between issues
+   useEffect(() => {
+     const handleKey = (e: KeyboardEvent) => {
+       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+       const num = Number(issueNumber);
+       if (e.key === 'ArrowLeft' && num > 1) navigate(`/issues/${num - 1}`);
+       if (e.key === 'ArrowRight' && num < maxIssueNumber) navigate(`/issues/${num + 1}`);
+     };
+     window.addEventListener('keydown', handleKey);
+     return () => window.removeEventListener('keydown', handleKey);
+   }, [issueNumber, maxIssueNumber, navigate]);
  
    if (isLoading) {
      return (
