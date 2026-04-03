@@ -21,16 +21,16 @@ export const DoctrineIntro = () => {
           <div className="flex items-center gap-3 mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
             <span className="font-mono text-xs uppercase tracking-widest text-classified flex items-center gap-2">
-              <Quote className="w-3 h-3" /> Core Doctrine
+              <Quote className="w-3 h-3" /> Why This Matters
             </span>
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
           </div>
           
           <div className="glass-card p-8 sm:p-12">
             <blockquote className="font-serif text-xl sm:text-2xl md:text-3xl text-foreground leading-relaxed text-center text-balance">
-              "Markets are not discovered—they are engineered. Every trading venue, 
-              clearinghouse, and settlement system represents accumulated policy decisions 
-              that favor specific actors while obscuring risk transfer to others."
+              "AI doesn't just automate work—it automates crime. Deepfake CEOs ordering wire transfers. 
+              AI-generated phishing that's indistinguishable from real email. Voice clones that fool your bank. 
+              This is happening now, and most people have no idea."
             </blockquote>
           </div>
           
