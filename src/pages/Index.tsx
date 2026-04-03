@@ -22,13 +22,13 @@ const Index = () => {
     <>
       <SEO 
         path="/" 
-        title="Shadow Economy Intelligence & Engineered Markets Analysis"
-        description="Weekly intelligence briefings on shadow economies, AI exploits, synthetic identity fraud, DeFi vulnerabilities, and engineered financial markets. Read Issue #01 free."
+        title="AI Crime Newsletter — Fraud, Deepfakes & Cyber Threats Weekly"
+        description="BLACKFILES breaks down how AI is used for fraud, scams, deepfakes, and cybercrime every week. Real cases, real threats. 100% free to read."
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          "name": "BLACKFILES Intelligence Briefings",
-          "description": "Weekly doctrine briefings on shadow economies, AI autonomy, exploit fusion, and synthetic sovereignty.",
+          "name": "BLACKFILES — The AI Crime Newsletter",
+          "description": "Weekly briefings on AI-powered fraud, deepfakes, scams, and cybercrime. Real cases, real threats, zero hype.",
           "url": "https://doctrine-ledger.lovable.app/",
           "publisher": { "@type": "Organization", "name": "BLACKFILES" },
         }}
