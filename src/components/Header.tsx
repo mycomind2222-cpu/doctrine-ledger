@@ -40,7 +40,7 @@ export const Header = () => {
                 </span>
               </div>
               <span className="classified-stamp hidden sm:flex">
-                INTELLIGENCE
+                AI CRIME
               </span>
             </Link>
 
