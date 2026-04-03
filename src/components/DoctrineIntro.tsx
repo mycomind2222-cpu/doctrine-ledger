@@ -45,7 +45,7 @@ export const DoctrineIntro = () => {
               to="/doctrine" 
               className="inline-flex items-center gap-2 text-sm font-medium text-classified hover:underline underline-offset-4 transition-all group"
             >
-              Read full doctrine <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              Read our analytical framework <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </motion.div>

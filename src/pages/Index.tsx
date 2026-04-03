@@ -133,10 +133,10 @@ const Index = () => {
               >
                 <div>
                   <span className="font-mono text-xs uppercase tracking-widest text-classified mb-2 block">
-                    Publication Archive
+                    All Briefings
                   </span>
                   <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold">
-                    Intelligence Briefings
+                    AI Crime Briefings
                   </h2>
                 </div>
                 <Link to="/archive">

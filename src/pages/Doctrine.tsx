@@ -50,8 +50,8 @@ const Doctrine = () => {
   return (
     <>
       <SEO
-        title="Doctrine — Analytical Framework for Shadow Economies"
-        description="Core principles guiding BLACKFILES intelligence on engineered markets, systemic risk, information asymmetry, and financial power structures."
+        title="Doctrine — How We Analyze AI Crime & Emerging Threats"
+        description="The analytical framework behind BLACKFILES. How we identify, verify, and break down AI-powered fraud, deepfakes, and cybercrime for a general audience."
         path="/doctrine"
       />
       <div className="min-h-screen bg-background">

@@ -13,8 +13,8 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
                 <span className="font-serif text-lg font-bold">BLACKFILES</span>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Doctrine-driven intelligence publication analyzing shadow economies, 
-                exploit fusion, and systemic financial risk.
+                The AI crime newsletter. Weekly briefings on how artificial intelligence
+                is used for fraud, deepfakes, scams, and cybercrime.
               </p>
             </div>
             

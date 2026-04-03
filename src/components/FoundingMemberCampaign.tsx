@@ -144,9 +144,9 @@ export const FoundingMemberCampaign = () => {
           {/* Benefits */}
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
             {[
-              { icon: Shield, title: 'Lifetime Priority', description: 'First access to all new intelligence briefings' },
-              { icon: Users, title: 'Founding Rates', description: 'Exclusive pricing locked for life' },
-              { icon: Clock, title: 'Early Archive', description: 'Access to pre-launch classified content' },
+              { icon: Shield, title: 'Stay Ahead', description: 'Know about AI threats before they hit the news' },
+              { icon: Users, title: 'Plain English', description: 'No jargon — written so anyone can understand' },
+              { icon: Clock, title: 'Every Week', description: 'New briefings delivered straight to your inbox' },
             ].map((benefit, index) => (
               <motion.div
                 key={benefit.title}

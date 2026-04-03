@@ -12,8 +12,8 @@ interface SEOProps {
 }
 
 const BASE_URL = "https://doctrine-ledger.lovable.app";
-const DEFAULT_TITLE = "BLACKFILES | Shadow Economy Intelligence & Engineered Markets";
-const DEFAULT_DESCRIPTION = "Weekly intelligence briefings on shadow economies, AI exploits, synthetic identity fraud, DeFi vulnerabilities, and engineered financial markets. Free Issue #01 available.";
+const DEFAULT_TITLE = "BLACKFILES | AI Crime Newsletter — Fraud, Deepfakes & Cyber Threats";
+const DEFAULT_DESCRIPTION = "Weekly briefings on how AI is used for fraud, scams, deepfakes, market manipulation and cybercrime. Real cases, real threats, zero hype. Free to read.";
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
 
 export const SEO = ({
