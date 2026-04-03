@@ -176,6 +176,7 @@ const Index = () => {
         </main>
         
         <Footer />
+        <StickyEmailBar />
       </div>
     </>
   );
