@@ -184,7 +184,7 @@ export const Hero = () => {
                 transition={{ delay: 0.3, duration: 0.7 }}
                 className="mb-4"
               >
-                <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
                   <span 
                     className="text-foreground/90"
                     style={{ textShadow: '0 0 40px hsl(var(--classified) / 0.3)' }}
@@ -193,7 +193,7 @@ export const Hero = () => {
                   </span>
                   <span className="text-classified/60"> — </span>
                   <span className="text-foreground/70 text-2xl sm:text-3xl md:text-4xl">
-                    Classified Intelligence on Engineered Markets
+                    The AI Crime Newsletter
                   </span>
                 </h1>
               </motion.div>
@@ -204,8 +204,8 @@ export const Hero = () => {
                 transition={{ delay: 0.5, duration: 0.7 }}
                 className="text-sm sm:text-base text-muted-foreground max-w-xl mb-5 leading-relaxed"
               >
-                Weekly doctrine briefings on shadow economies, AI autonomy, exploit fusion, synthetic sovereignty and post-firewall systems.
-                <span className="text-foreground/80 font-medium"> Markets are not discovered — they are engineered.</span>
+                Every week we break down how AI is being used for fraud, scams, deepfakes, market manipulation, and crimes you haven't heard of yet.
+                <span className="text-foreground/80 font-medium"> Real cases. Real threats. Zero hype.</span>
               </motion.p>
 
               {/* Value proposition */}
@@ -216,13 +216,12 @@ export const Hero = () => {
                 className="glass px-4 py-3 rounded-lg mb-6 max-w-xl"
               >
                 <p className="font-mono text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
-                  <span className="text-foreground/90 font-medium">First issue fully free to read.</span>{' '}
-                  Professional tier unlocks full deep dives and archive.{' '}
-                  Restricted tier for raw signals and early briefings.
+                  <span className="text-foreground/90 font-medium">100% free — no paywall, no gimmicks.</span>{' '}
+                  Join thousands of readers who want to understand AI threats before they hit the headlines.
                 </p>
               </motion.div>
 
-              {/* Primary CTA */}
+              {/* Primary CTA — scroll to issues */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -232,17 +231,15 @@ export const Hero = () => {
                 <Button 
                   variant="classified" 
                   size="lg"
-                  asChild
+                  onClick={scrollToIssues}
                   className="group rounded-xl shadow-lg shadow-classified/20 hover:shadow-classified/30 transition-shadow"
                 >
-                  <a href="/issues/1">
-                    <Zap className="w-4 h-4 mr-2" />
-                    Read Free Sample Issue #01
-                    <ArrowDown className="w-4 h-4 ml-2 group-hover:translate-y-1 transition-transform" />
-                  </a>
+                  <Zap className="w-4 h-4 mr-2" />
+                  Browse Latest Briefings
+                  <ArrowDown className="w-4 h-4 ml-2 group-hover:translate-y-1 transition-transform" />
                 </Button>
                 <Button variant="ghost" size="lg" asChild className="rounded-xl glass hover:bg-muted/30">
-                  <a href="/doctrine">Read Doctrine</a>
+                  <a href="/doctrine">Our Methodology</a>
                 </Button>
               </motion.div>
               
@@ -253,7 +250,7 @@ export const Hero = () => {
                 transition={{ delay: 0.85, duration: 0.6 }}
               >
                 <p className="font-mono text-xs text-muted-foreground mb-3 tracking-wide">
-                  Get the weekly Signal Brief delivered free →
+                  Get AI crime briefings in your inbox every week — free →
                 </p>
                 {signalDone ? (
                   <div className="flex items-center gap-2 text-classified font-mono text-sm">
