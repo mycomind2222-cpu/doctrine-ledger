@@ -250,7 +250,7 @@ export const Hero = () => {
                 transition={{ delay: 0.85, duration: 0.6 }}
               >
                 <p className="font-mono text-xs text-muted-foreground mb-3 tracking-wide">
-                  Get the weekly Signal Brief delivered free →
+                  Get AI crime briefings in your inbox every week — free →
                 </p>
                 {signalDone ? (
                   <div className="flex items-center gap-2 text-classified font-mono text-sm">

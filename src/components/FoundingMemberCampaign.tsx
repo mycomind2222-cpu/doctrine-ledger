@@ -75,12 +75,12 @@ export const FoundingMemberCampaign = () => {
           </motion.div>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            The <span className="text-classified">Vault</span> Is Now Open
+            Never Miss a <span className="text-classified">Briefing</span>
           </h2>
           
           <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-xl mx-auto px-2">
-            Paid access tiers are live. Join the free Signal List to get new briefings
-            <span className="text-foreground font-medium"> delivered first</span>.
+            Join the free Signal List — get every new AI crime briefing
+            <span className="text-foreground font-medium"> delivered straight to your inbox</span>.
           </p>
 
           {/* Email Form */}
