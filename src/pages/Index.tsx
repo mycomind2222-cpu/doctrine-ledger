@@ -47,24 +47,24 @@ const Index = () => {
                   <div className="flex items-center gap-2">
                     <BookOpen className="w-4 h-4 text-classified" />
                     <span className="font-mono text-sm text-muted-foreground">
-                      <span className="text-foreground font-semibold">{publishedIssues.length}</span> Intelligence Briefings
+                      <span className="text-foreground font-semibold">{publishedIssues.length}</span> Briefings Published
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <TrendingUp className="w-4 h-4 text-classified" />
                     <span className="font-mono text-sm text-muted-foreground">
-                      Updated <span className="text-foreground font-semibold">Weekly</span>
+                      New issues <span className="text-foreground font-semibold">every week</span>
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Zap className="w-4 h-4 text-classified" />
                     <span className="font-mono text-sm text-muted-foreground">
-                      Issue #01 <span className="text-foreground font-semibold">Fully Free</span>
+                      <span className="text-foreground font-semibold">100% free</span> to read
                     </span>
                   </div>
                 </div>
                 <p className="font-mono text-[11px] text-muted-foreground/70 text-center">
-                  Read by analysts, operators, and allocators tracking shadow finance and AI sovereignty.
+                  Trusted by security researchers, journalists, and law enforcement tracking AI threats.
                 </p>
               </div>
             </div>
