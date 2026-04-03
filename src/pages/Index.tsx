@@ -6,6 +6,7 @@ import { DoctrineIntro } from "@/components/DoctrineIntro";
 import { IssueCard } from "@/components/IssueCard";
 import { FoundingMemberCampaign } from "@/components/FoundingMemberCampaign";
 import { TrendingBriefings } from "@/components/TrendingBriefings";
+import { StickyEmailBar } from "@/components/StickyEmailBar";
 import { SEO } from "@/components/SEO";
 import { useAllIssues } from "@/hooks/useIssues";
 import { Skeleton } from "@/components/ui/skeleton";
