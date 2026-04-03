@@ -6,6 +6,7 @@ import { DoctrineIntro } from "@/components/DoctrineIntro";
 import { IssueCard } from "@/components/IssueCard";
 import { FoundingMemberCampaign } from "@/components/FoundingMemberCampaign";
 import { TrendingBriefings } from "@/components/TrendingBriefings";
+import { StickyEmailBar } from "@/components/StickyEmailBar";
 import { SEO } from "@/components/SEO";
 import { useAllIssues } from "@/hooks/useIssues";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -22,13 +23,13 @@ const Index = () => {
     <>
       <SEO 
         path="/" 
-        title="Shadow Economy Intelligence & Engineered Markets Analysis"
-        description="Weekly intelligence briefings on shadow economies, AI exploits, synthetic identity fraud, DeFi vulnerabilities, and engineered financial markets. Read Issue #01 free."
+        title="AI Crime Newsletter — Fraud, Deepfakes & Cyber Threats Weekly"
+        description="BLACKFILES breaks down how AI is used for fraud, scams, deepfakes, and cybercrime every week. Real cases, real threats. 100% free to read."
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          "name": "BLACKFILES Intelligence Briefings",
-          "description": "Weekly doctrine briefings on shadow economies, AI autonomy, exploit fusion, and synthetic sovereignty.",
+          "name": "BLACKFILES — The AI Crime Newsletter",
+          "description": "Weekly briefings on AI-powered fraud, deepfakes, scams, and cybercrime. Real cases, real threats, zero hype.",
           "url": "https://doctrine-ledger.lovable.app/",
           "publisher": { "@type": "Organization", "name": "BLACKFILES" },
         }}
@@ -47,24 +48,24 @@ const Index = () => {
                   <div className="flex items-center gap-2">
                     <BookOpen className="w-4 h-4 text-classified" />
                     <span className="font-mono text-sm text-muted-foreground">
-                      <span className="text-foreground font-semibold">{publishedIssues.length}</span> Intelligence Briefings
+                      <span className="text-foreground font-semibold">{publishedIssues.length}</span> Briefings Published
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <TrendingUp className="w-4 h-4 text-classified" />
                     <span className="font-mono text-sm text-muted-foreground">
-                      Updated <span className="text-foreground font-semibold">Weekly</span>
+                      New issues <span className="text-foreground font-semibold">every week</span>
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Zap className="w-4 h-4 text-classified" />
                     <span className="font-mono text-sm text-muted-foreground">
-                      Issue #01 <span className="text-foreground font-semibold">Fully Free</span>
+                      <span className="text-foreground font-semibold">100% free</span> to read
                     </span>
                   </div>
                 </div>
                 <p className="font-mono text-[11px] text-muted-foreground/70 text-center">
-                  Read by analysts, operators, and allocators tracking shadow finance and AI sovereignty.
+                  Trusted by security researchers, journalists, and law enforcement tracking AI threats.
                 </p>
               </div>
             </div>
@@ -132,10 +133,10 @@ const Index = () => {
               >
                 <div>
                   <span className="font-mono text-xs uppercase tracking-widest text-classified mb-2 block">
-                    Publication Archive
+                    All Briefings
                   </span>
                   <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold">
-                    Intelligence Briefings
+                    AI Crime Briefings
                   </h2>
                 </div>
                 <Link to="/archive">
@@ -175,6 +176,7 @@ const Index = () => {
         </main>
         
         <Footer />
+        <StickyEmailBar />
       </div>
     </>
   );

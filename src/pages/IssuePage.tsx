@@ -223,8 +223,8 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
   return (
     <>
       <SEO
-        title={`Issue #${String(issue.number).padStart(2, '0')}: ${issue.title} — ${issue.theme} Analysis`}
-        description={issue.sections[0]?.content.slice(0, 155).replace(/\n/g, ' ') + "..." || `BLACKFILES Issue ${issue.number} — ${issue.theme} intelligence briefing on shadow economies and engineered markets.`}
+        title={`Issue #${String(issue.number).padStart(2, '0')}: ${issue.title} — AI Crime Briefing`}
+        description={issue.sections[0]?.content.slice(0, 155).replace(/\n/g, ' ') + "..." || `BLACKFILES Issue ${issue.number} — AI crime briefing on ${issue.theme.toLowerCase()}.`}
         path={`/issues/${issue.number}`}
         type="article"
         publishedTime={issue.publishDate}
