@@ -569,12 +569,12 @@ export const issues: Issue[] = [
   },
   {
     number: 10,
-    title: "Capstone Synthesis – Strategic Foresight 2030",
-    theme: "Strategic Synthesis",
+    title: "What AI Crime Looks Like in 2030 (And Why You Should Care Now)",
+    theme: "Future Threats",
     coverImage: "issue-10",
     publicationStatus: 'published',
     publishDate: "2025-10-31",
-    tags: ["capstone", "synthesis", "2030-foresight", "strategic-analysis"],
+    tags: ["future-of-crime", "ai-predictions", "2030-threats", "cybersecurity-forecast"],
     sections: [
       {
         id: "exec-10",
