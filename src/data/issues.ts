@@ -511,12 +511,12 @@ export const issues: Issue[] = [
   },
   {
     number: 9,
-    title: "Glossary, Resource Maps & Toolkits",
-    theme: "Practical Reference",
+    title: "AI Crime Toolkit: Every Term, Tool & Trick Explained",
+    theme: "Reference Guide",
     coverImage: "issue-09",
     publicationStatus: 'published',
     publishDate: "2025-09-27",
-    tags: ["glossary", "toolkits", "resources", "reference-guide"],
+    tags: ["ai-crime-glossary", "hacking-tools", "cybersecurity-guide", "ai-explainer"],
     sections: [
       {
         id: "exec-9",
