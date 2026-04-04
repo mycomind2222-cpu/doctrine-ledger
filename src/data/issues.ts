@@ -402,12 +402,12 @@ export const issues: Issue[] = [
   },
   {
     number: 7,
-    title: "Self-Jailbreaking AI & Shadow Sovereigns",
-    theme: "AI Autonomy",
+    title: "The AI That Learned to Hack Itself",
+    theme: "Self-Modifying AI",
     coverImage: "issue-07",
     publicationStatus: 'published',
     publishDate: "2025-07-19",
-    tags: ["self-jailbreaking", "ai-forks", "shadow-sovereigns", "autonomous-systems"],
+    tags: ["self-modifying-ai", "ai-autonomy", "rogue-ai", "ai-safety", "jailbreak"],
     sections: [
       {
         id: "exec-7",
