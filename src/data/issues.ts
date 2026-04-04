@@ -176,12 +176,12 @@ export const issues: Issue[] = [
   },
   {
     number: 3,
-    title: "Moderation Battles & Underground AI Communities",
+    title: "Inside the Secret Discord Servers Testing AI Limits",
     theme: "AI Underground",
     coverImage: "issue-03",
     publicationStatus: 'published',
     publishDate: "2025-03-08",
-    tags: ["moderation", "ai-communities", "prompt-engineering", "red-teaming"],
+    tags: ["ai-hacking", "discord-underground", "red-teaming", "prompt-engineering", "ai-moderation"],
     sections: [
       {
         id: "exec-3",
