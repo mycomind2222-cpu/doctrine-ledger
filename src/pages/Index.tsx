@@ -7,6 +7,7 @@ import { IssueCard } from "@/components/IssueCard";
 import { FoundingMemberCampaign } from "@/components/FoundingMemberCampaign";
 import { TrendingBriefings } from "@/components/TrendingBriefings";
 import { StickyEmailBar } from "@/components/StickyEmailBar";
+import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { SEO } from "@/components/SEO";
 import { useAllIssues } from "@/hooks/useIssues";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -177,6 +178,7 @@ const Index = () => {
         
         <Footer />
         <StickyEmailBar />
+        <ExitIntentPopup />
       </div>
     </>
   );
