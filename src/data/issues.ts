@@ -347,12 +347,12 @@ export const issues: Issue[] = [
   },
   {
     number: 6,
-    title: "Cyborg Laundering & Macro Implications 2030",
-    theme: "Speculative Futures",
+    title: "Deepfake Bosses & 50,000 Unwitting Money Mules",
+    theme: "Deepfake Scams",
     coverImage: "issue-06",
     publicationStatus: 'published',
     publishDate: "2025-06-14",
-    tags: ["cyborg-networks", "2030-scenarios", "hybrid-systems", "macro-risk"],
+    tags: ["deepfake-scam", "money-mules", "remote-work-fraud", "ai-deepfake", "laundering"],
     sections: [
       {
         id: "exec-6",
