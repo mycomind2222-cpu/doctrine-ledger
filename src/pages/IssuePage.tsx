@@ -174,6 +174,7 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
    const { issueNumber } = useParams();
    const navigate = useNavigate();
    const { hasAccess } = useAuth();
+   useCopyAttribution();
    const { data: issue, isLoading } = useIssue(Number(issueNumber));
    const { data: allIssues } = useAllIssues();
    const publishedIssues = (allIssues || []).filter(i => i.publicationStatus === 'published');
