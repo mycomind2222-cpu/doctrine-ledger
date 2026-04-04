@@ -114,12 +114,12 @@ export const issues: Issue[] = [
   },
   {
     number: 2,
-    title: "AI Exploits & Balance Sheet Infiltration",
+    title: "How to Jailbreak Any AI: The Tricks Hackers Actually Use",
     theme: "AI Jailbreaks",
     coverImage: "issue-02",
     publicationStatus: 'published',
     publishDate: "2025-02-12",
-    tags: ["ai-jailbreak", "prompt-injection", "llm-exploits", "recursive-prompts"],
+    tags: ["ai-jailbreak", "chatgpt-hack", "prompt-injection", "llm-exploits", "ai-safety"],
     sections: [
       {
         id: "exec-2",
