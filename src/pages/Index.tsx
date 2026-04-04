@@ -178,6 +178,7 @@ const Index = () => {
         
         <Footer />
         <StickyEmailBar />
+        <ExitIntentPopup />
       </div>
     </>
   );

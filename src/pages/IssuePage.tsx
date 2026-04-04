@@ -394,6 +394,7 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
       </main>
       
       <Footer />
+      <ViralSharePrompt title={issue.title} issueNumber={issue.number} />
       </div>
     </>
   );

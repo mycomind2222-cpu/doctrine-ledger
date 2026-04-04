@@ -14,6 +14,8 @@ export const SocialShareBar = ({ title, url }: SocialShareBarProps) => {
   const encodedTitle = encodeURIComponent(title);
 
   const shareLinks = [
+    { label: "WhatsApp", href: `https://wa.me/?text=${encodeURIComponent(title + ' ' + fullUrl)}` },
+    { label: "Telegram", href: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}` },
     { label: "𝕏", href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}` },
     { label: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}` },
     { label: "Reddit", href: `https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}` },
