@@ -460,12 +460,12 @@ export const issues: Issue[] = [
   },
   {
     number: 8,
-    title: "After the Firewall – Hybrid Integration",
-    theme: "Post-Firewall Systems",
+    title: "When AI Criminals Work Together: Networked Crime Rings",
+    theme: "Organized AI Crime",
     coverImage: "issue-08",
     publicationStatus: 'published',
     publishDate: "2025-08-23",
-    tags: ["post-firewall", "hybrid-networks", "systemic-integration", "autonomous-finance"],
+    tags: ["organized-crime", "ai-crime-ring", "cybercrime-network", "cross-border-fraud"],
     sections: [
       {
         id: "exec-8",
