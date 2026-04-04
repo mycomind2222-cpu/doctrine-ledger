@@ -289,12 +289,12 @@ export const issues: Issue[] = [
   },
   {
     number: 5,
-    title: "AI Black Economy & Shadow Finance Fusion",
-    theme: "Hybrid Economies",
+    title: "The $72M AI Hedge Fund That Ran Itself",
+    theme: "AI Trading Fraud",
     coverImage: "issue-05",
     publicationStatus: 'published',
     publishDate: "2025-05-10",
-    tags: ["ai-economy", "defi-exploits", "carbon-laundering", "autonomous-finance"],
+    tags: ["ai-trading", "defi-hack", "crypto-fraud", "autonomous-ai", "hedge-fund-scam"],
     sections: [
       {
         id: "exec-5",
