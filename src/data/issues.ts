@@ -39,12 +39,12 @@ export interface Issue {
 export const issues: Issue[] = [
   {
     number: 1,
-    title: "Emerging Shadow Economies",
-    theme: "Shadow Finance",
+    title: "Ghost People & Fake Families: The $11M Identity Scam",
+    theme: "Synthetic Identity Fraud",
     coverImage: "issue-01",
     publicationStatus: 'published',
     publishDate: "2025-01-15",
-    tags: ["shadow-banking", "synthetic-identity", "ai-exploits", "defi", "iot-attacks"],
+    tags: ["identity-fraud", "fake-identities", "bank-scams", "ai-fraud", "deepfake"],
     sections: [
       {
         id: "exec-1",
