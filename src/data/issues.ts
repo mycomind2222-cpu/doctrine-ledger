@@ -39,12 +39,12 @@ export interface Issue {
 export const issues: Issue[] = [
   {
     number: 1,
-    title: "Emerging Shadow Economies",
-    theme: "Shadow Finance",
+    title: "Ghost People & Fake Families: The $11M Identity Scam",
+    theme: "Synthetic Identity Fraud",
     coverImage: "issue-01",
     publicationStatus: 'published',
     publishDate: "2025-01-15",
-    tags: ["shadow-banking", "synthetic-identity", "ai-exploits", "defi", "iot-attacks"],
+    tags: ["identity-fraud", "fake-identities", "bank-scams", "ai-fraud", "deepfake"],
     sections: [
       {
         id: "exec-1",
@@ -114,12 +114,12 @@ export const issues: Issue[] = [
   },
   {
     number: 2,
-    title: "AI Exploits & Balance Sheet Infiltration",
+    title: "How to Jailbreak Any AI: The Tricks Hackers Actually Use",
     theme: "AI Jailbreaks",
     coverImage: "issue-02",
     publicationStatus: 'published',
     publishDate: "2025-02-12",
-    tags: ["ai-jailbreak", "prompt-injection", "llm-exploits", "recursive-prompts"],
+    tags: ["ai-jailbreak", "chatgpt-hack", "prompt-injection", "llm-exploits", "ai-safety"],
     sections: [
       {
         id: "exec-2",
@@ -176,12 +176,12 @@ export const issues: Issue[] = [
   },
   {
     number: 3,
-    title: "Moderation Battles & Underground AI Communities",
+    title: "Inside the Secret Discord Servers Testing AI Limits",
     theme: "AI Underground",
     coverImage: "issue-03",
     publicationStatus: 'published',
     publishDate: "2025-03-08",
-    tags: ["moderation", "ai-communities", "prompt-engineering", "red-teaming"],
+    tags: ["ai-hacking", "discord-underground", "red-teaming", "prompt-engineering", "ai-moderation"],
     sections: [
       {
         id: "exec-3",
@@ -289,12 +289,12 @@ export const issues: Issue[] = [
   },
   {
     number: 5,
-    title: "AI Black Economy & Shadow Finance Fusion",
-    theme: "Hybrid Economies",
+    title: "The $72M AI Hedge Fund That Ran Itself",
+    theme: "AI Trading Fraud",
     coverImage: "issue-05",
     publicationStatus: 'published',
     publishDate: "2025-05-10",
-    tags: ["ai-economy", "defi-exploits", "carbon-laundering", "autonomous-finance"],
+    tags: ["ai-trading", "defi-hack", "crypto-fraud", "autonomous-ai", "hedge-fund-scam"],
     sections: [
       {
         id: "exec-5",
@@ -347,12 +347,12 @@ export const issues: Issue[] = [
   },
   {
     number: 6,
-    title: "Cyborg Laundering & Macro Implications 2030",
-    theme: "Speculative Futures",
+    title: "Deepfake Bosses & 50,000 Unwitting Money Mules",
+    theme: "Deepfake Scams",
     coverImage: "issue-06",
     publicationStatus: 'published',
     publishDate: "2025-06-14",
-    tags: ["cyborg-networks", "2030-scenarios", "hybrid-systems", "macro-risk"],
+    tags: ["deepfake-scam", "money-mules", "remote-work-fraud", "ai-deepfake", "laundering"],
     sections: [
       {
         id: "exec-6",
@@ -402,12 +402,12 @@ export const issues: Issue[] = [
   },
   {
     number: 7,
-    title: "Self-Jailbreaking AI & Shadow Sovereigns",
-    theme: "AI Autonomy",
+    title: "The AI That Learned to Hack Itself",
+    theme: "Self-Modifying AI",
     coverImage: "issue-07",
     publicationStatus: 'published',
     publishDate: "2025-07-19",
-    tags: ["self-jailbreaking", "ai-forks", "shadow-sovereigns", "autonomous-systems"],
+    tags: ["self-modifying-ai", "ai-autonomy", "rogue-ai", "ai-safety", "jailbreak"],
     sections: [
       {
         id: "exec-7",
@@ -460,12 +460,12 @@ export const issues: Issue[] = [
   },
   {
     number: 8,
-    title: "After the Firewall – Hybrid Integration",
-    theme: "Post-Firewall Systems",
+    title: "When AI Criminals Work Together: Networked Crime Rings",
+    theme: "Organized AI Crime",
     coverImage: "issue-08",
     publicationStatus: 'published',
     publishDate: "2025-08-23",
-    tags: ["post-firewall", "hybrid-networks", "systemic-integration", "autonomous-finance"],
+    tags: ["organized-crime", "ai-crime-ring", "cybercrime-network", "cross-border-fraud"],
     sections: [
       {
         id: "exec-8",
@@ -511,12 +511,12 @@ export const issues: Issue[] = [
   },
   {
     number: 9,
-    title: "Glossary, Resource Maps & Toolkits",
-    theme: "Practical Reference",
+    title: "AI Crime Toolkit: Every Term, Tool & Trick Explained",
+    theme: "Reference Guide",
     coverImage: "issue-09",
     publicationStatus: 'published',
     publishDate: "2025-09-27",
-    tags: ["glossary", "toolkits", "resources", "reference-guide"],
+    tags: ["ai-crime-glossary", "hacking-tools", "cybersecurity-guide", "ai-explainer"],
     sections: [
       {
         id: "exec-9",
@@ -569,12 +569,12 @@ export const issues: Issue[] = [
   },
   {
     number: 10,
-    title: "Capstone Synthesis – Strategic Foresight 2030",
-    theme: "Strategic Synthesis",
+    title: "What AI Crime Looks Like in 2030 (And Why You Should Care Now)",
+    theme: "Future Threats",
     coverImage: "issue-10",
     publicationStatus: 'published',
     publishDate: "2025-10-31",
-    tags: ["capstone", "synthesis", "2030-foresight", "strategic-analysis"],
+    tags: ["future-of-crime", "ai-predictions", "2030-threats", "cybersecurity-forecast"],
     sections: [
       {
         id: "exec-10",
