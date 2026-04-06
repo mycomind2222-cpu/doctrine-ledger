@@ -7,6 +7,7 @@ export type SectionType =
   | 'case_study'
   | 'doctrine_statement'
   | 'actionable_insight'
+  | 'investor_briefing'
   | 'sidebar';
 
 export type SidebarElementType = 'pull_quote' | 'mini_timeline' | 'hacker_note' | 'prompt_snippet';
