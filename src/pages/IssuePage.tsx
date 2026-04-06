@@ -98,6 +98,11 @@ const renderContent = (content: string) => {
 };
 
 const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section; isLocked: boolean; requiredLevel: IssueAccessLevel }) => {
+  // Render investor briefing with dedicated component
+  if (section.type === 'investor_briefing') {
+    return <InvestorBriefing content={section.content} />;
+  }
+
   const sectionLabels: Record<string, string> = {
     executive_summary: "Executive Summary",
     doctrine_preview: "Doctrine Preview",
@@ -105,6 +110,7 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
     case_study: "Case Study",
     doctrine_statement: "Doctrine Statement",
     actionable_insight: "Actionable Insight",
+    investor_briefing: "Investor Briefing",
     sidebar: "Sidebar",
   };
 
