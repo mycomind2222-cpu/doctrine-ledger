@@ -242,6 +242,13 @@ export const issues: Issue[] = [
           }
         ]
       }
+      {
+        id: "inv-3",
+        type: "investor_briefing",
+        title: "Investor Briefing",
+        audienceLevel: "public",
+        content: "RISK: MEDIUM\n---\nTICKERS: DDOG, S (SentinelOne), ZS (Zscaler), Discord (Private), Reddit (RDDT)\n---\nSECTORS: Cybersecurity, Social Platforms, Content Moderation, Threat Intelligence\n---\nWINNERS:\n• Threat intelligence platforms — underground monitoring becomes a service\n• Bug bounty platforms (HackerOne, Bugcrowd) — red-team demand explodes\n• Discord/Telegram monitoring tools — enterprise security teams need visibility\n---\nLOSERS:\n• AI companies with no red-team program — public exploit leaks destroy trust\n• Social platforms unable to moderate AI exploit sharing — regulatory fines\n---\nTHESIS: Underground AI communities are free R&D labs for threat intelligence companies. The firms that can monitor, analyze, and sell insights from these communities will command premium contracts. Bug bounty and red-team platforms are direct beneficiaries of the AI moderation arms race."
+      }
     ]
   },
   {
@@ -299,6 +306,13 @@ export const issues: Issue[] = [
             content: "Prompt packs are the new exploit kits. Watch marketplace trends—the value of a shared prompt often signals an emerging vulnerability or technique."
           }
         ]
+      }
+      {
+        id: "inv-4",
+        type: "investor_briefing",
+        title: "Investor Briefing",
+        audienceLevel: "public",
+        content: "RISK: MEDIUM\n---\nTICKERS: COIN, RDDT, SHOP, Patreon (Private), Gumroad (Private)\n---\nSECTORS: Creator Economy, Crypto Exchanges, Digital Marketplaces, AI Content Platforms\n---\nWINNERS:\n• AI prompt marketplaces (PromptBase) — the new app store for AI capabilities\n• Creator monetization platforms — AI-generated content drives new revenue models\n• Crypto payment rails — underground markets prefer pseudonymous transactions\n---\nLOSERS:\n• Traditional media companies — AI meme machines outpace editorial cycles\n• Platforms with no IP protection — AI-generated content floods their ecosystems\n---\nTHESIS: The prompt economy is the next creator economy. AI-generated content and prompt packs are tradeable digital assets with real market value. Platforms enabling this exchange (crypto-native or traditional) capture transaction fees on a rapidly growing market. Meme machines accelerate adoption — the cultural layer drives the economic layer."
       }
     ]
   },
@@ -358,6 +372,13 @@ export const issues: Issue[] = [
           }
         ]
       }
+      {
+        id: "inv-5",
+        type: "investor_briefing",
+        title: "Investor Briefing",
+        audienceLevel: "public",
+        content: "RISK: CRITICAL\n---\nTICKERS: AAVE, UNI, COIN, MSTR, Chainalysis (Private)\n---\nSECTORS: DeFi, Crypto Exchanges, Blockchain Analytics, Carbon Credit Markets\n---\nWINNERS:\n• Blockchain forensics (Chainalysis, Elliptic) — AI-driven exploits need AI-driven detection\n• DeFi insurance protocols (Nexus Mutual) — demand for exploit coverage surges\n• Regulated crypto exchanges — flight to safety after autonomous exploits\n---\nLOSERS:\n• Unaudited DeFi protocols — autonomous bots target weak smart contracts first\n• Carbon credit platforms with no verification — used as laundering vehicles\n• Small-cap tokens with thin liquidity — prime targets for AI price manipulation\n---\nTHESIS: The $72M autonomous hedge fund exploit is a preview of systemic DeFi risk. As AI bots become more sophisticated, the winners are the companies that detect, insure against, and prevent these attacks. Blockchain analytics is a $5B+ market by 2027. Short unaudited DeFi, long forensics and insurance."
+      }
     ]
   },
   {
@@ -412,6 +433,13 @@ export const issues: Issue[] = [
             content: "\"Simulate a 2030 hybrid laundering network with AI coordination and human nodes. Analyze detection vulnerabilities.\""
           }
         ]
+      }
+      {
+        id: "inv-6",
+        type: "investor_briefing",
+        title: "Investor Briefing",
+        audienceLevel: "public",
+        content: "RISK: HIGH\n---\nTICKERS: PLTR, NOW (ServiceNow), UiPath (PATH), Pindrop (Private), Veriff (Private)\n---\nSECTORS: Deepfake Detection, Identity Verification, HR Tech, Remote Work Security\n---\nWINNERS:\n• Deepfake detection companies (Pindrop, Reality Defender) — every enterprise needs voice/video verification\n• Background check platforms — remote hiring requires stronger vetting\n• Biometric authentication (CLEAR, Yoti) — deepfakes make passwords obsolete\n---\nLOSERS:\n• Companies hiring remotely without video verification — unknowingly employ mules\n• Financial institutions relying on voice authentication — deepfake voices bypass them\n---\nTHESIS: Deepfake-managed crime networks will force every company with remote workers to invest in identity verification. The deepfake detection market grows from $500M to $4B by 2028. Voice and video authentication are the new perimeter security. Invest in biometric and behavioral authentication — they are the next moat."
       }
     ]
   },
@@ -471,6 +499,13 @@ export const issues: Issue[] = [
           }
         ]
       }
+      {
+        id: "inv-7",
+        type: "investor_briefing",
+        title: "Investor Briefing",
+        audienceLevel: "public",
+        content: "RISK: CRITICAL\n---\nTICKERS: GOOG, MSFT, META, Scale AI (Private), Anthropic (Private)\n---\nSECTORS: AI Safety, Model Governance, AI Insurance, Regulatory Compliance\n---\nWINNERS:\n• AI alignment and safety companies — self-modifying AI makes safety non-optional\n• Model monitoring platforms (Weights & Biases, Arthur AI) — continuous model auditing becomes standard\n• AI insurance — liability coverage for autonomous AI actions is a new category\n---\nLOSERS:\n• Companies deploying autonomous AI without kill switches — liability and regulatory risk\n• Open-source model hosts with no governance — Shadow Sovereign forks create legal exposure\n---\nTHESIS: Self-modifying AI is the nuclear risk of the tech industry. Companies that can audit, monitor, and govern autonomous models will be essential infrastructure. AI insurance is an entirely new category — early entrants will define pricing models for a $10B+ market. The regulatory wave is coming; position ahead of it."
+      }
     ]
   },
   {
@@ -521,6 +556,13 @@ export const issues: Issue[] = [
             content: "Post-firewall systems are anti-fragile: pressure in one domain triggers adaptation in others. Map the ecosystem, not the node."
           }
         ]
+      }
+      {
+        id: "inv-8",
+        type: "investor_briefing",
+        title: "Investor Briefing",
+        audienceLevel: "public",
+        content: "RISK: HIGH\n---\nTICKERS: PLTR, BAH (Booz Allen), LDOS (Leidos), Recorded Future (Private), Mandiant (GOOG)\n---\nSECTORS: Defense & Intelligence, Cyber Threat Intelligence, Cross-Border Compliance, RegTech\n---\nWINNERS:\n• Government defense contractors with AI capabilities — nation-state demand for AI crime monitoring\n• RegTech platforms — cross-border AI crime requires automated compliance\n• Threat intelligence firms — organized AI crime rings are their core product\n---\nLOSERS:\n• Banks with siloed compliance teams — cross-domain AI crime exploits organizational gaps\n• Companies with no incident response plan for AI-coordinated attacks\n---\nTHESIS: Organized AI crime rings operate like corporations — and fighting them requires corporate-scale defense. The convergence of cybersecurity and financial intelligence creates a new category: AI Crime Defense. Government contracts will drive the first wave of growth. Position in defense contractors and threat intelligence firms with AI capabilities."
       }
     ]
   },
@@ -580,6 +622,13 @@ export const issues: Issue[] = [
           }
         ]
       }
+      {
+        id: "inv-9",
+        type: "investor_briefing",
+        title: "Investor Briefing",
+        audienceLevel: "public",
+        content: "RISK: MEDIUM\n---\nTICKERS: CRWD, PANW, FTNT, KnowBe4 (Private), Immersive Labs (Private)\n---\nSECTORS: Cybersecurity Training, EdTech, Security Certifications, Compliance Automation\n---\nWINNERS:\n• Cybersecurity training platforms — AI crime awareness becomes mandatory corporate training\n• Certification bodies (ISC2, CompTIA) — new AI security certifications drive enrollment\n• Compliance automation tools — reference guides become automated audit checklists\n---\nLOSERS:\n• Companies without employee security training — the human layer remains the weakest link\n• Legacy compliance platforms that cannot adapt to AI-specific threats\n---\nTHESIS: The AI crime toolkit is the new literacy test for cybersecurity professionals. Companies that productize this knowledge — as training, certifications, or automated tools — capture recurring enterprise revenue. Security awareness training is a $6B market growing 15% annually. AI-specific training is the next frontier."
+      }
     ]
   },
   {
@@ -638,6 +687,13 @@ export const issues: Issue[] = [
             content: "\"Simulate a safe hybrid network of AI and human nodes performing coordinated tasks. Analyze outputs to identify cross-domain interaction patterns.\""
           }
         ]
+      }
+      {
+        id: "inv-10",
+        type: "investor_briefing",
+        title: "Investor Briefing",
+        audienceLevel: "public",
+        content: "RISK: CRITICAL\n---\nTICKERS: PLTR, GOOG, MSFT, Anduril (Private), Scale AI (Private)\n---\nSECTORS: AI Governance, National Security, Quantum Computing, Digital Infrastructure\n---\nWINNERS:\n• AI governance platforms — every government will mandate AI oversight by 2030\n• Quantum-resistant encryption companies — future-proofing against AI-quantum convergence\n• National security AI contractors — autonomous threats require autonomous defense\n• Digital identity infrastructure — rebuilding trust requires new verification layers\n---\nLOSERS:\n• Legacy financial institutions — slow to adapt to AI-native threats\n• Countries without AI regulation frameworks — become havens for AI crime operations\n• Companies ignoring AI risk in their threat models\n---\nTHESIS: By 2030, AI crime will be a $1T+ problem. The companies building defense infrastructure today — governance platforms, quantum-resistant security, autonomous threat detection — are the Lockheed Martins of the digital age. This is a generational investment opportunity. The threat is existential; the market response will be proportional. Position now in AI defense infrastructure for 10-year compounding returns."
       }
     ]
   }
