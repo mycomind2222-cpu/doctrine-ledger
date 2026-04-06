@@ -20,8 +20,6 @@ import { InvestorBriefing } from "@/components/InvestorBriefing";
 import { type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
 import { useCopyAttribution } from "@/hooks/useCopyAttribution";
 import { getPlainSummary } from "@/data/plainSummaries";
-import { useCopyAttribution } from "@/hooks/useCopyAttribution";
-import { getPlainSummary } from "@/data/plainSummaries";
 import issue01Cover from "@/assets/covers/issue-01.png";
 import issue02Cover from "@/assets/covers/issue-02.png";
 import issue03Cover from "@/assets/covers/issue-03.png";
