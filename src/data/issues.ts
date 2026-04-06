@@ -110,6 +110,13 @@ export const issues: Issue[] = [
             content: "**Shadow Economy Milestones 2024–2025:**\n\n• Late 2024: EV charger parasite network uncovered in Europe (€12M siphoned)\n• Early 2025: Remote human botnet laundering ring dismantled by Europol ($180M processed)\n• March 2025: Self-taught AI hedge fund exploits Binance Smart Chain ($72M)\n• Mid 2025: Reports of synthetic identity \"families\" grow, $11M+ in loans distributed"
           }
         ]
+      },
+      {
+        id: "inv-1",
+        type: "investor_briefing",
+        title: "Investor Briefing",
+        audienceLevel: "public",
+        content: "RISK: HIGH\n---\nTICKERS: PLTR, IDXX, EFX, LexisNexis (RELX), Socure (Private)\n---\nSECTORS: Identity Verification, Banking & Lending, Credit Bureaus, KYC/AML Compliance\n---\nWINNERS:\n• Identity verification companies (Socure, Jumio) — demand surges as banks tighten onboarding\n• Palantir (PLTR) — government contracts for synthetic identity detection\n• Credit monitoring services — consumers pay for fraud alerts\n---\nLOSERS:\n• Regional banks with weak KYC — face disproportionate losses from synthetic ID fraud\n• Unsecured lending fintechs — higher default rates from ghost borrowers\n---\nTHESIS: Synthetic identity fraud is a $20B+ annual problem growing 25% YoY. Companies selling identity verification and fraud detection tools are positioned for sustained demand. Short exposure to consumer lenders with thin verification layers. The winners here are picks-and-shovels plays on the fraud economy."
       }
     ]
   },
