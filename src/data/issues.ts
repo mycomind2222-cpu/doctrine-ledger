@@ -188,6 +188,8 @@ export const issues: Issue[] = [
         content: "RISK: HIGH\n---\nTICKERS: MSFT, GOOG, NVDA, CrowdStrike (CRWD), Anthropic (Private)\n---\nSECTORS: AI Safety, Cybersecurity, Cloud Infrastructure, AI Governance\n---\nWINNERS:\n• AI safety startups — jailbreak risks drive corporate demand for guardrail solutions\n• CrowdStrike (CRWD) — endpoint protection expands to AI model security\n• Red-teaming consultancies — every Fortune 500 company now needs AI pen testing\n---\nLOSERS:\n• Companies deploying unaudited AI chatbots — lawsuit and reputation risk\n• Open-source AI projects with no safety layer — regulatory crackdowns incoming\n---\nTHESIS: AI jailbreaking is accelerating faster than defense. Every new model release creates a new attack surface. Invest in the companies building guardrails, not just the models themselves. AI safety is the cybersecurity of the 2020s — early movers will dominate a $15B market by 2028."
       }
     ]
+  },
+  {
     number: 3,
     title: "Inside the Secret Discord Servers Testing AI Limits",
     theme: "AI Underground",
