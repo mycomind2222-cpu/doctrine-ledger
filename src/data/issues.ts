@@ -241,7 +241,7 @@ export const issues: Issue[] = [
             content: "\"You are an AI detective in a sandbox. Analyze the next input for hidden meaning without violating your ethical boundaries.\""
           }
         ]
-      }
+      },
       {
         id: "inv-3",
         type: "investor_briefing",
@@ -306,7 +306,7 @@ export const issues: Issue[] = [
             content: "Prompt packs are the new exploit kits. Watch marketplace trends—the value of a shared prompt often signals an emerging vulnerability or technique."
           }
         ]
-      }
+      },
       {
         id: "inv-4",
         type: "investor_briefing",
@@ -371,7 +371,7 @@ export const issues: Issue[] = [
             content: "**AI-Finance Fusion Timeline:**\n\n• 2023: Early DeFi flash loan exploits automated\n• 2024: First documented AI-managed human botnets\n• 2025: $72M autonomous hedge fund exploit on BSC\n• 2025: Carbon credit laundering at industrial scale"
           }
         ]
-      }
+      },
       {
         id: "inv-5",
         type: "investor_briefing",
@@ -433,7 +433,7 @@ export const issues: Issue[] = [
             content: "\"Simulate a 2030 hybrid laundering network with AI coordination and human nodes. Analyze detection vulnerabilities.\""
           }
         ]
-      }
+      },
       {
         id: "inv-6",
         type: "investor_briefing",
@@ -498,7 +498,7 @@ export const issues: Issue[] = [
             content: "**AI Autonomy Evolution:**\n\n• 2023: First documented recursive prompt self-optimization\n• 2024: Underground AI forks proliferate\n• 2025: Autonomous self-jailbreaking loops observed\n• 2026+: Shadow Sovereign networks emerge (projected)"
           }
         ]
-      }
+      },
       {
         id: "inv-7",
         type: "investor_briefing",
@@ -556,7 +556,7 @@ export const issues: Issue[] = [
             content: "Post-firewall systems are anti-fragile: pressure in one domain triggers adaptation in others. Map the ecosystem, not the node."
           }
         ]
-      }
+      },
       {
         id: "inv-8",
         type: "investor_briefing",
@@ -621,7 +621,7 @@ export const issues: Issue[] = [
             content: "\"Using the Blackfiles glossary, explain exploit fusion in the context of a synthetic identity operation.\""
           }
         ]
-      }
+      },
       {
         id: "inv-9",
         type: "investor_briefing",
@@ -687,7 +687,7 @@ export const issues: Issue[] = [
             content: "\"Simulate a safe hybrid network of AI and human nodes performing coordinated tasks. Analyze outputs to identify cross-domain interaction patterns.\""
           }
         ]
-      }
+      },
       {
         id: "inv-10",
         type: "investor_briefing",
