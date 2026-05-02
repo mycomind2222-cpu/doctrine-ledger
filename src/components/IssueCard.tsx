@@ -81,7 +81,6 @@ export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index
             <span className="glass px-2.5 py-1 rounded-md font-mono text-xs text-foreground/90">
               ISSUE {String(issue.number).padStart(2, '0')}
             </span>
-            <AccessBadge level={highestLevel} />
           </div>
           
           {issue.publicationStatus === 'draft' && (
