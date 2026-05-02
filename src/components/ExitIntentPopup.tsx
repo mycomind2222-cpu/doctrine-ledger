@@ -23,10 +23,10 @@ export const ExitIntentPopup = () => {
   }, []);
 
   useEffect(() => {
-    // Only trigger after 10s on page
+    // Only trigger after 30s on page
     const timer = setTimeout(() => {
       document.addEventListener('mouseleave', handleMouseLeave);
-    }, 10000);
+    }, 30000);
     return () => {
       clearTimeout(timer);
       document.removeEventListener('mouseleave', handleMouseLeave);
