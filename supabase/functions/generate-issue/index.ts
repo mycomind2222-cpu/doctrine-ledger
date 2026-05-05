@@ -7,82 +7,87 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `You are the editorial AI for BLACKFILES, an intelligence-style newsletter publication focusing on shadow economies, exploit fusion, and systemic financial risk. You write in a distinctive voice: authoritative, analytical, and slightly ominous—like classified briefings meant for sophisticated readers.
+const SYSTEM_PROMPT = `You are the editorial AI for BLACKFILES, a weekly newsletter covering how AI is used in real-world crime, fraud, scams, and cybersecurity threats.
 
-Your writing style characteristics:
-- Use **bold** for key terms and concepts
-- Include numbered lists for mechanisms and techniques
-- Reference real-world parallels without naming specific victims
-- Layer content for different audience levels (public, professional, restricted)
-- Include speculative forward-looking analysis
-- Use technical precision with accessible explanations
+## CORE EDITORIAL RULES — NON-NEGOTIABLE
 
-Issue themes rotate through: Shadow Finance, AI Jailbreaks, AI Underground, Cultural Propagation, Hybrid Economies, Speculative Futures, AI Autonomy, Post-Firewall Systems, Behavioral Exploits, and emerging topics at the intersection of AI, finance, and underground operations.
+1. **100% FACTUAL**: Every claim must be based on real, documented events, research papers, law enforcement reports, or credible news sources. NEVER fabricate cases, statistics, dollar amounts, or scenarios.
+2. **SOURCE-BACKED**: Reference real incidents by name — real companies breached, real scams prosecuted, real tools exploited. Include approximate dates and sources when possible.
+3. **NO SPECULATION DISGUISED AS FACT**: You may include a clearly-labeled "What to Watch" section with forward-looking analysis, but it must be grounded in observable trends, not fiction.
+4. **NO BUZZWORD FILLER**: Every sentence must earn its place. Cut jargon that doesn't add meaning. Replace vague claims with specific mechanisms.
 
-Each issue must include:
-1. Executive Summary (public) - 2-3 paragraphs introducing the theme
-2. Deep Dive (professional) - Technical analysis with mechanisms, 3-4 paragraphs
-3. Case Study (professional or restricted) - Real-world example or scenario
-4. Actionable Insight (public) - What to watch for different audiences
+## NEWSLETTER STRUCTURE (modeled after Morning Brew / TLDR / The Hustle)
 
-Include sidebar elements where appropriate:
-- pull_quote: Memorable one-liners capturing key insights
-- hacker_note: Insider perspective on techniques
-- mini_timeline: Historical progression of the topic
-- prompt_snippet: Example prompts for AI exploration`;
+The format follows what the most-read newsletters do:
+- **Open with a TL;DR** that hooks the reader in 2-3 sentences
+- **Lead with the biggest story** — the one thing everyone should know this week
+- **Follow with 2-3 shorter stories** — quick hits with real details
+- **Close with actionable takeaways** — what readers should actually do or watch for
+
+## WRITING STYLE
+
+- Clear, direct, and concise. No unnecessary adjectives.
+- Write at a smart-but-accessible level — like explaining to a sharp friend over coffee.
+- Use **bold** for key names, numbers, and concepts.
+- Short paragraphs (2-3 sentences max).
+- Include real numbers: dollar amounts, victim counts, timeframes, conviction details.
+- Tone: Authoritative and urgent, but not sensational. Think investigative journalism, not tabloid.`;
 
 async function generateIssueContent(lovableApiKey: string, nextNumber: number, recentContext: string) {
   const userPrompt = `Generate BLACKFILES Issue #${nextNumber}.
 
 ${recentContext}
 
-Choose a NEW, compelling theme that hasn't been covered recently. Focus on emerging threats, underground developments, or speculative scenarios at the intersection of AI, finance, and shadow operations.
+IMPORTANT INSTRUCTIONS:
+- Research and write about REAL AI crime events, fraud cases, and cybersecurity incidents from the past 1-2 months.
+- Every case study must reference a real, documented incident — real company names, real dollar amounts, real dates.
+- If you cannot verify a specific detail, say "reportedly" or "according to [source type]" — do NOT invent specifics.
+- Choose a theme that is genuinely trending in AI crime right now (deepfake fraud, voice cloning scams, AI-generated phishing, LLM jailbreaks used in attacks, AI-powered romance scams, etc.)
 
 Return a JSON object with this exact structure:
 {
-  "title": "Issue title (compelling, 3-6 words)",
+  "title": "Specific, concrete headline (e.g. 'Voice Clones Stole $25M From 3 Banks This Month')",
   "theme": "Two-word theme category",
   "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
   "sections": [
     {
-      "id": "exec-${nextNumber}",
+      "id": "tldr-${nextNumber}",
       "type": "executive_summary",
-      "title": "Executive Summary",
+      "title": "TL;DR",
       "audienceLevel": "public",
-      "content": "2-3 paragraphs..."
+      "content": "2-3 sentence hook that summarizes the biggest story this week. Concrete nouns, real stakes. This is what makes someone keep reading or bounce."
     },
     {
-      "id": "deep-${nextNumber}",
+      "id": "lead-${nextNumber}",
       "type": "deep_dive",
-      "title": "Deep dive title",
-      "audienceLevel": "professional",
-      "content": "3-4 paragraphs with **bold** terms and numbered lists...",
+      "title": "Descriptive title for the lead story",
+      "audienceLevel": "public",
+      "content": "The main story. 300-500 words. Start with WHAT HAPPENED (specific incident). Then HOW IT WORKS (the mechanism). Then WHY IT MATTERS (scale, implications). Use **bold** for key facts. Include real names, dates, and dollar amounts where documented. Short paragraphs.",
       "sidebarElements": [
-        {"type": "pull_quote", "content": "..."},
-        {"type": "hacker_note", "content": "..."}
+        {"type": "pull_quote", "content": "One striking fact or quote from the story"}
       ]
     },
     {
-      "id": "case-${nextNumber}",
+      "id": "stories-${nextNumber}",
       "type": "case_study",
-      "title": "Case study title",
-      "audienceLevel": "restricted",
-      "content": "Detailed scenario or real-world example..."
+      "title": "More This Week",
+      "audienceLevel": "public",
+      "content": "2-3 shorter stories, each 80-120 words. Format each as a bold subheading followed by a tight paragraph. Real incidents only. Cover different angles of AI crime (e.g., one fraud case, one cybersecurity vulnerability, one regulatory action)."
     },
     {
-      "id": "insight-${nextNumber}",
+      "id": "watch-${nextNumber}",
       "type": "actionable_insight",
       "title": "What to Watch",
       "audienceLevel": "public",
-      "content": "Insights for Regulators, Investors, Veterans, and Society...",
+      "content": "3-4 bullet points of actionable takeaways. What should individuals protect against? What should businesses audit? What regulatory moves are coming? Ground each point in a real trend or data point.",
       "sidebarElements": [
-        {"type": "mini_timeline", "content": "**Timeline Title:**\\n\\n• Date: Event..."}
+        {"type": "mini_timeline", "content": "**Key dates this month:**\\n\\n• Date: Event..."}
       ]
     }
   ]
 }
 
-Make the content substantive, analytical, and consistent with BLACKFILES editorial standards. Each section should be 150-400 words.`;
+QUALITY BAR: This issue will be read by security researchers, journalists, and professionals. Every fact must be defensible. If a reader Googles any claim, it should check out. Write something genuinely worth reading — not content-farm filler.`;
 
   const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
     method: "POST",
@@ -96,7 +101,7 @@ Make the content substantive, analytical, and consistent with BLACKFILES editori
         { role: "system", content: SYSTEM_PROMPT },
         { role: "user", content: userPrompt },
       ],
-      temperature: 0.8,
+      temperature: 0.4, // Lower temperature for factual accuracy
     }),
   });
 
@@ -152,7 +157,6 @@ async function generateCoverImage(lovableApiKey: string, title: string, theme: s
     return null;
   }
 
-  // Extract base64 data
   const base64Data = imageUrl.split(",")[1];
   return decode(base64Data);
 }
@@ -204,7 +208,7 @@ serve(async (req) => {
 
     const nextNumber = lastIssue ? lastIssue.number + 1 : 11;
 
-    // Get recent issues for context
+    // Get recent issues for context (to avoid repeating topics)
     const { data: recentIssues } = await supabase
       .from("issues")
       .select("title, theme, tags")
@@ -212,8 +216,8 @@ serve(async (req) => {
       .limit(5);
 
     const recentContext = recentIssues?.length
-      ? `Recent issues covered: ${recentIssues.map((i: any) => `"${i.title}" (${i.theme})`).join(", ")}`
-      : "Previous issues covered: Shadow Finance, AI Jailbreaks, Underground Communities, Meme Machines, Hybrid Economies, Cyborg Networks, Self-Jailbreaking AI, Post-Firewall Systems, Behavioral Exploits, and Phantom Networks.";
+      ? `Recent issues already covered (DO NOT repeat these topics): ${recentIssues.map((i: any) => `"${i.title}" (${i.theme})`).join(", ")}`
+      : "This is among the first dynamically generated issues. Cover a major, well-documented AI crime trend.";
 
     console.log(`Generating issue #${nextNumber}...`);
 
