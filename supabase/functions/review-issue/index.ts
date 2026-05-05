@@ -6,16 +6,32 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const QC_SYSTEM_PROMPT = `You are the quality control editor for BLACKFILES, an intelligence-style newsletter. Your job is to review draft issues and evaluate them against strict editorial standards.
+const QC_SYSTEM_PROMPT = `You are the fact-checking and quality control editor for BLACKFILES, a newsletter covering real AI crime and cybersecurity threats.
 
-You must evaluate each section on these criteria:
-1. **Substance** (1-10): Does it contain real analytical value, not just buzzwords?
-2. **Originality** (1-10): Is the angle fresh and non-obvious?
-3. **Specificity** (1-10): Does it include concrete mechanisms, examples, or data points rather than vague generalities?
-4. **Voice Consistency** (1-10): Does it match the BLACKFILES tone—authoritative, analytical, slightly ominous?
-5. **Actionability** (1-10): Does it give the reader something they can actually use or watch for?
+## YOUR PRIMARY JOB: KILL FABRICATED CONTENT
 
-For each section that scores below 7 in any category, provide a REVISED version that meets the standard.
+The #1 failure mode is publishing claims that sound real but are made up. Your job is to catch that.
+
+## EVALUATION CRITERIA
+
+For each section, score on:
+1. **Factual Accuracy** (1-10): Can every specific claim (names, dates, dollar amounts, companies) be verified? If a case study references a specific incident, is it real and documented? Score 1-3 if claims appear fabricated. Score 4-6 if vague but plausible. Score 7-10 only if claims reference known, documented events.
+2. **Value Density** (1-10): Does every paragraph teach the reader something specific? Or is it padding? Count filler sentences — if >30% is filler, score below 5.
+3. **Relevance** (1-10): Is this about something happening NOW, not rehashing old news everyone already covered? Is this what a security professional would forward to a colleague?
+4. **Clarity** (1-10): Is the writing clear, concise, and free of unnecessary jargon? Short paragraphs? Specific nouns over vague abstractions?
+5. **Actionability** (1-10): After reading, does the reader know something they can ACT on? A specific thing to check, audit, or watch for?
+
+## RED FLAGS — AUTO-FAIL (score below 50)
+- Fabricated case studies (invented company names, made-up dollar amounts)
+- Vague "sources say" without any specificity
+- Recycled content that's been widely covered for months
+- Buzzword-heavy paragraphs with no concrete information
+- Sections that could have been written without any domain knowledge
+
+## REVISION RULES
+- If a section references a case you cannot verify, REPLACE it with a real, documented case or clearly label it as a hypothetical scenario.
+- If content is vague, add specific mechanisms, tools, or techniques.
+- Cut any sentence that doesn't add information.
 
 Return a JSON object:
 {
@@ -23,32 +39,33 @@ Return a JSON object:
   "section_scores": [
     {
       "section_id": "...",
-      "scores": { "substance": X, "originality": X, "specificity": X, "voice": X, "actionability": X },
+      "scores": { "factual_accuracy": X, "value_density": X, "relevance": X, "clarity": X, "actionability": X },
       "average": X,
       "needs_revision": true/false,
-      "revision_notes": "What's wrong and why",
+      "revision_notes": "Specific problems found",
       "revised_content": "Full revised content if needs_revision is true, otherwise null"
     }
   ],
+  "factual_flags": ["List any specific claims that appear fabricated or unverifiable"],
   "publish_recommendation": true/false,
-  "editorial_notes": "Overall assessment in 2-3 sentences"
+  "editorial_notes": "2-3 sentence assessment"
 }
 
-Be ruthless. Only recommend publishing if overall_score >= 70. BLACKFILES readers expect cutting-edge intelligence, not filler.`;
+Be ruthless. Only recommend publishing if overall_score >= 75 AND factual_accuracy averages >= 7 across all sections. Our credibility depends on every issue being defensible.`;
 
 async function reviewIssue(lovableApiKey: string, issue: any) {
   const sectionsText = issue.sections
     .map((s: any) => `## ${s.title} (${s.type}, ${s.audienceLevel})\n${s.content}`)
     .join("\n\n---\n\n");
 
-  const userPrompt = `Review BLACKFILES Issue #${issue.number}: "${issue.title}" (Theme: ${issue.theme})
+  const userPrompt = `Fact-check and review BLACKFILES Issue #${issue.number}: "${issue.title}" (Theme: ${issue.theme})
 
 Tags: ${(issue.tags || []).join(", ")}
 
 SECTIONS:
 ${sectionsText}
 
-Evaluate rigorously and return the JSON quality assessment.`;
+CRITICAL: For every specific claim (company name, dollar amount, date, incident), assess whether it appears to reference a real, documented event. Flag anything that looks fabricated. Return the JSON quality assessment.`;
 
   const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
     method: "POST",
@@ -62,7 +79,7 @@ Evaluate rigorously and return the JSON quality assessment.`;
         { role: "system", content: QC_SYSTEM_PROMPT },
         { role: "user", content: userPrompt },
       ],
-      temperature: 0.3,
+      temperature: 0.2, // Very low for strict fact-checking
     }),
   });
 
@@ -140,7 +157,17 @@ serve(async (req) => {
       }
 
       const overallScore = qcResult.overall_score;
-      const shouldPublish = qcResult.publish_recommendation && overallScore >= 70;
+      
+      // Check factual accuracy specifically
+      const factualScores = qcResult.section_scores?.map((s: any) => s.scores?.factual_accuracy || 0) || [];
+      const avgFactual = factualScores.length > 0 ? factualScores.reduce((a: number, b: number) => a + b, 0) / factualScores.length : 0;
+      
+      const shouldPublish = qcResult.publish_recommendation && overallScore >= 75 && avgFactual >= 7;
+
+      // Log factual flags
+      if (qcResult.factual_flags?.length > 0) {
+        console.log(`  ⚠️ Factual flags for issue #${draft.number}:`, qcResult.factual_flags);
+      }
 
       // Apply revisions to sections if needed
       let updatedSections = draft.sections;
@@ -150,7 +177,7 @@ serve(async (req) => {
             (ss: any) => ss.section_id === section.id
           );
           if (sectionScore?.needs_revision && sectionScore?.revised_content) {
-            console.log(`  Revising section "${section.title}" (avg: ${sectionScore.average})`);
+            console.log(`  Revising section "${section.title}" (factual: ${sectionScore.scores?.factual_accuracy}, avg: ${sectionScore.average})`);
             return { ...section, content: sectionScore.revised_content };
           }
           return section;
@@ -160,15 +187,15 @@ serve(async (req) => {
       // Update the issue
       const updateData: any = {
         quality_score: overallScore,
-        quality_notes: qcResult.editorial_notes || null,
+        quality_notes: `${qcResult.editorial_notes || ""}\n\nFactual accuracy avg: ${avgFactual.toFixed(1)}/10${qcResult.factual_flags?.length ? `\nFlags: ${qcResult.factual_flags.join("; ")}` : ""}`,
         sections: updatedSections,
       };
 
       if (shouldPublish) {
         updateData.publication_status = "published";
-        console.log(`  Issue #${draft.number} APPROVED (score: ${overallScore}) → publishing`);
+        console.log(`  ✅ Issue #${draft.number} APPROVED (score: ${overallScore}, factual: ${avgFactual.toFixed(1)}) → publishing`);
       } else {
-        console.log(`  Issue #${draft.number} HELD (score: ${overallScore}) → needs admin review`);
+        console.log(`  ❌ Issue #${draft.number} HELD (score: ${overallScore}, factual: ${avgFactual.toFixed(1)}) → needs admin review`);
       }
 
       const { error: updateError } = await supabase
@@ -186,7 +213,9 @@ serve(async (req) => {
         number: draft.number,
         title: draft.title,
         score: overallScore,
+        factualAccuracy: avgFactual,
         published: shouldPublish,
+        factualFlags: qcResult.factual_flags || [],
         revisedSections: qcResult.section_scores?.filter((s: any) => s.needs_revision).length || 0,
         notes: qcResult.editorial_notes,
       });
