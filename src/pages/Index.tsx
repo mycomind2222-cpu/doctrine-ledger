@@ -3,13 +3,14 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { IssueCard } from "@/components/IssueCard";
+import { QuickTakes } from "@/components/QuickTakes";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { SEO } from "@/components/SEO";
 import { useAllIssues } from "@/hooks/useIssues";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Mail, CheckCircle, AlertCircle } from "lucide-react";
+import { ArrowRight, Mail, CheckCircle, AlertCircle, Clock, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -22,6 +23,8 @@ const Index = () => {
   const publishedIssues = (allIssues || []).filter(i => i.publicationStatus === 'published');
   const latestIssue = publishedIssues[0];
   const restIssues = publishedIssues.slice(1, 7);
+  // Issues for quick takes — skip the ones shown in the grid
+  const quickTakeIssues = publishedIssues.slice(1, 6);
 
   // Bottom email signup state
   const [btmEmail, setBtmEmail] = useState('');
@@ -46,6 +49,10 @@ const Index = () => {
   const featuredWords = latestIssue?.sections.reduce((sum, s) => sum + s.content.split(/\s+/).length, 0) || 0;
   const featuredReadTime = Math.max(1, Math.round(featuredWords / 200));
 
+  // Extract executive summary for inline reading
+  const latestExecSummary = latestIssue?.sections.find(s => s.type === 'executive_summary');
+  const latestDeepDive = latestIssue?.sections.find(s => s.type === 'deep_dive');
+
   return (
     <>
       <SEO 
@@ -67,29 +74,27 @@ const Index = () => {
         <main className="pt-14">
           <Hero />
 
-          {/* Content immediately after hero */}
-          <section className="py-8 md:py-12">
-            <div className="container mx-auto px-4 sm:px-6">
-              
-              {/* Featured latest issue — Morning Brew style */}
-              {latestIssue && !isLoading && (
+          {/* Featured latest issue with INLINE content */}
+          {latestIssue && !isLoading && (
+            <section className="py-8 md:py-12">
+              <div className="container mx-auto px-4 sm:px-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="font-serif text-xl sm:text-2xl font-bold">Latest Briefing</h2>
+                  <Link to="/archive" className="text-sm text-classified font-mono hover:underline flex items-center gap-1">
+                    All Issues <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
+
+                {/* Featured card with image */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="mb-10 md:mb-14"
+                  className="mb-8"
                 >
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="font-serif text-xl sm:text-2xl font-bold">Latest</h2>
-                    <Link to="/archive" className="text-sm text-classified font-mono hover:underline flex items-center gap-1">
-                      All Stories <ArrowRight className="w-3 h-3" />
-                    </Link>
-                  </div>
-                  
                   <Link to={`/issues/${latestIssue.number}`} className="block group">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                      {/* Image */}
                       <div className="aspect-[4/3] rounded-xl overflow-hidden bg-secondary/30">
                         {latestIssue.coverImage && (
                           <img
@@ -99,7 +104,6 @@ const Index = () => {
                           />
                         )}
                       </div>
-                      {/* Text */}
                       <div>
                         <span className="font-mono text-[11px] uppercase tracking-widest text-classified mb-2 block">
                           {latestIssue.theme}
@@ -107,27 +111,78 @@ const Index = () => {
                         <h3 className="font-serif text-2xl sm:text-3xl font-bold mb-3 group-hover:text-classified transition-colors duration-300 leading-tight">
                           {latestIssue.title}
                         </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
-                          {latestIssue.sections[0]?.content.slice(0, 250)}...
-                        </p>
-                        <div className="flex items-center gap-4">
-                          <span className="font-mono text-xs text-muted-foreground">{featuredReadTime} min read</span>
-                          <span className="text-sm font-medium text-classified flex items-center gap-1 group-hover:gap-2 transition-all">
-                            Read <ArrowRight className="w-3.5 h-3.5" />
+                        <div className="flex items-center gap-4 mb-3">
+                          <span className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
+                            <Clock className="w-3 h-3" /> {featuredReadTime} min read
+                          </span>
+                          <span className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
+                            <Eye className="w-3 h-3" /> Free to read
                           </span>
                         </div>
+                        <span className="text-sm font-medium text-classified flex items-center gap-1 group-hover:gap-2 transition-all">
+                          Read Full Briefing <ArrowRight className="w-3.5 h-3.5" />
+                        </span>
                       </div>
                     </div>
                   </Link>
                 </motion.div>
-              )}
 
-              {/* Divider */}
-              <div className="border-t border-border/30 mb-8 md:mb-10" />
+                {/* INLINE CONTENT: Show the executive summary right on the page */}
+                {latestExecSummary && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="max-w-3xl mx-auto mb-8"
+                  >
+                    <div className="relative rounded-xl border border-border/30 bg-secondary/10 p-6 sm:p-8">
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-classified bg-classified/10 px-2 py-0.5 rounded">
+                          TL;DR — Issue #{String(latestIssue.number).padStart(2, '0')}
+                        </span>
+                      </div>
+                      <div className="prose prose-sm prose-invert max-w-none">
+                        <p className="text-sm sm:text-base text-foreground/85 leading-relaxed whitespace-pre-line">
+                          {latestExecSummary.content}
+                        </p>
+                      </div>
+                      {latestDeepDive && (
+                        <div className="mt-6 pt-4 border-t border-border/20">
+                          <h4 className="font-serif text-base font-semibold mb-3 text-foreground/90">
+                            {latestDeepDive.title}
+                          </h4>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {latestDeepDive.content.slice(0, 400)}…
+                          </p>
+                        </div>
+                      )}
+                      <Link
+                        to={`/issues/${latestIssue.number}`}
+                        className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-classified hover:underline"
+                      >
+                        Continue reading <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            </section>
+          )}
 
-              {/* Issue grid — Top Stories style */}
+          {/* Quick Takes — scannable one-liners from recent issues */}
+          {!isLoading && quickTakeIssues.length > 0 && (
+            <QuickTakes issues={quickTakeIssues} />
+          )}
+
+          {/* Divider */}
+          <div className="border-t border-border/30" />
+
+          {/* Issue grid — Top Stories */}
+          <section className="py-8 md:py-12">
+            <div className="container mx-auto px-4 sm:px-6">
               <div className="mb-6 flex items-center justify-between">
-                <h2 className="font-serif text-xl sm:text-2xl font-bold">Top Stories</h2>
+                <h2 className="font-serif text-xl sm:text-2xl font-bold">More Stories</h2>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
