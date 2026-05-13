@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { IssueCard } from "@/components/IssueCard";
 import { QuickTakes } from "@/components/QuickTakes";
+import { RogueAITeaser } from "@/components/RogueAITeaser";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { SEO } from "@/components/SEO";
 import { useAllIssues } from "@/hooks/useIssues";
@@ -174,6 +175,9 @@ const Index = () => {
           {!isLoading && quickTakeIssues.length > 0 && (
             <QuickTakes issues={quickTakeIssues} />
           )}
+
+          {/* Rogue AI Dossier teaser */}
+          <RogueAITeaser />
 
           {/* Divider */}
           <div className="border-t border-border/30" />

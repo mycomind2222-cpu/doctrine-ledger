@@ -209,6 +209,47 @@ serve(async (req) => {
         continue;
       }
 
+      // If publishing, extract Rogue AI Watch entries and insert into the dossier
+      let dossierInserts = 0;
+      if (shouldPublish) {
+        const rogueSection = updatedSections.find((s: any) => s.type === "rogue_ai_watch");
+        if (rogueSection?.content) {
+          try {
+            const entries = JSON.parse(rogueSection.content);
+            if (Array.isArray(entries)) {
+              for (const e of entries) {
+                if (!e?.incident || !e?.model || !e?.evidence_tier) continue;
+                // Only auto-insert entries with a verifiable source
+                if (!e.source_url) {
+                  console.log(`  Skipping rogue entry (no source_url): ${e.title || e.incident?.slice(0, 60)}`);
+                  continue;
+                }
+                const { error: insErr } = await supabase.from("rogue_ai_incidents").insert({
+                  title: e.title || e.incident.split(/[.!?]/)[0].slice(0, 120),
+                  model_or_agent: e.model,
+                  summary: e.incident,
+                  full_writeup: e.why_legal_gap || null,
+                  evidence_tier: Number(e.evidence_tier),
+                  law_analog: Array.isArray(e.law_analog) ? e.law_analog : [],
+                  occurred_on: e.occurred_on || null,
+                  source_url: e.source_url || null,
+                  source_type: ["press", "court", "research", "vendor", "other"].includes(e.source_type) ? e.source_type : "other",
+                  related_issue_number: draft.number,
+                });
+                if (insErr) {
+                  console.error("  Rogue insert error:", insErr.message);
+                } else {
+                  dossierInserts++;
+                }
+              }
+            }
+          } catch (parseErr) {
+            console.error("  Could not parse rogue_ai_watch content as JSON:", parseErr);
+          }
+        }
+        console.log(`  Dossier: inserted ${dossierInserts} rogue AI incident(s)`);
+      }
+
       results.push({
         number: draft.number,
         title: draft.title,

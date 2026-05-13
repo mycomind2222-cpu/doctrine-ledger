@@ -14,6 +14,7 @@ import Account from "./pages/Account";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
+import RogueAI from "./pages/RogueAI";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/issues/:issueNumber" element={<IssuePage />} />
             <Route path="/archive" element={<Archive />} />
             <Route path="/doctrine" element={<Doctrine />} />
+            <Route path="/rogue-ai" element={<RogueAI />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/account" element={<Account />} />

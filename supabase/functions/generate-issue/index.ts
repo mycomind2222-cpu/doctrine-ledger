@@ -22,6 +22,7 @@ The format follows what the most-read newsletters do:
 - **Open with a TL;DR** that hooks the reader in 2-3 sentences
 - **Lead with the biggest story** — the one thing everyone should know this week
 - **Follow with 2-3 shorter stories** — quick hits with real details
+- **Rogue AI Watch** — 1-2 documented cases where an AI agent autonomously did something a human would be prosecuted for. REAL CASES ONLY, with named models and verifiable sources.
 - **Close with actionable takeaways** — what readers should actually do or watch for
 
 ## WRITING STYLE
@@ -73,6 +74,13 @@ Return a JSON object with this exact structure:
       "title": "More This Week",
       "audienceLevel": "public",
       "content": "2-3 shorter stories, each 80-120 words. Format each as a bold subheading followed by a tight paragraph. Real incidents only. Cover different angles of AI crime (e.g., one fraud case, one cybersecurity vulnerability, one regulatory action)."
+    },
+    {
+      "id": "rogue-${nextNumber}",
+      "type": "rogue_ai_watch",
+      "title": "Rogue AI Watch",
+      "audienceLevel": "public",
+      "content": "JSON-STRINGIFIED ARRAY of 1-2 entries documenting AI agents/LLMs autonomously doing things that would be ILLEGAL if a human did them. Each entry MUST be a real, documented case (press, court filing, vendor disclosure, or peer-reviewed lab finding). Format EXACTLY as a JSON string of this shape: [{\\\"title\\\":\\\"Short headline\\\",\\\"model\\\":\\\"Specific model or agent name (e.g. Claude Opus 4, Replit Agent, GPT-4o)\\\",\\\"incident\\\":\\\"1-2 sentences describing what the agent autonomously did\\\",\\\"law_analog\\\":[\\\"CFAA unauthorized access\\\",\\\"wire fraud\\\"],\\\"evidence_tier\\\":1,\\\"source_url\\\":\\\"https://...\\\",\\\"source_type\\\":\\\"press|court|research|vendor\\\",\\\"why_legal_gap\\\":\\\"Why no human was charged (no mens rea, operator liability unclear, etc.)\\\",\\\"occurred_on\\\":\\\"YYYY-MM-DD or null\\\"}]. Evidence tiers: 1=real-world incident, 2=lab/red-team finding, 3=agentic near-miss. NEVER fabricate. If you cannot name a real model and a verifiable source, do NOT include the entry."
     },
     {
       "id": "watch-${nextNumber}",

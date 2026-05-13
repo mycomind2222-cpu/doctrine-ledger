@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "ISSUES", path: "/" },
+  { label: "ROGUE AI", path: "/rogue-ai" },
   { label: "ARCHIVE", path: "/archive" },
   { label: "DOCTRINE", path: "/doctrine" },
 ];

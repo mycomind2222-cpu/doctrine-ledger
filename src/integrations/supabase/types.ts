@@ -110,6 +110,54 @@ export type Database = {
         }
         Relationships: []
       }
+      rogue_ai_incidents: {
+        Row: {
+          created_at: string
+          evidence_tier: number
+          full_writeup: string | null
+          id: string
+          law_analog: string[]
+          model_or_agent: string
+          occurred_on: string | null
+          related_issue_number: number | null
+          source_type: string | null
+          source_url: string | null
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          evidence_tier: number
+          full_writeup?: string | null
+          id?: string
+          law_analog?: string[]
+          model_or_agent: string
+          occurred_on?: string | null
+          related_issue_number?: number | null
+          source_type?: string | null
+          source_url?: string | null
+          summary: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          evidence_tier?: number
+          full_writeup?: string | null
+          id?: string
+          law_analog?: string[]
+          model_or_agent?: string
+          occurred_on?: string | null
+          related_issue_number?: number | null
+          source_type?: string | null
+          source_url?: string | null
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           access_level: Database["public"]["Enums"]["access_level"]
