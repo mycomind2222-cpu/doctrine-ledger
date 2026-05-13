@@ -22,6 +22,7 @@ The format follows what the most-read newsletters do:
 - **Open with a TL;DR** that hooks the reader in 2-3 sentences
 - **Lead with the biggest story** — the one thing everyone should know this week
 - **Follow with 2-3 shorter stories** — quick hits with real details
+- **Rogue AI Watch** — 1-2 documented cases where an AI agent autonomously did something a human would be prosecuted for. REAL CASES ONLY, with named models and verifiable sources.
 - **Close with actionable takeaways** — what readers should actually do or watch for
 
 ## WRITING STYLE
