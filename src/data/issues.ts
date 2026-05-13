@@ -8,6 +8,7 @@ export type SectionType =
   | 'doctrine_statement'
   | 'actionable_insight'
   | 'investor_briefing'
+  | 'rogue_ai_watch'
   | 'sidebar';
 
 export type SidebarElementType = 'pull_quote' | 'mini_timeline' | 'hacker_note' | 'prompt_snippet';
