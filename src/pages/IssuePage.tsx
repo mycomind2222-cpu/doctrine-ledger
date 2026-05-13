@@ -111,6 +111,7 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
     doctrine_statement: "Doctrine Statement",
     actionable_insight: "Actionable Insight",
     investor_briefing: "Investor Briefing",
+    rogue_ai_watch: "Rogue AI Watch",
     sidebar: "Sidebar",
   };
 
