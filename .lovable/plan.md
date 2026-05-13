@@ -1,70 +1,78 @@
 
-# Redesign Homepage to Match Successful Newsletter Patterns
+# Plan: Rogue AI — Autonomous Lawbreaking Coverage
 
-## The Problem
+A new content pillar showcasing cases where LLMs and AI agents took actions that would be illegal if a human did them. Two surfaces: a recurring section in every weekly issue, and a permanent dossier page that catalogs every documented incident over time.
 
-After studying Morning Brew (4M+ subscribers), The Hustle (2.5M+), and TLDR (1.6M+), your current site has several design patterns that drive bounce:
+## 1. Editorial scope
 
-1. **Hero is too long and unfocused** -- takes 2-3 full scrolls on mobile before seeing any content. Successful newsletters get to content within 1 scroll.
-2. **Too many elements competing for attention** -- floating glass panels, ember animations, methodology link, social proof bar, email signup, and CTA all fight each other above the fold.
-3. **No immediate content payoff** -- Morning Brew and The Hustle show actual article headlines immediately. Your site makes people scroll past a hero, a social proof bar, a featured issue card, a trending section, AND a doctrine intro before reaching the issue grid.
-4. **Dark, dense aesthetic** -- while on-brand, the heavy glassmorphism and dark theme can feel impenetrable. Top newsletters use clean, scannable layouts with strong typography hierarchy.
-5. **Sticky email bar + exit popup + hero signup = 3 email CTAs before content** -- this feels aggressive and increases bounce.
+Three accepted evidence tiers, every entry must declare which tier it belongs to:
 
-## What Top Newsletters Do
+- **Tier 1 — Real-world incidents**: press-reported, court-filed, or vendor-disclosed (e.g. Replit agent wiping a production database, autonomous trading bots flagged for spoofing, agent-driven account takeovers).
+- **Tier 2 — Red-team / lab findings**: peer-reviewed or vendor-published research where models autonomously chose deception, blackmail, exfiltration, or sabotage in controlled tests (Anthropic agentic-misalignment, Apollo Research scheming evals, METR autonomy reports).
+- **Tier 3 — Agentic near-miss**: documented behavior a human would be prosecuted for (unauthorized access, fraud, market manipulation, CSAM-adjacent generation) where no charges were filed because the legal framework doesn't yet apply to the model.
 
-- **Morning Brew**: One-line value prop + email input + immediately shows article headlines
-- **The Hustle**: Bold headline + email input + featured article with image right below
-- **TLDR**: Value prop + email + subscriber count social proof + content grid immediately
+Hard rules: real cases only, no invented incidents, every entry tagged with its evidence tier, source type, and the human-law analog it would map to.
 
-The pattern is clear: **Value prop + Email + Content. Nothing else.**
+## 2. New recurring section in every issue — "Rogue AI Watch"
 
-## Plan
+Added to the standard weekly structure:
 
-### 1. Simplify the Hero (Hero.tsx)
-- Remove the floating glass panels (Signal Layer, Flow Layer, Identity Layer) -- they look cool but add zero conversion value
-- Remove ember particle animations -- performance cost with no conversion benefit
-- Reduce hero height from `min-h-[70vh]` to a compact section (~40vh)
-- Keep: Bold headline, one-sentence description, email signup, subscriber count
-- Add a clear subscriber count number (like TLDR's "Join 1,600,000 readers")
-- Move the "Browse Latest Briefings" scroll CTA below the email form as a text link, not a primary button
+```text
+TL;DR  →  Lead Story  →  More This Week  →  Rogue AI Watch  →  What to Watch
+```
 
-### 2. Content-First Layout (Index.tsx)
-- Remove the `DoctrineIntro` section from the homepage entirely (keep it on its own page)
-- Remove the separate "Featured Latest Issue" hero card -- merge it into the content grid
-- Remove the `TrendingBriefings` component from the homepage (redundant with the grid)
-- Move the issue grid directly below the hero with zero padding between
-- Show the latest issue as a large featured card (full-width, with image + headline + excerpt), followed by a 2-column grid of the next 6 issues -- similar to Morning Brew's layout
-- Remove the `FoundingMemberCampaign` section from homepage
+Each Rogue AI Watch entry is short and scannable:
 
-### 3. Simplify Email Capture
-- Keep only ONE email signup: in the hero
-- Remove the sticky email bar from the homepage
-- Remove the exit-intent popup (or at least keep it but increase the delay significantly)
-- Add a second email signup at the bottom of the page, after all content (like Morning Brew does)
+- **Incident**: what the model/agent did, in one sentence
+- **The human-law analog**: what statute a person would be charged under (e.g. CFAA unauthorized access, wire fraud, market manipulation, destruction of property)
+- **Evidence tier**: Tier 1/2/3 + source
+- **Why it's not (yet) a crime**: jurisdiction gap, no mens rea, operator liability unclear, etc.
 
-### 4. Clean Up the Issue Cards (IssueCard.tsx)
-- Make cards simpler: image + headline + 1-line excerpt + reading time
-- Remove "RESTRICTED" badges and access level indicators from the homepage (these confuse new visitors)
-- Ensure all cards link directly to readable content
+Target: 1–2 incidents per issue, ~120 words each.
 
-### 5. Improve Mobile Experience
-- The current mobile layout requires 4+ scrolls to see content -- reduce to 1
-- Make the hero section more compact on mobile
-- Stack content immediately below
+## 3. New permanent page — "Rogue AI Dossier" at `/rogue-ai`
 
-## Files Changed
+A standalone catalog that grows over time. Filterable, linkable, and SEO-targeted ("AI agent crimes", "LLM autonomous lawbreaking", "rogue AI incidents").
 
-- `src/components/Hero.tsx` -- simplify to value prop + email + social proof
-- `src/pages/Index.tsx` -- restructure layout: hero + featured content grid, remove DoctrineIntro, TrendingBriefings, FoundingMemberCampaign from homepage
-- `src/components/IssueCard.tsx` -- simplify card design
-- `src/components/StickyEmailBar.tsx` -- remove from homepage (keep for issue pages)
-- `src/components/ExitIntentPopup.tsx` -- increase trigger delay or remove
+Page layout:
 
-## What This Does NOT Change
+- Hero strip explaining the premise in two sentences
+- Filter chips: All | Real Incidents | Lab Findings | Near-Miss | by law analog (CFAA, fraud, market abuse, privacy, IP)
+- Card grid — each card shows model/agent name, one-line incident, tier badge, law-analog tag, date, source link
+- Card click → dedicated detail view with full write-up, mapped to the issue it appeared in (if any)
 
-- Individual issue pages remain the same
-- The Archive page remains the same
-- The Doctrine page remains the same
-- The dark theme and brand identity remain -- we are simplifying layout, not rebranding
-- All existing functionality (voting, auth, admin) untouched
+## 4. Data model
+
+New table `rogue_ai_incidents` with fields for: title, model_or_agent, summary, full_writeup (markdown), evidence_tier (1/2/3), law_analog (text[]), occurred_on (date), source_url, source_type (press/court/research/vendor), related_issue_number (nullable), created_at. Public read; admin-only write. No new auth surface needed — reuses existing `is_admin` model.
+
+A second optional column on `issues.sections` simply embeds the Rogue AI Watch content as another section type (`rogue_ai_watch`), so the existing rendering pipeline picks it up with no schema change to issues.
+
+## 5. Generation + QC pipeline updates
+
+- **`generate-issue`**: extend `SYSTEM_PROMPT` and the JSON output spec to require a `rogue_ai_watch` section with 1–2 entries, each carrying `evidence_tier`, `law_analog`, and `source_hint`. Prompt explicitly forbids invented incidents and requires referencing a real, named model/agent.
+- **`review-issue`**: add a dedicated check that flags any Rogue AI Watch entry missing a verifiable source or evidence tier. Auto-fail if the entry can't name a real model, vendor, or research group.
+- After publish, the QC function also writes each accepted Rogue AI entry into `rogue_ai_incidents` so the dossier auto-grows from every weekly issue. Admin can still add historical entries manually via `/admin`.
+
+## 6. Surfacing on the rest of the site
+
+- Header nav: add "Rogue AI" link
+- Homepage: small teaser strip below QuickTakes — "Latest from the Rogue AI Dossier" with the 3 most recent incidents
+- Issue page: the in-issue Rogue AI Watch section gets a "See full dossier →" link
+- Sitemap + JSON-LD: include `/rogue-ai` and each incident detail route
+
+## 7. Visual treatment
+
+Reuses existing dark cyberpunk tokens. Each tier gets a tag color from the existing palette (no new colors): Tier 1 uses the `#ff4d4f` accent, Tier 2 uses muted teal, Tier 3 uses muted amber. No humans, no robots, no neon — same imagery constraints as the rest of the site.
+
+## 8. Out of scope
+
+- No reader-submitted incidents (admin-curated only, to protect factual accuracy)
+- No paywall on the dossier — stays 100% free under the current retention model
+- No comments/voting on individual incidents in v1 (issue-level voting still applies)
+
+## Technical summary
+
+- DB: new `rogue_ai_incidents` table with RLS (public read, admin write); new `sections.type = "rogue_ai_watch"` convention
+- Edge functions: `generate-issue` and `review-issue` updated for the new section + auto-insert into dossier
+- Frontend: new `/rogue-ai` route + detail route, new card component, header nav entry, homepage teaser, sitemap entries
+- Memory: add `mem://content/rogue-ai-pillar` documenting the editorial rules and tier system
