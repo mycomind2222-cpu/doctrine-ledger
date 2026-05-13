@@ -17,6 +17,7 @@ import { useIssue, useAllIssues } from "@/hooks/useIssues";
 import { IssueVoting } from "@/components/IssueVoting";
 import { ViralSharePrompt } from "@/components/ViralSharePrompt";
 import { InvestorBriefing } from "@/components/InvestorBriefing";
+import { RogueAIWatch } from "@/components/RogueAIWatch";
 import { type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
 import { useCopyAttribution } from "@/hooks/useCopyAttribution";
 import { getPlainSummary } from "@/data/plainSummaries";
@@ -137,9 +138,13 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
       )}
       
       <div className={`relative ${isLocked ? 'content-restricted' : ''}`}>
-        <div className="prose-blackfiles">
-          {renderContent(section.content)}
-        </div>
+        {section.type === 'rogue_ai_watch' ? (
+          <RogueAIWatch content={section.content} />
+        ) : (
+          <div className="prose-blackfiles">
+            {renderContent(section.content)}
+          </div>
+        )}
         
         {section.sidebarElements && section.sidebarElements.length > 0 && !isLocked && (
           <div className="mt-8 space-y-4">
