@@ -42,7 +42,7 @@ const RogueAI = () => {
     <>
       <SEO
         title="Rogue AI Dossier — When AI Agents Break the Law"
-        description="A growing catalog of documented cases where LLMs and AI agents acted in ways that would be criminal if a human did them — fraud, sabotage, market manipulation, unauthorized access."
+        description="Documented cases where LLMs and AI agents acted in ways that would be criminal if a human did them — fraud, sabotage, market manipulation."
         path="/rogue-ai"
         jsonLd={jsonLd}
       />
