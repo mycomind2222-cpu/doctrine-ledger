@@ -17,6 +17,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://doctrine-ledger.lovable.app/rogue-ai</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://doctrine-ledger.lovable.app/issues/1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
