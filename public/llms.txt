@@ -1,0 +1,18 @@
+# BLACKFILES
+
+> Weekly newsletter covering AI-powered fraud, deepfakes, scams and cybercrime. Real documented cases, no hype, free to read.
+
+BLACKFILES publishes a weekly briefing on how large language models and autonomous AI agents are being used to commit fraud, run scams, generate deepfakes, manipulate markets, and break the law. Every issue is grounded in real, sourced incidents.
+
+## Pages
+
+- [Home](/): Latest issue, recent briefings and the Rogue AI teaser.
+- [Archive](/archive): Every published AI crime briefing, searchable by topic.
+- [Rogue AI Dossier](/rogue-ai): Catalog of documented cases where LLMs and AI agents acted in ways that would be criminal if a human did them.
+- [Doctrine](/doctrine): The analytical framework behind BLACKFILES — how we identify, verify, and break down AI-powered threats.
+- [Issue #1](/issues/1): Sample weekly briefing.
+
+## Optional
+
+- [Privacy](/privacy)
+- [Terms](/terms)
