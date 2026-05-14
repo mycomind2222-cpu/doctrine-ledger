@@ -52,7 +52,7 @@
   return (
     <>
       <SEO
-        title="All AI Crime Briefings — Browse the Full Archive"
+        title="Briefings Archive — All AI Crime Issues"
         description="Browse every BLACKFILES briefing on AI-powered fraud, deepfakes, voice clones, cybercrime, and emerging threats. Search by topic or keyword."
         path="/archive"
       />
