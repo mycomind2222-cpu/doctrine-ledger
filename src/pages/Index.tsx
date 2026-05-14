@@ -58,8 +58,8 @@ const Index = () => {
     <>
       <SEO 
         path="/" 
-        title="AI Crime Newsletter — Fraud, Deepfakes & Cyber Threats Weekly"
-        description="BLACKFILES breaks down how AI is used for fraud, scams, deepfakes, and cybercrime every week. Real cases, real threats. 100% free to read."
+        title="AI Crime Newsletter — Weekly Briefings"
+        description="Weekly briefings on AI-powered fraud, deepfakes, scams and cybercrime. Real cases, no hype. Free to read."
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
