@@ -15,6 +15,8 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import RogueAI from "./pages/RogueAI";
+import IntelIndex from "./pages/IntelIndex";
+import LandingPage from "./pages/LandingPage";
 
 const queryClient = new QueryClient();
 
