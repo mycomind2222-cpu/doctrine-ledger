@@ -15,6 +15,8 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import RogueAI from "./pages/RogueAI";
+import IntelIndex from "./pages/IntelIndex";
+import LandingPage from "./pages/LandingPage";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +33,8 @@ const App = () => (
             <Route path="/archive" element={<Archive />} />
             <Route path="/doctrine" element={<Doctrine />} />
             <Route path="/rogue-ai" element={<RogueAI />} />
+            <Route path="/intel" element={<IntelIndex />} />
+            <Route path="/intel/:slug" element={<LandingPage />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/account" element={<Account />} />
