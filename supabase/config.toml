@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.review-issue]
 verify_jwt = false
+
+[functions.discover-rogue-ai]
+verify_jwt = false
