@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { useRogueAIIncidents, TIER_META, type EvidenceTier } from "@/hooks/useRogueAI";
 import { cn } from "@/lib/utils";
+import { RogueAIDiscoverButton } from "@/components/RogueAIDiscoverButton";
 
 type TierFilter = "all" | EvidenceTier;
 
@@ -70,6 +71,9 @@ const RogueAI = () => {
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                 A growing catalog of documented cases where LLMs and autonomous agents took actions that would be illegal if a human did them. Real incidents, lab findings, and agentic near-misses — every entry tagged with its evidence tier and the human-law analog it would map to.
               </p>
+              <div className="mt-5">
+                <RogueAIDiscoverButton />
+              </div>
             </motion.div>
           </section>
 
