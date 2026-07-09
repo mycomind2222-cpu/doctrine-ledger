@@ -182,6 +182,40 @@ const Index = () => {
           {/* Rogue AI Dossier teaser */}
           <RogueAITeaser />
 
+          {/* Browse by threat — internal linking for SEO + navigation */}
+          <section className="py-10 md:py-14 border-t border-border/30">
+            <div className="container mx-auto px-4 sm:px-6">
+              <div className="mb-6 flex items-center justify-between">
+                <h2 className="font-serif text-xl sm:text-2xl font-bold">Browse by Threat</h2>
+                <Link to="/intel" className="text-sm text-classified font-mono hover:underline flex items-center gap-1">
+                  All Intel <ArrowRight className="w-3 h-3" />
+                </Link>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                {[
+                  { slug: "deepfake-scams", label: "Deepfake Scams" },
+                  { slug: "voice-cloning-fraud", label: "Voice Cloning" },
+                  { slug: "ai-phishing-attacks", label: "AI Phishing" },
+                  { slug: "synthetic-identity-fraud", label: "Synthetic IDs" },
+                  { slug: "prompt-injection-attacks", label: "Prompt Injection" },
+                  { slug: "deepfake-ceo-fraud", label: "CEO Deepfakes" },
+                  { slug: "ai-romance-scams", label: "AI Romance Scams" },
+                  { slug: "ai-powered-ransomware", label: "AI Ransomware" },
+                ].map((t) => (
+                  <Link
+                    key={t.slug}
+                    to={`/intel/${t.slug}`}
+                    className="group block px-4 py-3 rounded-lg border border-border/50 hover:border-classified transition-colors bg-secondary/10 hover:bg-secondary/20"
+                  >
+                    <span className="text-sm font-medium text-foreground group-hover:text-classified transition-colors">
+                      {t.label}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* Divider */}
           <div className="border-t border-border/30" />
 
