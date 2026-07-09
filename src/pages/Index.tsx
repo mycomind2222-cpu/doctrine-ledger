@@ -101,6 +101,9 @@ const Index = () => {
                           <img
                             src={latestIssue.coverImage.startsWith("http") ? latestIssue.coverImage : undefined}
                             alt={`Issue ${latestIssue.number}: ${latestIssue.title}`}
+                            width={800}
+                            height={600}
+                            fetchPriority="high"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                         )}

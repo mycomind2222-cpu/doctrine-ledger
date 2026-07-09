@@ -65,6 +65,10 @@ export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index
             <img 
               src={coverImage} 
               alt={`Issue ${issue.number} cover`}
+              width={600}
+              height={800}
+              loading={index < 3 ? "eager" : "lazy"}
+              fetchPriority={index === 0 ? "high" : "auto"}
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             />
           ) : (
