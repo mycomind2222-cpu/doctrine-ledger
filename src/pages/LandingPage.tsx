@@ -50,6 +50,18 @@ const LandingPage = () => {
     })),
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://doctrine-ledger.lovable.app/" },
+      { "@type": "ListItem", position: 2, name: "Intel", item: "https://doctrine-ledger.lovable.app/intel" },
+      { "@type": "ListItem", position: 3, name: page.h1, item: `https://doctrine-ledger.lovable.app/intel/${page.slug}` },
+    ],
+  };
+
+  const combinedJsonLd = { "@context": "https://schema.org", "@graph": [faqJsonLd, breadcrumbJsonLd] };
+
   return (
     <>
       <SEO
@@ -58,7 +70,7 @@ const LandingPage = () => {
         path={`/intel/${page.slug}`}
         type="article"
         tags={page.keywords}
-        jsonLd={faqJsonLd}
+        jsonLd={combinedJsonLd}
       />
       <div className="min-h-screen bg-background">
         <Header />

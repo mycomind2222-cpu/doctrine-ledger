@@ -98,7 +98,7 @@ export const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.45 }}
-            className="font-mono text-xs text-muted-foreground/70"
+            className="font-mono text-xs text-muted-foreground"
           >
             100% free · No paywall · Trusted by security researchers & journalists
           </motion.p>

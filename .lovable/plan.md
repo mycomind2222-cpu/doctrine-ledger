@@ -1,78 +1,70 @@
+# SEO Traffic Plan
 
-# Plan: Rogue AI — Autonomous Lawbreaking Coverage
+Right now there are 3 failing findings and, more importantly, Google barely knows the site exists. Here's a concrete, ordered plan to actually generate traffic.
 
-A new content pillar showcasing cases where LLMs and AI agents took actions that would be illegal if a human did them. Two surfaces: a recurring section in every weekly issue, and a permanent dossier page that catalogs every documented incident over time.
+## 1. Get indexed (biggest lever, do first)
 
-## 1. Editorial scope
+Without this, on-page SEO doesn't matter — Google isn't crawling.
 
-Three accepted evidence tiers, every entry must declare which tier it belongs to:
+- Connect **Google Search Console** via the connector, verify `doctrine-ledger.lovable.app` with the META token, and submit `/sitemap.xml`.
+- Trigger `URL Inspection → Request Indexing` for the homepage, `/archive`, `/rogue-ai`, `/intel`, and the top 5 intel landing pages.
+- Add a **Bing Webmaster** submission note for the user (manual — I can't OAuth Bing).
 
-- **Tier 1 — Real-world incidents**: press-reported, court-filed, or vendor-disclosed (e.g. Replit agent wiping a production database, autonomous trading bots flagged for spoofing, agent-driven account takeovers).
-- **Tier 2 — Red-team / lab findings**: peer-reviewed or vendor-published research where models autonomously chose deception, blackmail, exfiltration, or sabotage in controlled tests (Anthropic agentic-misalignment, Apollo Research scheming evals, METR autonomy reports).
-- **Tier 3 — Agentic near-miss**: documented behavior a human would be prosecuted for (unauthorized access, fraud, market manipulation, CSAM-adjacent generation) where no charges were filed because the legal framework doesn't yet apply to the model.
+## 2. Fix the 2 Lighthouse findings (requires republish)
 
-Hard rules: real cases only, no invented incidents, every entry tagged with its evidence tier, source type, and the human-law analog it would map to.
+- **Performance (LCP/CLS)**: hero image gets `width`/`height` + `fetchpriority="high"`, remove `loading="lazy"` on the LCP element, add `font-display: swap` to the Google Fonts link (append `&display=swap` — already present, verify), reserve aspect-ratio on issue cover `<img>` tags to kill layout shift.
+- **Accessibility (contrast)**: audit `text-muted-foreground/50`, `/60` and arbitrary grays over dark backgrounds; move to solid `text-muted-foreground` / `text-foreground` tokens so body text hits 4.5:1.
 
-## 2. New recurring section in every issue — "Rogue AI Watch"
+## 3. On-page SEO polish
 
-Added to the standard weekly structure:
+- Rewrite `<title>` and meta description on every route to lead with a **high-intent keyword + year**, e.g. "Deepfake CEO Fraud: Real 2026 Cases & Defenses | BLACKFILES". Titles ≤60 chars, descriptions ≤155.
+- Add a single **H1 per page** (audit `/intel/:slug`, `/rogue-ai`, issue pages).
+- Add **FAQPage JSON-LD** to any intel page that has a Q&A section (some already have it — extend to all 20).
+- Add **Article JSON-LD** with `datePublished`, `dateModified`, `author`, `image` to every issue page.
+- Add **BreadcrumbList JSON-LD** on `/intel/:slug` and `/issues/:id`.
 
-```text
-TL;DR  →  Lead Story  →  More This Week  →  Rogue AI Watch  →  What to Watch
-```
+## 4. Internal linking (fastest ranking win once indexed)
 
-Each Rogue AI Watch entry is short and scannable:
+- Every issue page: auto-link mentioned attack types / industries to the matching `/intel/:slug` page.
+- Every `/intel/:slug`: add a "Recent briefings on this topic" block pulling matching issues by tag.
+- Homepage: add a compact "Browse by threat" grid linking to the top 8 intel pages (deepfake, voice cloning, prompt injection, etc.) — helps Google discover them and helps humans stay on-site.
+- Footer: add links to `/intel`, `/rogue-ai`, `/archive`, `/doctrine` on every page (verify present).
 
-- **Incident**: what the model/agent did, in one sentence
-- **The human-law analog**: what statute a person would be charged under (e.g. CFAA unauthorized access, wire fraud, market manipulation, destruction of property)
-- **Evidence tier**: Tier 1/2/3 + source
-- **Why it's not (yet) a crime**: jurisdiction gap, no mens rea, operator liability unclear, etc.
+## 5. Content depth (medium-term, actually moves rankings)
 
-Target: 1–2 incidents per issue, ~120 words each.
+- Expand the 20 intel landing pages from 1,000–1,500 words to **2,000–2,500** with a "How the attack works" step-by-step, "Red flags", "How to defend", and a stats box with sourced numbers.
+- Add **10 more landing pages** targeting long-tail queries with real search demand — I'll run Semrush `keyword_research` first to pick winners (candidates: "how to spot a deepfake video", "voice cloning scam examples", "AI-generated phishing email examples", "prompt injection example", etc.).
+- Add a `lastmod` date to every sitemap entry and update it when content changes.
 
-## 3. New permanent page — "Rogue AI Dossier" at `/rogue-ai`
+## 6. Off-page / distribution
 
-A standalone catalog that grows over time. Filterable, linkable, and SEO-targeted ("AI agent crimes", "LLM autonomous lawbreaking", "rogue AI incidents").
+Google rewards sites that get clicked and linked. Cheap wins:
+- Submit the newsletter to **Substack-style directories**: Feedspot, Detangle, InboxReads, TheSample.
+- Post each new issue to **Hacker News**, **r/cybersecurity**, **r/artificial**, **r/OSINT** — real cases + a stat-heavy headline is exactly what those subs upvote.
+- Cross-post the Rogue AI Dossier to **LessWrong / AI Alignment Forum** — that community backlinks aggressively.
 
-Page layout:
+## 7. Measurement
 
-- Hero strip explaining the premise in two sentences
-- Filter chips: All | Real Incidents | Lab Findings | Near-Miss | by law analog (CFAA, fraud, market abuse, privacy, IP)
-- Card grid — each card shows model/agent name, one-line incident, tier badge, law-analog tag, date, source link
-- Card click → dedicated detail view with full write-up, mapped to the issue it appeared in (if any)
+After GSC is connected I can pull weekly `seo_trend` + GSC impressions to see what's actually working, then double down on the top-performing pages.
 
-## 4. Data model
+---
 
-New table `rogue_ai_incidents` with fields for: title, model_or_agent, summary, full_writeup (markdown), evidence_tier (1/2/3), law_analog (text[]), occurred_on (date), source_url, source_type (press/court/research/vendor), related_issue_number (nullable), created_at. Public read; admin-only write. No new auth surface needed — reuses existing `is_admin` model.
+## Technical details
 
-A second optional column on `issues.sections` simply embeds the Rogue AI Watch content as another section type (`rogue_ai_watch`), so the existing rendering pipeline picks it up with no schema change to issues.
+**Files I'd touch:**
+- `index.html` — verify `display=swap`, preload hero
+- `src/components/SEO.tsx` — add BreadcrumbList helper, ensure `dateModified`
+- `src/pages/LandingPage.tsx` — expand template, add breadcrumb JSON-LD, add "related issues" section
+- `src/pages/IssuePage.tsx` — auto-link entities to `/intel/:slug`, add breadcrumb
+- `src/pages/Index.tsx` — "Browse by threat" grid
+- `src/data/landingPages.ts` — expand each entry's body; add 10 new entries
+- `public/sitemap.xml` (or generator script) — add `lastmod`, include new landing pages
+- Contrast audit across `Hero.tsx`, `IssueCard.tsx`, `Footer.tsx`
 
-## 5. Generation + QC pipeline updates
+**Order of execution I'd suggest:**
+1. Perf + a11y fixes (small) → republish
+2. Connect GSC, verify, submit sitemap
+3. Internal linking + JSON-LD (medium)
+4. Content expansion + new landing pages (largest)
 
-- **`generate-issue`**: extend `SYSTEM_PROMPT` and the JSON output spec to require a `rogue_ai_watch` section with 1–2 entries, each carrying `evidence_tier`, `law_analog`, and `source_hint`. Prompt explicitly forbids invented incidents and requires referencing a real, named model/agent.
-- **`review-issue`**: add a dedicated check that flags any Rogue AI Watch entry missing a verifiable source or evidence tier. Auto-fail if the entry can't name a real model, vendor, or research group.
-- After publish, the QC function also writes each accepted Rogue AI entry into `rogue_ai_incidents` so the dossier auto-grows from every weekly issue. Admin can still add historical entries manually via `/admin`.
-
-## 6. Surfacing on the rest of the site
-
-- Header nav: add "Rogue AI" link
-- Homepage: small teaser strip below QuickTakes — "Latest from the Rogue AI Dossier" with the 3 most recent incidents
-- Issue page: the in-issue Rogue AI Watch section gets a "See full dossier →" link
-- Sitemap + JSON-LD: include `/rogue-ai` and each incident detail route
-
-## 7. Visual treatment
-
-Reuses existing dark cyberpunk tokens. Each tier gets a tag color from the existing palette (no new colors): Tier 1 uses the `#ff4d4f` accent, Tier 2 uses muted teal, Tier 3 uses muted amber. No humans, no robots, no neon — same imagery constraints as the rest of the site.
-
-## 8. Out of scope
-
-- No reader-submitted incidents (admin-curated only, to protect factual accuracy)
-- No paywall on the dossier — stays 100% free under the current retention model
-- No comments/voting on individual incidents in v1 (issue-level voting still applies)
-
-## Technical summary
-
-- DB: new `rogue_ai_incidents` table with RLS (public read, admin write); new `sections.type = "rogue_ai_watch"` convention
-- Edge functions: `generate-issue` and `review-issue` updated for the new section + auto-insert into dossier
-- Frontend: new `/rogue-ai` route + detail route, new card component, header nav entry, homepage teaser, sitemap entries
-- Memory: add `mem://content/rogue-ai-pillar` documenting the editorial rules and tier system
+Want me to start with just #1 + #2 (fastest path to first traffic), or the full plan?
