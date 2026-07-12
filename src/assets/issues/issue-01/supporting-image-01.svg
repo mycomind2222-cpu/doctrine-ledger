@@ -1,0 +1,74 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="40" x2="1120" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#11151E"/>
+      <stop offset="1" stop-color="#07090D"/>
+    </linearGradient>
+    <linearGradient id="line" x1="96" y1="104" x2="1104" y2="656" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#59D7FF"/>
+      <stop offset="1" stop-color="#FF8B4D"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#131924"/>
+      <stop offset="1" stop-color="#0B0E13"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" rx="28" fill="url(#bg)"/>
+  <rect x="22" y="22" width="1156" height="716" rx="22" stroke="#FFB85C" stroke-opacity="0.45" stroke-width="2"/>
+  <rect x="44" y="44" width="1112" height="672" rx="18" stroke="#59D7FF" stroke-opacity="0.22" stroke-width="1.5"/>
+  <text x="58" y="92" fill="#F1E7D8" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="0.14em">MECHANICS / SYNTHETIC IDENTITY BUILD PIPELINE</text>
+  <path d="M68 130 H1132" stroke="url(#line)" stroke-opacity="0.55" stroke-width="2"/>
+
+  <g transform="translate(68 172)">
+    <rect width="238" height="430" rx="24" fill="url(#panel)" stroke="#59D7FF" stroke-opacity="0.25"/>
+    <circle cx="119" cy="100" r="48" stroke="#59D7FF" stroke-width="3"/>
+    <rect x="84" y="154" width="70" height="30" rx="15" fill="#59D7FF" fill-opacity="0.15" stroke="#59D7FF" stroke-opacity="0.35"/>
+    <text x="119" y="218" text-anchor="middle" fill="#F2E8D8" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">1</text>
+    <text x="28" y="252" fill="#F2E8D8" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Source the SSN</text>
+    <text x="28" y="286" fill="#C7D1DA" font-family="Inter, Arial, sans-serif" font-size="16">Real number,</text>
+    <text x="28" y="308" fill="#C7D1DA" font-family="Inter, Arial, sans-serif" font-size="16">wrong owner.</text>
+    <text x="28" y="348" fill="#8B94A5" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="0.14em">A CHILD / ELDERS / DECEASED / IMMIGRANT FILE</text>
+  </g>
+
+  <g transform="translate(358 172)">
+    <rect width="238" height="430" rx="24" fill="url(#panel)" stroke="#59D7FF" stroke-opacity="0.25"/>
+    <rect x="58" y="58" width="122" height="122" rx="30" fill="#59D7FF" fill-opacity="0.08" stroke="#59D7FF" stroke-opacity="0.35"/>
+    <circle cx="119" cy="119" r="28" stroke="#59D7FF" stroke-width="2.5"/>
+    <path d="M87 124 C104 98, 134 98, 151 124" stroke="#59D7FF" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="119" y="218" text-anchor="middle" fill="#F2E8D8" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">2</text>
+    <text x="32" y="252" fill="#F2E8D8" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Fabricate identity</text>
+    <text x="32" y="286" fill="#C7D1DA" font-family="Inter, Arial, sans-serif" font-size="16">Name, birthdate,</text>
+    <text x="32" y="308" fill="#C7D1DA" font-family="Inter, Arial, sans-serif" font-size="16">address, email.</text>
+    <text x="32" y="348" fill="#8B94A5" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="0.14em">PLAUSIBLE ENOUGH FOR KYC FILTERS</text>
+  </g>
+
+  <g transform="translate(648 172)">
+    <rect width="238" height="430" rx="24" fill="url(#panel)" stroke="#59D7FF" stroke-opacity="0.25"/>
+    <rect x="58" y="58" width="122" height="122" rx="28" fill="#FF8B4D" fill-opacity="0.08" stroke="#FF8B4D" stroke-opacity="0.35"/>
+    <path d="M87 126 H151" stroke="#FF8B4D" stroke-width="3" stroke-linecap="round"/>
+    <path d="M108 104 L121 126 L148 92" stroke="#FF8B4D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="119" y="218" text-anchor="middle" fill="#F2E8D8" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">3</text>
+    <text x="32" y="252" fill="#F2E8D8" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Season the file</text>
+    <text x="32" y="286" fill="#C7D1DA" font-family="Inter, Arial, sans-serif" font-size="16">Small tradelines,</text>
+    <text x="32" y="308" fill="#C7D1DA" font-family="Inter, Arial, sans-serif" font-size="16">on-time payments.</text>
+    <text x="32" y="348" fill="#8B94A5" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="0.14em">BUILD TRUST OVER MONTHS OR YEARS</text>
+  </g>
+
+  <g transform="translate(938 172)">
+    <rect width="194" height="430" rx="24" fill="url(#panel)" stroke="#59D7FF" stroke-opacity="0.25"/>
+    <circle cx="97" cy="110" r="44" stroke="#FFB85C" stroke-width="3"/>
+    <path d="M79 110 H115" stroke="#FFB85C" stroke-width="3" stroke-linecap="round"/>
+    <path d="M97 92 V128" stroke="#FFB85C" stroke-width="3" stroke-linecap="round"/>
+    <text x="97" y="218" text-anchor="middle" fill="#F2E8D8" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">4</text>
+    <text x="30" y="252" fill="#F2E8D8" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Bust out</text>
+    <text x="30" y="286" fill="#C7D1DA" font-family="Inter, Arial, sans-serif" font-size="16">Max every line,</text>
+    <text x="30" y="308" fill="#C7D1DA" font-family="Inter, Arial, sans-serif" font-size="16">then vanish.</text>
+    <text x="30" y="348" fill="#8B94A5" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="0.14em">MULTIPLE INSTITUTIONS HIT AT ONCE</text>
+  </g>
+
+  <path d="M306 387 H358" stroke="url(#line)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M596 387 H648" stroke="url(#line)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M886 387 H938" stroke="url(#line)" stroke-width="4" stroke-linecap="round"/>
+
+  <text x="58" y="676" fill="#9EA8B7" font-family="IBM Plex Mono, monospace" font-size="13" letter-spacing="0.16em">SEASONING CREATES THE DELAY THAT MAKES SYNTHETIC IDENTITY LOSS HARD TO TRACE</text>
+</svg>

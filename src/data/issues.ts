@@ -1,4 +1,24 @@
+import { issue01SupportingMedia } from "@/lib/issue-assets";
+
 export type AccessLevel = 'public' | 'professional' | 'restricted';
+
+export type IssueMediaKind =
+  | 'editorial_image'
+  | 'infographic'
+  | 'diagram'
+  | 'timeline'
+  | 'data_visualization';
+
+export interface IssueMedia {
+  id: string;
+  kind: IssueMediaKind;
+  src: string;
+  alt: string;
+  caption?: string;
+  credit?: string;
+  aspectRatio?: 'portrait' | 'landscape' | 'square' | 'wide';
+  position?: 'before' | 'after';
+}
 
 export type SectionType = 
   | 'executive_summary'
@@ -7,6 +27,7 @@ export type SectionType =
   | 'case_study'
   | 'doctrine_statement'
   | 'actionable_insight'
+  | 'sources'
   | 'investor_briefing'
   | 'rogue_ai_watch'
   | 'sidebar';
@@ -24,6 +45,7 @@ export interface Section {
   title?: string;
   audienceLevel: AccessLevel;
   content: string;
+  media?: IssueMedia[];
   sidebarElements?: SidebarElement[];
 }
 
@@ -41,83 +63,101 @@ export interface Issue {
 export const issues: Issue[] = [
   {
     number: 1,
-    title: "Ghost People & Fake Families: The $11M Identity Scam",
+    title: "Synthetic Identity Fraud: The $30 Billion Crime Hiding in Plain Sight",
     theme: "Synthetic Identity Fraud",
     coverImage: "issue-01",
     publicationStatus: 'published',
     publishDate: "2025-01-15",
-    tags: ["identity-fraud", "fake-identities", "bank-scams", "ai-fraud", "deepfake"],
+    tags: [
+      "synthetic-identity-fraud",
+      "identity-theft",
+      "credit-fraud",
+      "banking-security",
+      "child-identity-theft",
+      "bust-out-fraud",
+    ],
     sections: [
       {
         id: "exec-1",
         type: "executive_summary",
-        title: "Executive Summary",
+        title: "What synthetic identity fraud actually is",
         audienceLevel: "public",
-        content: "2025 marks the rise of a new industrialized shadow economy—far beyond traditional crime. From AI-generated \"ghost humans\" running banks to autonomous trading bots exploiting DeFi markets, criminals are combining advanced technology with financial engineering at unprecedented speed.\n\nThis issue explores the five most disruptive shadow economies emerging this year, examining their mechanics, real-world case studies, and implications for regulators, law enforcement, and investors. Readers will gain a multi-layered perspective, from beginner-friendly analogies to veteran-level insight into the fusion of exploits shaping tomorrow's underground finance."
+        content: "The Federal Reserve's working definition, still the industry standard, describes synthetic identity fraud as the use of a combination of personally identifiable information to fabricate a person or entity for the purpose of committing dishonest financial gain. That's a dry way of saying: a fraudster doesn't steal your whole identity — they steal a piece of it (usually a Social Security number) and glue it to a fabricated name, birthdate, and address to build a person who has never existed.\n\nThis is different from classic identity theft. In classic identity theft, a real victim exists, notices unfamiliar charges, and disputes them — the fraud gets caught relatively fast. A synthetic identity has no living victim watching a credit report. Nobody is checking whether \"Michael J. Foster, born 1994\" has a mortgage in his name, because Michael J. Foster is not a real person. That absence of a complaining victim is exactly what makes this fraud type so durable."
       },
       {
-        id: "deep-1",
+        id: "mechanics-1",
         type: "deep_dive",
-        title: "The Industrialization of Exploit Fusion",
-        audienceLevel: "professional",
-        content: "The industrialization of crime in 2025 is characterized by **exploit fusion**—the recombination of simple hacks into complex, self-perpetuating systems. A single exploit, like a SIM swap or phishing attempt, is no longer the endgame. It becomes a building block: leveraged, obfuscated, and ultimately reintegrated into legitimate finance as \"profits.\"\n\nThis multi-layered approach allows fraud to scale across borders and sectors, camouflaging criminal intent as fintech innovation or sustainability initiatives.\n\n**Key Mechanisms:**\n\n1. **Entry Exploit:** Breaches, identity fraud, or IoT compromises open the door.\n2. **Multiplication Layer:** Capital or influence is leveraged through flash loans, synthetic IDs, or botnet networks.\n3. **Obfuscation Layer:** Assets are disguised via wash trades, tokenized carbon credits, or mule networks.\n4. **Extraction Layer:** Funds re-enter legitimate systems as real estate, stocks, or corporate profits.\n\nThe cross-domain fusion approach accelerates growth: AI + DeFi enables autonomous hedge funds; IoT + microtransactions powers \"parasite cities\"; social engineering + AML gaps scale human botnets. For the first time, investigative success depends on mapping these chains end-to-end, not just spotting individual exploits.",
-        sidebarElements: [
-          { 
-            type: "hacker_note", 
-            content: "Fusion is the ultimate leverage: layer exploits across sectors. A small IoT hack alone is low yield; combined with a DeFi flash loan and laundering layer, it becomes systemic. Watch the interconnectivity, not the individual vulnerability." 
+        title: "The mechanics: how a fake person gets built",
+        audienceLevel: "public",
+        content: "**Step one — sourcing the SSN.** The number at the center of a synthetic identity is almost always real, just borrowed from someone unlikely to notice. Children's Social Security numbers are especially attractive: a number issued to a newborn generates no credit activity for years, so a fraudster can attach it to a fabricated adult identity and use it for a decade before the real person — now a teenager applying for their first credit card — discovers someone already has a decade of credit history under their number. Numbers belonging to elderly individuals, deceased people, and immigrants unfamiliar with the U.S. credit system are also common targets.\n\n**Step two — fabricating the rest.** A name, birthdate, and address get attached to the borrowed SSN. None of these need to correspond to a real person — they just need to be plausible and internally consistent enough to pass an identity-verification check.\n\n**Step three — \"seasoning\" the identity.** This is the part that makes synthetic identity fraud genuinely different from a smash-and-grab scam, and it's why it survives standard fraud detection. The fabricated identity applies for something low-stakes and easy to get — a secured credit card, a store card, sometimes a subprime auto loan. It makes small purchases and pays them off on time. Over months, or more often over a year or more, this builds an ordinary-looking credit history. By the time the identity applies for a real line of credit, it may look like any other thin-file but responsible borrower.\n\n**Step four — the \"bust-out.\"** Once the identity has enough credit lines and high enough limits, the fraudster maxes everything out — often across multiple institutions simultaneously — and disappears. This single event is called bust-out fraud, and industry data lists it as the single most common fraud pattern tied to synthetic identities, responsible for roughly 21% of all fraud cases and about 16% of total dollar losses in recent tracking.",
+        media: [
+          {
+            id: "mechanics-diagram",
+            kind: "diagram",
+            src: issue01SupportingMedia.mechanics,
+            alt: "Four-step diagram showing how a synthetic identity is built from a stolen SSN, fabricated identity details, seasoning, and bust-out fraud.",
+            caption: "Synthetic identities are built in stages, not instantly.",
+            aspectRatio: "wide",
+            position: "after",
           },
+        ],
+      },
+      {
+        id: "numbers-1",
+        type: "deep_dive",
+        title: "What the numbers actually say",
+        audienceLevel: "public",
+        content: "Multiple independent trackers converge on a consistent shape, even though the exact dollar figures vary by methodology:\n\n- U.S. unsecured credit losses tied specifically to synthetic identities were projected to exceed **$3.1 billion in 2026**, up from $1.8 billion in 2020 — a compound growth rate of roughly 16% a year, according to research from Mitek Systems and Datos Insights, a financial-services research firm.\n- Total estimated U.S. economic losses from synthetic identity fraud (a broader measure that includes downstream effects across deposit accounts, checks, and mule activity, not just unsecured credit) are estimated at **$20–40 billion annually**, though no one claims a precise figure — much of it gets absorbed by banks as routine loan-default write-offs and never gets separately categorized as fraud.\n- **67% of banks and fintechs** reported rising fraud rates in 2025.\n- **84% of fraud executives** surveyed by Datos Insights rated synthetic identity fraud as a moderate-to-high risk to their application process specifically — higher than almost any other fraud category they track.\n- Roughly **8.3% of digital account-opening attempts** were flagged as potentially fraudulent in the first half of 2025, and some banks report flagging as many as 1 in 20 verification attempts.\n- **64% of industry respondents** cited AI and deepfakes specifically as a top concern for identity fraud going into 2026 — not because AI invented synthetic identity fraud (it's been documented since at least the early 2010s), but because generative tools make the supporting documentation (fake ID photos, forged pay stubs, synthetic selfie videos for \"liveness\" checks) faster and cheaper to produce at scale.",
+        media: [
           {
-            type: "prompt_snippet",
-            content: "Explore shadow economy patterns: Ask an LLM to simulate a multi-layer exploit chain showing entry → multiplication → obfuscation → extraction."
-          }
-        ]
+            id: "numbers-chart",
+            kind: "data_visualization",
+            src: issue01SupportingMedia.numbers,
+            alt: "Dark market chart showing synthetic identity fraud loss trends and survey signals across 2020 through 2026.",
+            caption: "Losses are rising faster than most fraud teams can react.",
+            aspectRatio: "wide",
+            position: "after",
+          },
+        ],
       },
       {
-        id: "case-1a",
+        id: "detection-1",
+        type: "deep_dive",
+        title: "Why banks struggle to catch it",
+        audienceLevel: "public",
+        content: "Standard fraud detection is built to answer one question: does this behavior match what we know about this person? Synthetic identity fraud breaks that model at the root, because there is no real person to have a baseline for. The \"person\" the bank is checking against is defined entirely by the data the fraudster chose to submit.\n\nThis creates a specific and well-documented failure mode called **credit-file \"piggybacking\" via authorized-user tradelines** and, more directly, a pattern researchers call **identity injection** — deliberately fabricated applications submitted at scale (sometimes thousands at once, generated with slight variations) to probe which combinations of real-fragment-plus-fake-detail slip past a given institution's specific verification rules. Because this is systematic probing rather than one-off deception, a single successful \"recipe\" can be reused across dozens or hundreds of synthetic identities before a bank's fraud team notices the pattern.\n\nA 2026 industry survey found 74% of senior fraud and anti-money-laundering leaders at banks and fintechs cited AI-driven fraud as a top threat, while 67% said they lacked the infrastructure to deploy effective AI-based defenses in response — a real and reported capability gap, not a hypothetical one."
+      },
+      {
+        id: "expansion-1",
         type: "case_study",
-        title: "The \"Family\" That Never Was – Synthetic Identity Economies",
-        audienceLevel: "professional",
-        content: "Investigators in New Jersey uncovered a ring that generated over 70 synthetic identities, organized as \"families\" complete with parents, children, AI-generated photos, and shared addresses.\n\nBanks, deceived by realistic credit histories, issued **$11M in loans** before the scheme was detected. Each \"ghost\" operated across multiple platforms and countries, demonstrating the limitless scale and resiliency of these systems."
+        title: "Where it's spreading beyond banking",
+        audienceLevel: "public",
+        content: "Synthetic identity fraud began as primarily a lending problem, but the same technique now shows up in:\n\n- **E-commerce**, where synthetic identities are used to pass \"new customer\" fraud screening and exploit promotional offers or buy-now-pay-later credit at scale.\n- **Government benefits programs**, where fabricated identities are used to file for unemployment insurance, pandemic-era relief programs (a well-documented category during 2020–2022), or other benefits.\n- **Money mule networks**, where a synthetic identity — rather than a recruited real person — opens the bank account used to receive and move stolen funds, removing even the thin risk of a mule getting cold feet or talking to police. (See the companion piece on money mule and deepfake-driven laundering schemes for more on that connection.)"
       },
       {
-        id: "case-1b",
-        type: "case_study",
-        title: "The Self-Taught Fund – Autonomous AI Hedge Funds",
-        audienceLevel: "restricted",
-        content: "A DeFi exchange on Binance Smart Chain suffered a **$72M exploit** executed entirely by self-updating bot clusters. The bots autonomously recombined code snippets from public repositories, executing 19 micro-exploits in 48 hours.\n\nLaundered funds were routed into wrapped carbon credit tokens at machine speed. Human intervention was too slow; attribution remains nearly impossible.",
-        sidebarElements: [
-          {
-            type: "pull_quote",
-            content: "If synthetic identities create the shadow population, autonomous funds create the shadow capital."
-          }
-        ]
-      },
-      {
-        id: "case-1c",
-        type: "case_study",
-        title: "IoT Parasite Cities & Human Botnet Laundering",
-        audienceLevel: "restricted",
-        content: "From compromised EV chargers in Europe siphoning **€12M** to deepfake-managed remote work scams moving **$180M** across 17 countries, the shadow economy weaponizes both technology and human labor.\n\nSmall, distributed thefts aggregate into massive, near-invisible flows of capital."
-      },
-      {
-        id: "insight-1",
+        id: "defenses-1",
         type: "actionable_insight",
-        title: "What to Watch",
+        title: "What actually helps — for institutions and for individuals",
         audienceLevel: "public",
-        content: "**For Regulators:** Focus on systemic exploit chains, not isolated vulnerabilities. Cross-domain monitoring of AI + financial tools, IoT infrastructure, and human networks is critical.\n\n**For Investors:** Monitor anomalous trading spikes, flash loan activity, and suspicious ESG token flows; these may indicate shadow-market interference.\n\n**For Law Enforcement:** Develop hybrid teams combining cyber forensics, financial intelligence, and social engineering detection. Early recognition of synthetic identities and autonomous fund behavior is essential.\n\n**For Society:** The erosion of trust is systemic. Awareness of AI-driven fraud, parasitic IoT networks, and hybrid human-bot laundering can inform both personal and corporate security practices.",
-        sidebarElements: [
+        content: "**For financial institutions**, the practical defenses that show up consistently across fraud-industry guidance are unglamorous:\n\n- **Cross-institution and cross-bureau data sharing** — a synthetic identity applying at five banks simultaneously looks suspicious in aggregate even if each individual application looks clean.\n- **Device and behavioral signals** — the same device fingerprint, typing pattern, or IP range submitting many \"different\" applications is one of the more reliable tells.\n- **Velocity checks on tradeline seasoning** — accounts that go from newly opened to maximum credit limit unusually fast are a stronger signal than any single data point on the application.\n- **SSN-issuance-date cross-referencing** — checking whether an applicant's claimed age is consistent with when their SSN was issued catches a meaningful share of synthetic identities built on stolen child SSNs.\n\n**For individuals**, the most useful protective step is one most people don't think to take: **freezing a child's credit** with all three major bureaus (Equifax, Experian, TransUnion) before they're old enough to need credit themselves. Because children's SSNs are disproportionately used in synthetic identity construction — reporting indicates they are used far more often than adult SSNs, precisely because no one checks a child's credit file — a freeze placed early can prevent years of undetected fraud. It's free, and all three bureaus support minor freezes online.\n\nFor adults, the standard advice applies but matters more here than for most fraud types: checking your own credit report periodically (free weekly reports are available at annualcreditreport.com) is the only way to catch your SSN being used *as a fragment* in someone else's fabricated identity, since that activity won't show up as a transaction on your existing accounts — it shows up as a stranger's account you never opened.",
+        media: [
           {
-            type: "mini_timeline",
-            content: "**Shadow Economy Milestones 2024–2025:**\n\n• Late 2024: EV charger parasite network uncovered in Europe (€12M siphoned)\n• Early 2025: Remote human botnet laundering ring dismantled by Europol ($180M processed)\n• March 2025: Self-taught AI hedge fund exploits Binance Smart Chain ($72M)\n• Mid 2025: Reports of synthetic identity \"families\" grow, $11M+ in loans distributed"
-          }
-        ]
+            id: "defenses-panel",
+            kind: "infographic",
+            src: issue01SupportingMedia.defenses,
+            alt: "Editorial defense matrix showing institutional controls and personal protections against synthetic identity fraud.",
+            caption: "The best defenses are layered before the file matures.",
+            aspectRatio: "wide",
+            position: "after",
+          },
+        ],
       },
       {
-        id: "inv-1",
-        type: "investor_briefing",
-        title: "Investor Briefing",
+        id: "sources-1",
+        type: "sources",
+        title: "Sources",
         audienceLevel: "public",
-        content: "RISK: HIGH\n---\nTICKERS: PLTR, IDXX, EFX, LexisNexis (RELX), Socure (Private)\n---\nSECTORS: Identity Verification, Banking & Lending, Credit Bureaus, KYC/AML Compliance\n---\nWINNERS:\n• Identity verification companies (Socure, Jumio) — demand surges as banks tighten onboarding\n• Palantir (PLTR) — government contracts for synthetic identity detection\n• Credit monitoring services — consumers pay for fraud alerts\n---\nLOSERS:\n• Regional banks with weak KYC — face disproportionate losses from synthetic ID fraud\n• Unsecured lending fintechs — higher default rates from ghost borrowers\n---\nTHESIS: Synthetic identity fraud is a $20B+ annual problem growing 25% YoY. Companies selling identity verification and fraud detection tools are positioned for sustained demand. Short exposure to consumer lenders with thin verification layers. The winners here are picks-and-shovels plays on the fraud economy."
+        content: "Mitek Systems / Datos Insights synthetic identity fraud research (2026); CFO Dive coverage of the same research; Biometric Update, \"Report finds synthetic identity fraud becoming biggest fraud threat in 2026\"; CoinLaw, \"Synthetic Identity Fraud Statistics 2026\"; Federal Reserve synthetic identity fraud definitional guidance; FinCEN 2024 advisory on generative AI and identity fraud; chargebacks911 industry data on children's SSN exploitation rates."
       }
     ]
   },

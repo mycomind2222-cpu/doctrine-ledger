@@ -12,7 +12,6 @@ import { SocialShareBar } from "@/components/SocialShareBar";
 import { ReadNextCards } from "@/components/ReadNextCards";
 import { ClickToTweet } from "@/components/ClickToTweet";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/contexts/AuthContext";
 import { useIssue, useAllIssues } from "@/hooks/useIssues";
 import { IssueVoting } from "@/components/IssueVoting";
 import { ViralSharePrompt } from "@/components/ViralSharePrompt";
@@ -21,82 +20,13 @@ import { RogueAIWatch } from "@/components/RogueAIWatch";
 import { type Section, type AccessLevel as IssueAccessLevel } from "@/data/issues";
 import { useCopyAttribution } from "@/hooks/useCopyAttribution";
 import { getPlainSummary } from "@/data/plainSummaries";
-import issue01Cover from "@/assets/covers/issue-01.png";
-import issue02Cover from "@/assets/covers/issue-02.png";
-import issue03Cover from "@/assets/covers/issue-03.png";
-import issue04Cover from "@/assets/covers/issue-04.png";
-import issue05Cover from "@/assets/covers/issue-05.png";
-import issue06Cover from "@/assets/covers/issue-06.png";
-import issue07Cover from "@/assets/covers/issue-07.png";
-import issue08Cover from "@/assets/covers/issue-08.png";
-import issue09Cover from "@/assets/covers/issue-09.png";
-import issue10Cover from "@/assets/covers/issue-10.png";
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
+import { resolveIssueCover } from "@/lib/issue-assets";
+import { Issue01Template } from "@/components/issues/Issue01Template";
 
-const coverImages: Record<string, string> = {
-  "issue-01": issue01Cover,
-  "issue-02": issue02Cover,
-  "issue-03": issue03Cover,
-  "issue-04": issue04Cover,
-  "issue-05": issue05Cover,
-  "issue-06": issue06Cover,
-  "issue-07": issue07Cover,
-  "issue-08": issue08Cover,
-  "issue-09": issue09Cover,
-  "issue-10": issue10Cover,
-};
-
-const renderContent = (content: string) => {
-  return content.split('\n\n').map((paragraph, i) => {
-    // Handle bold headers like **Title:**
-    if (paragraph.startsWith('**') && paragraph.includes(':**')) {
-      const parts = paragraph.split(':**');
-      const title = parts[0].replace(/\*\*/g, '');
-      const rest = parts.slice(1).join(':**');
-      return (
-        <div key={i} className="mb-4">
-          <h4 className="font-semibold text-foreground mb-2">{title}:</h4>
-          <p>{rest}</p>
-        </div>
-      );
-    }
-    
-    // Handle numbered lists
-    if (/^\d+\.\s\*\*/.test(paragraph)) {
-      const items = paragraph.split(/\n/).filter(Boolean);
-      return (
-        <ol key={i} className="list-decimal list-inside space-y-2 mb-4">
-          {items.map((item, j) => {
-            const cleaned = item.replace(/^\d+\.\s/, '').replace(/\*\*/g, '');
-            const [title, ...rest] = cleaned.split(':');
-            return (
-              <li key={j}>
-                <strong className="text-foreground">{title}:</strong>
-                {rest.join(':')}
-              </li>
-            );
-          })}
-        </ol>
-      );
-    }
-    
-    // Handle inline bold
-    if (paragraph.includes('**')) {
-      const parts = paragraph.split(/(\*\*[^*]+\*\*)/);
-      return (
-        <p key={i} className="mb-4">
-          {parts.map((part, j) => {
-            if (part.startsWith('**') && part.endsWith('**')) {
-              return <strong key={j} className="text-foreground">{part.slice(2, -2)}</strong>;
-            }
-            return part;
-          })}
-        </p>
-      );
-    }
-    
-    return <p key={i} className="mb-4">{paragraph}</p>;
-  });
-};
+const renderContent = (content: string) => (
+  <MarkdownRenderer content={content} className="space-y-5 text-[15px] leading-7 text-foreground" />
+);
 
 const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section; isLocked: boolean; requiredLevel: IssueAccessLevel }) => {
   // Render investor briefing with dedicated component
@@ -184,10 +114,9 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
 };
 
  const IssuePage = () => {
-   const { issueNumber } = useParams();
-   const navigate = useNavigate();
-   const { hasAccess } = useAuth();
-   useCopyAttribution();
+ const { issueNumber } = useParams();
+ const navigate = useNavigate();
+  useCopyAttribution();
    const { data: issue, isLoading } = useIssue(Number(issueNumber));
    const { data: allIssues } = useAllIssues();
    const publishedIssues = (allIssues || []).filter(i => i.publicationStatus === 'published');
@@ -231,10 +160,24 @@ const SectionContent = ({ section, isLocked, requiredLevel }: { section: Section
     return false;
   };
 
-  // Support both static imports (e.g. "issue-01") and full URLs from storage
-  const coverImage = issue.coverImage
-    ? issue.coverImage.startsWith("http") ? issue.coverImage : coverImages[issue.coverImage] || null
-    : null;
+  const coverImage = resolveIssueCover(issue.coverImage);
+
+  if (issue.number === 1) {
+    return (
+      <>
+        <SEO
+          title={`Issue #${String(issue.number).padStart(2, '0')}: ${issue.title}`}
+          description={issue.sections[0]?.content.slice(0, 155).replace(/\n/g, ' ') + "..." || `BLACKFILES Issue ${issue.number} — AI crime briefing on ${issue.theme.toLowerCase()}.`}
+          path={`/issues/${issue.number}`}
+          type="article"
+          publishedTime={issue.publishDate}
+          tags={issue.tags}
+          image={coverImage || undefined}
+        />
+        <Issue01Template issue={issue} allIssues={publishedIssues} />
+      </>
+    );
+  }
 
   return (
     <>
