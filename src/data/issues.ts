@@ -58,6 +58,9 @@ export interface Issue {
   publishDate: string;
   sections: Section[];
   tags: string[];
+  revisionId?: string;
+  updatedAt?: string;
+  mediaPlanRevisionId?: string;
 }
 
 export const issues: Issue[] = [

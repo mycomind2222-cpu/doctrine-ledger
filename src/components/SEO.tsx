@@ -9,6 +9,7 @@ interface SEOProps {
   publishedTime?: string;
   tags?: string[];
   jsonLd?: Record<string, unknown>;
+  noindex?: boolean;
 }
 
 const BASE_URL = "https://doctrine-ledger.lovable.app";
@@ -25,6 +26,7 @@ export const SEO = ({
   publishedTime,
   tags,
   jsonLd,
+  noindex = false,
 }: SEOProps) => {
   const fullTitle = title ? `${title} | BLACKFILES` : DEFAULT_TITLE;
   const canonicalUrl = `${BASE_URL}${path}`;
@@ -60,6 +62,7 @@ export const SEO = ({
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
+      {noindex && <meta name="robots" content="noindex,nofollow" />}
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />

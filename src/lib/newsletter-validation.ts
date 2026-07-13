@@ -1,5 +1,6 @@
 import { type Issue, type Section, type IssueMedia } from "@/data/issues";
 import { resolveIssueCover } from "@/lib/issue-assets";
+import { computeArticleRevisionId } from "@/lib/visual-production/article-revision";
 import {
   type NewsletterAccessLevel,
   type NewsletterAssetRef,
@@ -272,6 +273,18 @@ const normalizeCompatibility = (compatibility: unknown, fallbackNotes: string[])
   };
 };
 
+const normalizeUpdatedAt = (value: unknown, fallback: string) => {
+  if (isNonEmptyString(value)) {
+    const date = new Date(value);
+    if (!Number.isNaN(date.getTime())) {
+      return date.toISOString();
+    }
+  }
+
+  const fallbackDate = new Date(fallback);
+  return Number.isNaN(fallbackDate.getTime()) ? undefined : fallbackDate.toISOString();
+};
+
 const normalizeCanonicalIssue = (issue: unknown, context: string, source: NewsletterContentOrigin): NewsletterIssueContent => {
   if (!isPlainObject(issue)) {
     createValidationError(context, "issue must be an object");
@@ -325,6 +338,27 @@ const normalizeCanonicalIssue = (issue: unknown, context: string, source: Newsle
     : undefined;
 
   const compatibility = normalizeCompatibility(issue.compatibility, []);
+  const revisionId = computeArticleRevisionId({
+    title,
+    subtitle,
+    summary,
+    theme: category,
+    sections: sections.map((section) => ({
+      id: section.id,
+      title: section.title,
+      content: section.content,
+    })),
+    sources: derivedSources.map((source) => ({
+      id: source.id,
+      label: source.label,
+      citation: source.citation,
+      url: source.url,
+    })),
+  });
+  const updatedAt = normalizeUpdatedAt((issue as { updatedAt?: unknown }).updatedAt, publicationDate);
+  const mediaPlanRevisionId = isNonEmptyString((issue as { mediaPlanRevisionId?: unknown }).mediaPlanRevisionId)
+    ? (issue as { mediaPlanRevisionId: string }).mediaPlanRevisionId.trim()
+    : undefined;
 
   const origin = issue.origin === "static" || issue.origin === "canonical-local" || issue.origin === "supabase" ? issue.origin : source;
 
@@ -347,6 +381,9 @@ const normalizeCanonicalIssue = (issue: unknown, context: string, source: Newsle
     sections,
     sources: derivedSources,
     tags,
+    revisionId,
+    updatedAt,
+    mediaPlanRevisionId,
     seo,
     presentation,
     compatibility,
@@ -372,6 +409,7 @@ const normalizeLegacyIssue = (issue: Issue, context: string, origin: NewsletterC
       number: issue.number,
       slug: `issue-${String(issue.number).padStart(2, "0")}`,
       title: issue.title,
+      subtitle: issue.theme,
       summary: getPlainSummary(issue.number, issue.sections.find((section) => section.type === "executive_summary")?.content),
       category: issue.theme,
       publicationStatus: issue.publicationStatus,
@@ -393,6 +431,7 @@ const normalizeLegacyIssue = (issue: Issue, context: string, origin: NewsletterC
       sections,
       sources,
       tags: issue.tags,
+      updatedAt: new Date(`${issue.publishDate}T00:00:00Z`).toISOString(),
       seo: {
         title: `Issue #${String(issue.number).padStart(2, "0")}: ${issue.title}`,
         description: issue.sections[0]?.content?.slice(0, 155).replace(/\n/g, " ") || issue.title,
@@ -532,6 +571,7 @@ export const validateSupabaseIssueRow = (row: SupabaseIssueRow, context = `supab
       number: issue,
       slug: `issue-${String(issue).padStart(2, "0")}`,
       title,
+      subtitle: row.theme,
       summary: getPlainSummary(issue, sections.find((section) => section.type === "executive_summary")?.content),
       category: row.theme,
       publicationStatus: normalizePublicationStatus(row.publication_status, `${context}.publication_status`),
@@ -553,6 +593,7 @@ export const validateSupabaseIssueRow = (row: SupabaseIssueRow, context = `supab
       sections,
       sources: parseSourcesSection(sections, issue),
       tags: normalizeStringArray(row.tags),
+      updatedAt: normalizeUpdatedAt(row.updated_at, row.publish_date),
       seo: {
         title: `Issue #${String(issue).padStart(2, "0")}: ${title}`,
         description: sections[0]?.content?.slice(0, 155).replace(/\n/g, " ") || title,

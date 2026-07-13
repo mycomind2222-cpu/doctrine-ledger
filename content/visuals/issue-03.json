@@ -1,0 +1,116 @@
+{
+  "issueId": "issue-03",
+  "issueNumber": 3,
+  "articleRevisionId": "rev-adaf3f8661b3afe0",
+  "visualProfileId": "editorial-cover-v2",
+  "visualProfileVersion": 1,
+  "planStatus": "unplanned",
+  "approvalStatus": "draft",
+  "coverPlan": {
+    "assetKey": "issue-03-cover",
+    "editorialPurpose": "Preview baseline cover",
+    "artDirection": "Use the current public cover as a placeholder-safe baseline.",
+    "generationMethod": "editor-upload",
+    "prompt": "Placeholder-safe cover baseline for visual system scaffolding.",
+    "prohibitedImplications": [
+      "No fabricated statistics",
+      "No automatic approval"
+    ],
+    "sourceIds": [],
+    "requiredLabels": [
+      "BLACKFILES",
+      "Issue #03"
+    ],
+    "altText": "Issue 03 cover",
+    "caption": "Current cover baseline for visual scaffolding.",
+    "placement": "cover",
+    "aspectRatio": "2:3",
+    "approvalStatus": "draft",
+    "source": {
+      "sourceKind": "legacy-ref",
+      "source": "issue-03"
+    }
+  },
+  "supportingAssetPlans": [
+    {
+      "assetKey": "issue-03-support-01",
+      "sectionKey": "exec-3",
+      "editorialPurpose": "Executive Summary",
+      "kind": "action",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #03",
+        "Section 01"
+      ],
+      "altText": "Inside the Secret Discord Servers Testing AI Limits supporting visual 1",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-03-support-02",
+      "sectionKey": "deep-3",
+      "editorialPurpose": "The Moderation Wars",
+      "kind": "comparison",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #03",
+        "Section 02"
+      ],
+      "altText": "Inside the Secret Discord Servers Testing AI Limits supporting visual 2",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-03-support-03",
+      "sectionKey": "case-3",
+      "editorialPurpose": "The \"Red Team Sandbox\" – Community-Driven Moderation Testing",
+      "kind": "consequence",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #03",
+        "Section 03"
+      ],
+      "altText": "Inside the Secret Discord Servers Testing AI Limits supporting visual 3",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    }
+  ],
+  "createdAt": "2026-07-13T19:52:54.367Z",
+  "updatedAt": "2025-03-08T00:00:00.000Z",
+  "notes": [
+    "Skeleton manifest for future visual planning"
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "issueId": "issue-04",
+  "issueNumber": 4,
+  "articleRevisionId": "rev-50551dd9ec156fd6",
+  "visualProfileId": "editorial-cover-v2",
+  "visualProfileVersion": 1,
+  "planStatus": "unplanned",
+  "approvalStatus": "draft",
+  "coverPlan": {
+    "assetKey": "issue-04-cover",
+    "editorialPurpose": "Preview baseline cover",
+    "artDirection": "Use the current public cover as a placeholder-safe baseline.",
+    "generationMethod": "editor-upload",
+    "prompt": "Placeholder-safe cover baseline for visual system scaffolding.",
+    "prohibitedImplications": [
+      "No fabricated statistics",
+      "No automatic approval"
+    ],
+    "sourceIds": [],
+    "requiredLabels": [
+      "BLACKFILES",
+      "Issue #04"
+    ],
+    "altText": "Issue 04 cover",
+    "caption": "Current cover baseline for visual scaffolding.",
+    "placement": "cover",
+    "aspectRatio": "2:3",
+    "approvalStatus": "draft",
+    "source": {
+      "sourceKind": "legacy-ref",
+      "source": "issue-04"
+    }
+  },
+  "supportingAssetPlans": [
+    {
+      "assetKey": "issue-04-support-01",
+      "sectionKey": "exec-4",
+      "editorialPurpose": "Executive Summary",
+      "kind": "action",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #04",
+        "Section 01"
+      ],
+      "altText": "Community Black Markets & Meme Machines supporting visual 1",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-04-support-02",
+      "sectionKey": "deep-4",
+      "editorialPurpose": "The Economics of Knowledge Markets",
+      "kind": "comparison",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #04",
+        "Section 02"
+      ],
+      "altText": "Community Black Markets & Meme Machines supporting visual 2",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-04-support-03",
+      "sectionKey": "case-4a",
+      "editorialPurpose": "The Prompt Bazaar – AI Exploit Marketplace",
+      "kind": "consequence",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #04",
+        "Section 03"
+      ],
+      "altText": "Community Black Markets & Meme Machines supporting visual 3",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    }
+  ],
+  "createdAt": "2026-07-13T19:52:54.368Z",
+  "updatedAt": "2025-04-05T00:00:00.000Z",
+  "notes": [
+    "Skeleton manifest for future visual planning"
+  ]
+}

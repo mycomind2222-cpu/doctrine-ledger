@@ -86,6 +86,9 @@ export interface NewsletterIssueContent {
   sections: NewsletterSection[];
   sources: NewsletterSourceRef[];
   tags: string[];
+  revisionId?: string;
+  updatedAt?: string;
+  mediaPlanRevisionId?: string;
   seo?: NewsletterSeoMetadata;
   presentation?: NewsletterPresentation;
   compatibility?: NewsletterCompatibilityMetadata;

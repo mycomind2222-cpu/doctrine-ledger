@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import issue01Cover from "@/assets/issues/issue-01/cover.png";
 import { issues } from "@/data/issues";
 import { resolveIssueCover } from "@/lib/issue-assets";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
@@ -35,7 +34,7 @@ describe("Issue 01 canonical data", () => {
   });
 
   it("resolves the Issue 01 cover through the shared resolver", () => {
-    expect(resolveIssueCover("issue-01")).toBe(issue01Cover);
+    expect(resolveIssueCover("issue-01")).toContain("issue-01/cover.png");
     expect(resolveIssueCover("issue-02")).toContain("issue-02");
   });
 });

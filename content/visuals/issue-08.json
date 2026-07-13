@@ -1,0 +1,116 @@
+{
+  "issueId": "issue-08",
+  "issueNumber": 8,
+  "articleRevisionId": "rev-2cc9176e57823e4c",
+  "visualProfileId": "editorial-cover-v2",
+  "visualProfileVersion": 1,
+  "planStatus": "unplanned",
+  "approvalStatus": "draft",
+  "coverPlan": {
+    "assetKey": "issue-08-cover",
+    "editorialPurpose": "Preview baseline cover",
+    "artDirection": "Use the current public cover as a placeholder-safe baseline.",
+    "generationMethod": "editor-upload",
+    "prompt": "Placeholder-safe cover baseline for visual system scaffolding.",
+    "prohibitedImplications": [
+      "No fabricated statistics",
+      "No automatic approval"
+    ],
+    "sourceIds": [],
+    "requiredLabels": [
+      "BLACKFILES",
+      "Issue #08"
+    ],
+    "altText": "Issue 08 cover",
+    "caption": "Current cover baseline for visual scaffolding.",
+    "placement": "cover",
+    "aspectRatio": "2:3",
+    "approvalStatus": "draft",
+    "source": {
+      "sourceKind": "legacy-ref",
+      "source": "issue-08"
+    }
+  },
+  "supportingAssetPlans": [
+    {
+      "assetKey": "issue-08-support-01",
+      "sectionKey": "exec-8",
+      "editorialPurpose": "Executive Summary",
+      "kind": "action",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #08",
+        "Section 01"
+      ],
+      "altText": "When AI Criminals Work Together: Networked Crime Rings supporting visual 1",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-08-support-02",
+      "sectionKey": "deep-8",
+      "editorialPurpose": "Post-Firewall Integration Mechanics",
+      "kind": "comparison",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #08",
+        "Section 02"
+      ],
+      "altText": "When AI Criminals Work Together: Networked Crime Rings supporting visual 2",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-08-support-03",
+      "sectionKey": "case-8",
+      "editorialPurpose": "Cyborg Financial Node Network",
+      "kind": "consequence",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #08",
+        "Section 03"
+      ],
+      "altText": "When AI Criminals Work Together: Networked Crime Rings supporting visual 3",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    }
+  ],
+  "createdAt": "2026-07-13T19:52:54.374Z",
+  "updatedAt": "2025-08-23T00:00:00.000Z",
+  "notes": [
+    "Skeleton manifest for future visual planning"
+  ]
+}

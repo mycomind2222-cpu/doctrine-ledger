@@ -10,6 +10,7 @@ import Archive from "./pages/Archive";
 import Doctrine from "./pages/Doctrine";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
+import AdminVisualCoverPreview from "./pages/AdminVisualCoverPreview";
 import Account from "./pages/Account";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/intel/:slug" element={<LandingPage />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/visuals/cover-preview/:issueNumber" element={<AdminVisualCoverPreview />} />
             <Route path="/account" element={<Account />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<Terms />} />

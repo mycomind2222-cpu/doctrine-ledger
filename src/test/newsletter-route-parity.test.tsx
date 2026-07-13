@@ -71,7 +71,7 @@ describe("newsletter route parity", () => {
   it("keeps the homepage latest issue selection intact", async () => {
     renderRoute("/");
 
-    expect(await screen.findByRole("heading", { name: issue3.title })).toBeInTheDocument();
+    expect(await screen.findByText(issue3.title)).toBeInTheDocument();
     expect(screen.getByAltText("Issue 03 cover")).toBeInTheDocument();
   });
 

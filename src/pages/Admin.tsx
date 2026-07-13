@@ -1,6 +1,7 @@
  import { useEffect, useState } from 'react';
- import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
- import { AdminIssueManager } from '@/components/AdminIssueManager';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { AdminIssueManager } from '@/components/AdminIssueManager';
+import { VisualAssetStatusPanel } from '@/components/admin/VisualAssetStatusPanel';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
@@ -119,6 +120,7 @@ const Admin = () => {
              <Tabs defaultValue="issues" className="space-y-6">
                <TabsList>
                  <TabsTrigger value="issues">AI Issues</TabsTrigger>
+                 <TabsTrigger value="visuals">Visuals</TabsTrigger>
                  <TabsTrigger value="users">User Access</TabsTrigger>
                </TabsList>
  
@@ -127,7 +129,13 @@ const Admin = () => {
                    <AdminIssueManager />
                  </div>
                </TabsContent>
- 
+
+               <TabsContent value="visuals">
+                 <div className="rounded-lg border border-border bg-card p-6">
+                   <VisualAssetStatusPanel />
+                 </div>
+               </TabsContent>
+
                <TabsContent value="users">
                  <div className="rounded-lg border border-border bg-card">
                    <div className="p-4 border-b border-border flex items-center gap-2">

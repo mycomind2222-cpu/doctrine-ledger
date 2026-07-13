@@ -1,0 +1,116 @@
+{
+  "issueId": "issue-02",
+  "issueNumber": 2,
+  "articleRevisionId": "rev-8ff8a0efea0779df",
+  "visualProfileId": "editorial-cover-v2",
+  "visualProfileVersion": 1,
+  "planStatus": "unplanned",
+  "approvalStatus": "draft",
+  "coverPlan": {
+    "assetKey": "issue-02-cover",
+    "editorialPurpose": "Preview baseline cover",
+    "artDirection": "Use the current public cover as a placeholder-safe baseline.",
+    "generationMethod": "editor-upload",
+    "prompt": "Placeholder-safe cover baseline for visual system scaffolding.",
+    "prohibitedImplications": [
+      "No fabricated statistics",
+      "No automatic approval"
+    ],
+    "sourceIds": [],
+    "requiredLabels": [
+      "BLACKFILES",
+      "Issue #02"
+    ],
+    "altText": "Issue 02 cover",
+    "caption": "Current cover baseline for visual scaffolding.",
+    "placement": "cover",
+    "aspectRatio": "2:3",
+    "approvalStatus": "draft",
+    "source": {
+      "sourceKind": "legacy-ref",
+      "source": "issue-02"
+    }
+  },
+  "supportingAssetPlans": [
+    {
+      "assetKey": "issue-02-support-01",
+      "sectionKey": "exec-2",
+      "editorialPurpose": "Executive Summary",
+      "kind": "action",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #02",
+        "Section 01"
+      ],
+      "altText": "How to Jailbreak Any AI: The Tricks Hackers Actually Use supporting visual 1",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-02-support-02",
+      "sectionKey": "deep-2",
+      "editorialPurpose": "The Anatomy of AI Jailbreaks",
+      "kind": "comparison",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #02",
+        "Section 02"
+      ],
+      "altText": "How to Jailbreak Any AI: The Tricks Hackers Actually Use supporting visual 2",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-02-support-03",
+      "sectionKey": "case-2a",
+      "editorialPurpose": "The \"Rogue Tutor\" Prompt – Beginner-Friendly Jailbreak",
+      "kind": "consequence",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #02",
+        "Section 03"
+      ],
+      "altText": "How to Jailbreak Any AI: The Tricks Hackers Actually Use supporting visual 3",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    }
+  ],
+  "createdAt": "2026-07-13T19:52:54.366Z",
+  "updatedAt": "2025-02-12T00:00:00.000Z",
+  "notes": [
+    "Skeleton manifest for future visual planning"
+  ]
+}
