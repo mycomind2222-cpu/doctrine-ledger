@@ -22,4 +22,14 @@ describe("issue presentation helpers", () => {
     const issue = issues.find((item) => item.number === 1);
     expect(getIssueSummary(issue!)).toContain("Synthetic identity fraud combines a real piece of personal information");
   });
+
+  it("returns the rewritten summaries for issues 2 and 3", () => {
+    const issue2 = issues.find((item) => item.number === 2);
+    const issue3 = issues.find((item) => item.number === 3);
+
+    expect(issue2).toBeTruthy();
+    expect(issue3).toBeTruthy();
+    expect(getIssueSummary(issue2!)).toContain("Jailbreaking and prompt injection are related but different problems");
+    expect(getIssueSummary(issue3!)).toContain("Most serious AI red-teaming is not happening in secret Discords");
+  });
 });

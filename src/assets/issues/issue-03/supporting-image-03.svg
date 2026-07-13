@@ -1,0 +1,63 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#04060b"/>
+      <stop offset="1" stop-color="#091621"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="44" y="44" width="1512" height="812" rx="28" stroke="rgba(255,139,77,0.34)" stroke-width="2"/>
+  <text x="800" y="112" fill="#f4eadc" font-family="Arial, Helvetica, sans-serif" font-size="28" text-anchor="middle" letter-spacing="5">
+    AGENTIC WORKFLOW WITH GUARDRAILS
+  </text>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g transform="translate(120 238)">
+      <rect width="250" height="220" rx="26" fill="rgba(255,255,255,0.05)" stroke="rgba(138,208,255,0.24)" stroke-width="2"/>
+      <text x="28" y="54" fill="#8ad0ff" font-size="20" letter-spacing="4">READ</text>
+      <text x="28" y="92" fill="#f4eadc" font-size="28" font-weight="700">Untrusted content</text>
+      <text x="28" y="134" fill="#b69f86" font-size="18">Web pages, docs, emails, images</text>
+    </g>
+    <g transform="translate(428 238)">
+      <rect width="250" height="220" rx="26" fill="rgba(255,255,255,0.05)" stroke="rgba(255,139,77,0.24)" stroke-width="2"/>
+      <text x="28" y="54" fill="#ff8b4d" font-size="20" letter-spacing="4">DECIDE</text>
+      <text x="28" y="92" fill="#f4eadc" font-size="28" font-weight="700">Policy gate</text>
+      <text x="28" y="134" fill="#b69f86" font-size="18">Least privilege and human review</text>
+    </g>
+    <g transform="translate(736 238)">
+      <rect width="250" height="220" rx="26" fill="rgba(255,255,255,0.05)" stroke="rgba(138,208,255,0.24)" stroke-width="2"/>
+      <text x="28" y="54" fill="#8ad0ff" font-size="20" letter-spacing="4">ACT</text>
+      <text x="28" y="92" fill="#f4eadc" font-size="28" font-weight="700">Scoped tools</text>
+      <text x="28" y="134" fill="#b69f86" font-size="18">Calendar, browser, mail, files</text>
+    </g>
+    <g transform="translate(1044 238)">
+      <rect width="250" height="220" rx="26" fill="rgba(255,255,255,0.05)" stroke="rgba(255,139,77,0.24)" stroke-width="2"/>
+      <text x="28" y="54" fill="#ff8b4d" font-size="20" letter-spacing="4">VERIFY</text>
+      <text x="28" y="92" fill="#f4eadc" font-size="28" font-weight="700">Human checkpoint</text>
+      <text x="28" y="134" fill="#b69f86" font-size="18">Stop before anything irreversible</text>
+    </g>
+  </g>
+
+  <g stroke-linecap="round" stroke-width="6" filter="url(#glow)">
+    <path d="M 370 348 H 428" stroke="#8ad0ff"/>
+    <path d="M 678 348 H 736" stroke="#ff8b4d"/>
+    <path d="M 986 348 H 1044" stroke="#8ad0ff"/>
+  </g>
+
+  <circle cx="800" cy="606" r="124" fill="rgba(255,139,77,0.08)" stroke="rgba(255,139,77,0.38)" stroke-width="2"/>
+  <circle cx="800" cy="606" r="70" fill="rgba(138,208,255,0.06)" stroke="#8ad0ff" stroke-width="3" filter="url(#glow)"/>
+  <text x="800" y="602" fill="#f4eadc" font-family="Arial, Helvetica, sans-serif" font-size="26" text-anchor="middle" font-weight="700">AGENT</text>
+  <text x="800" y="634" fill="#b69f86" font-family="Arial, Helvetica, sans-serif" font-size="18" text-anchor="middle">non-human identity</text>
+
+  <text x="800" y="846" fill="#f4eadc" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="middle" letter-spacing="3">
+    The risk is action, not just output
+  </text>
+</svg>

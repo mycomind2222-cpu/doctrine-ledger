@@ -4,6 +4,12 @@ const issue01Cover = assetUrl("../assets/issues/issue-01/cover.png");
 const issue01Support01 = assetUrl("../assets/issues/issue-01/supporting-image-01.svg");
 const issue01Support02 = assetUrl("../assets/issues/issue-01/supporting-image-02.svg");
 const issue01Support03 = assetUrl("../assets/issues/issue-01/supporting-image-03.svg");
+const issue02Support01 = assetUrl("../assets/issues/issue-02/supporting-image-01.svg");
+const issue02Support02 = assetUrl("../assets/issues/issue-02/supporting-image-02.svg");
+const issue02Support03 = assetUrl("../assets/issues/issue-02/supporting-image-03.svg");
+const issue03Support01 = assetUrl("../assets/issues/issue-03/supporting-image-01.svg");
+const issue03Support02 = assetUrl("../assets/issues/issue-03/supporting-image-02.svg");
+const issue03Support03 = assetUrl("../assets/issues/issue-03/supporting-image-03.svg");
 const issue02Cover = assetUrl("../assets/covers/issue-02.png");
 const issue03Cover = assetUrl("../assets/covers/issue-03.png");
 const issue04Cover = assetUrl("../assets/covers/issue-04.png");
@@ -45,6 +51,18 @@ export const issue01SupportingMedia = {
   mechanics: issue01Support01,
   numbers: issue01Support02,
   defenses: issue01Support03,
+} as const;
+
+export const issue02SupportingMedia = {
+  framework: issue02Support01,
+  incidents: issue02Support02,
+  defenses: issue02Support03,
+} as const;
+
+export const issue03SupportingMedia = {
+  ecosystem: issue03Support01,
+  contrast: issue03Support02,
+  workflow: issue03Support03,
 } as const;
 
 export const issue01SupportingMediaRefs = {

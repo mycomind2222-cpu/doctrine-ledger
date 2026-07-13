@@ -1,0 +1,53 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#04060b"/>
+      <stop offset="1" stop-color="#0a1623"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="44" y="44" width="1512" height="812" rx="28" stroke="rgba(138,208,255,0.32)" stroke-width="2"/>
+  <text x="800" y="118" fill="#f4eadc" font-family="Arial, Helvetica, sans-serif" font-size="30" text-anchor="middle" letter-spacing="5">
+    LEGITIMATE VS UNDERGROUND
+  </text>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="110" y="182" width="560" height="540" rx="30" fill="rgba(138,208,255,0.06)" stroke="rgba(138,208,255,0.26)" stroke-width="2"/>
+    <rect x="930" y="182" width="560" height="540" rx="30" fill="rgba(255,139,77,0.06)" stroke="rgba(255,139,77,0.26)" stroke-width="2"/>
+
+    <text x="390" y="246" fill="#8ad0ff" font-size="22" text-anchor="middle" letter-spacing="5">LEGITIMATE</text>
+    <text x="1190" y="246" fill="#ff8b4d" font-size="22" text-anchor="middle" letter-spacing="5">UNDERGROUND</text>
+
+    <g fill="#f4eadc">
+      <rect x="162" y="290" width="456" height="84" rx="18" fill="rgba(255,255,255,0.04)"/>
+      <rect x="162" y="394" width="456" height="84" rx="18" fill="rgba(255,255,255,0.04)"/>
+      <rect x="162" y="498" width="456" height="84" rx="18" fill="rgba(255,255,255,0.04)"/>
+      <rect x="162" y="602" width="456" height="84" rx="18" fill="rgba(255,255,255,0.04)"/>
+      <text x="194" y="338" font-size="24" font-weight="700">Bug bounties</text>
+      <text x="194" y="442" font-size="24" font-weight="700">Benchmarks</text>
+      <text x="194" y="546" font-size="24" font-weight="700">Standards bodies</text>
+      <text x="194" y="650" font-size="24" font-weight="700">CTF training</text>
+    </g>
+
+    <g fill="#f4eadc">
+      <rect x="982" y="290" width="456" height="84" rx="18" fill="rgba(255,255,255,0.04)"/>
+      <rect x="982" y="394" width="456" height="84" rx="18" fill="rgba(255,255,255,0.04)"/>
+      <rect x="982" y="498" width="456" height="84" rx="18" fill="rgba(255,255,255,0.04)"/>
+      <rect x="982" y="602" width="456" height="84" rx="18" fill="rgba(255,255,255,0.04)"/>
+      <text x="1014" y="338" font-size="24" font-weight="700">Prompt trading</text>
+      <text x="1014" y="442" font-size="24" font-weight="700">Reputation systems</text>
+      <text x="1014" y="546" font-size="24" font-weight="700">Tiered access</text>
+      <text x="1014" y="650" font-size="24" font-weight="700">Commercial malware kits</text>
+    </g>
+  </g>
+
+  <line x1="800" y1="182" x2="800" y2="722" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+  <circle cx="800" cy="452" r="84" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+  <text x="800" y="448" fill="#f4eadc" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="middle">Same techniques</text>
+  <text x="800" y="482" fill="#b69f86" font-family="Arial, Helvetica, sans-serif" font-size="18" text-anchor="middle">Different scale</text>
+
+  <text x="800" y="846" fill="#f4eadc" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="middle" letter-spacing="3">
+    The public field is larger and easier to audit
+  </text>
+</svg>
