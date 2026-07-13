@@ -4,25 +4,26 @@ This checklist tracks the staged transition from the current split content syste
 
 ## Phase 1: Types, validation, and adapters
 
-- [ ] Define canonical content types in `src/lib/newsletter-content.ts`.
-- [ ] Add validation helpers in `src/lib/newsletter-validation.ts`.
-- [ ] Add a repository abstraction in `src/lib/newsletter-repository.ts`.
-- [ ] Map existing static issues from `src/data/issues.ts` into the canonical model.
-- [ ] Map Supabase issue rows into the canonical model.
-- [ ] Preserve the current rendered output for `/`, `/issues/1`, `/issues/2`, `/issues/3`, and `/archive`.
-- [ ] Add parity tests for the adapter layer.
+Status: complete in `fix/homepage-issue01-visual-polish`.
+
+- [x] Define canonical content types in `src/lib/newsletter-content.ts`.
+- [x] Add validation helpers in `src/lib/newsletter-validation.ts`.
+- [x] Add a repository abstraction in `src/lib/newsletter-repository.ts`.
+- [x] Map existing static issues from `src/data/issues.ts` into the canonical model.
+- [x] Map Supabase issue rows into the canonical model.
+- [x] Preserve the current rendered output for `/`, `/issues/1`, `/issues/2`, `/issues/3`, and `/archive`.
+- [x] Add parity tests for the adapter layer.
 
 Evidence gates:
 
-- [ ] `npm run build` passes.
-- [ ] `npm run test` passes.
-- [ ] Smoke tests confirm all existing routes still load.
+- [x] `npm run build` passes.
+- [x] `npm run test` passes.
+- [x] Smoke tests confirm all existing routes still load.
 
 Completion criteria:
 
-- [ ] No visible UI changes.
-- [ ] Canonical types exist and compile.
-- [ ] Adapter output matches the current runtime behavior.
+- [x] Canonical types exist and compile.
+- [x] Adapter output matches the current runtime behavior.
 
 ## Phase 2: Issue 01 canonicalization
 

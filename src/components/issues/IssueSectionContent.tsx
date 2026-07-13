@@ -7,6 +7,23 @@ interface IssueSectionContentProps {
   locked?: boolean;
 }
 
+const linkifySource = (content: string) => {
+  const urlMatch = content.match(/https?:\/\/[^\s)]+/i);
+  if (!urlMatch) return content;
+
+  const [url] = urlMatch;
+  const [before, after] = content.split(url, 2);
+  return (
+    <>
+      {before}
+      <a href={url} target="_blank" rel="noreferrer noopener" className="underline decoration-current underline-offset-2 hover:opacity-80">
+        {url}
+      </a>
+      {after}
+    </>
+  );
+};
+
 const SourcesList = ({ content }: { content: string }) => {
   const items = content
     .split(/;\s*/)
@@ -16,9 +33,9 @@ const SourcesList = ({ content }: { content: string }) => {
   return (
     <ol className="space-y-3">
       {items.map((item, index) => (
-        <li key={index} className="flex gap-3 text-[15px] leading-7 text-black/82">
+        <li key={index} className="flex gap-4 rounded-[18px] border border-black/8 bg-white/55 px-4 py-3 text-[15px] leading-7 text-black/82 shadow-[0_16px_36px_rgba(0,0,0,0.04)]">
           <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-black/45 pt-1">{String(index + 1).padStart(2, "0")}</span>
-          <span>{item}</span>
+          <span className="min-w-0">{linkifySource(item)}</span>
         </li>
       ))}
     </ol>
@@ -31,7 +48,7 @@ export const IssueSectionContent = ({ section, locked = false }: IssueSectionCon
 
   if (locked) {
     return (
-      <div className="rounded-2xl border border-black/10 bg-white/55 p-5 text-sm leading-7 text-black/70">
+      <div className="rounded-[20px] border border-black/10 bg-white/55 p-5 text-sm leading-7 text-black/70">
         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-black/45">Restricted content</p>
         <p className="mt-3">
           This section is restricted. The section title remains visible, but the body and media are not rendered for unauthorized readers.
@@ -53,7 +70,7 @@ export const IssueSectionContent = ({ section, locked = false }: IssueSectionCon
       {section.type === "sources" ? (
         <SourcesList content={section.content} />
       ) : (
-        <MarkdownRenderer content={section.content} className="space-y-5 text-[16px] leading-8 text-black/82" />
+        <MarkdownRenderer content={section.content} className="space-y-5 text-[17px] leading-[1.82] text-black/82" />
       )}
 
       {afterMedia.length > 0 && (

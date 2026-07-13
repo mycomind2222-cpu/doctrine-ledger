@@ -611,12 +611,15 @@ The repository still uses the `professional` tier in several places. That tier s
 
 **Goal:** introduce canonical types and adapter functions without changing visible behavior.
 
+**Status:** Complete in `fix/homepage-issue01-visual-polish`.
+
 Expected file changes:
 
 - New:
   - `src/lib/newsletter-content.ts`
   - `src/lib/newsletter-validation.ts`
   - `src/lib/newsletter-repository.ts`
+  - `src/lib/newsletter-adapters.ts`
 - Modify:
   - `src/data/issues.ts`
   - `src/lib/issue-presentations.ts`
@@ -626,6 +629,11 @@ Expected file changes:
   - `src/pages/IssuePage.tsx`
   - `src/components/IssueCard.tsx`
   - `src/components/issues/Issue01Template.tsx`
+  - `src/components/issues/IssueSectionContent.tsx`
+  - `src/components/issues/IssueMediaFigure.tsx`
+  - `src/components/MarkdownRenderer.tsx`
+  - `src/components/Header.tsx`
+  - `src/components/Footer.tsx`
   - tests under `src/test/*`
 
 Database impact:
@@ -649,8 +657,9 @@ Rollback:
 
 Acceptance criteria:
 
-- No visible UI changes.
 - Canonical types are in place.
+- Canonical adapters and repository reads are in place.
+- Homepage and Issue 01 continue to render through the new adapter layer.
 - All existing tests still pass.
 
 Out of scope:

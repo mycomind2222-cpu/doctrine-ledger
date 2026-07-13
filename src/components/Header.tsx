@@ -17,32 +17,32 @@ export const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const isActive = (path: string) => {
-    if (path === "/" ) return location.pathname === "/";
+    if (path === "/") return location.pathname === "/" || location.pathname.startsWith("/issues/");
     return location.pathname === path;
   };
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/8 bg-[#070707]/96 text-[#f2e7d8] backdrop-blur-md">
-        <div className="mx-auto flex h-20 max-w-[1600px] items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
-          <Link to="/" className="flex items-start gap-3">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/8 bg-[#060606]/96 text-[#f2e7d8] shadow-[0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-md">
+        <div className="mx-auto flex h-[72px] max-w-[1600px] items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
+          <Link to="/" className="flex items-center gap-3">
             <div className="space-y-1">
-              <div className="font-serif text-[30px] font-semibold leading-none tracking-[-0.04em] text-[#f2e7d8] sm:text-[34px]">
+              <div className="font-serif text-[28px] font-semibold leading-none tracking-[-0.04em] text-[#f2e7d8] sm:text-[32px]">
                 BLACKFILES
               </div>
-              <div className="font-mono text-[10px] uppercase tracking-[0.42em] text-[#f2e7d8]/68">
+              <div className="font-mono text-[9px] uppercase tracking-[0.42em] text-[#f2e7d8]/66">
                 Truth. Verified. First.
               </div>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-7 lg:flex">
             {navLinks.map((item) => (
               <Link
                 key={item.label}
                 to={item.path}
                 className={cn(
-                  "font-mono text-[12px] uppercase tracking-[0.32em] text-[#f2e7d8]/86 transition-colors hover:text-[#ff8b4d]",
+                  "font-mono text-[12px] uppercase tracking-[0.3em] text-[#f2e7d8]/82 transition-colors hover:text-[#ff8b4d]",
                   isActive(item.path) && "text-[#ff8b4d]"
                 )}
               >
@@ -90,7 +90,7 @@ export const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18 }}
-            className="fixed inset-x-0 top-20 z-40 border-b border-white/8 bg-[#070707]/98 px-4 py-4 text-[#f2e7d8] backdrop-blur-md lg:hidden"
+            className="fixed inset-x-0 top-[72px] z-40 border-b border-white/8 bg-[#060606]/98 px-4 py-4 text-[#f2e7d8] backdrop-blur-md lg:hidden"
           >
             <div className="mx-auto flex max-w-[1600px] flex-col gap-2">
               {navLinks.map((item) => (
@@ -106,6 +106,22 @@ export const Header = () => {
                   {item.label}
                 </Link>
               ))}
+              <div className="mt-2 grid grid-cols-2 gap-3">
+                <Link
+                  to="/archive"
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-lg border border-white/10 px-4 py-3 text-center font-mono text-[11px] uppercase tracking-[0.28em] text-[#f2e7d8]/80 transition-colors hover:border-[#ff8b4d]/40 hover:text-[#ff8b4d]"
+                >
+                  Archive
+                </Link>
+                <Link
+                  to="/auth"
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-lg border border-[#ff8b4d]/50 px-4 py-3 text-center font-mono text-[11px] uppercase tracking-[0.28em] text-[#f2e7d8] transition-colors hover:bg-[#ff8b4d]/10"
+                >
+                  Join
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Clock, Mail, Printer, Share2, Bookmark, Linkedin, Facebook, Twitter, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Mail, Share2, Linkedin, Facebook, Twitter } from "lucide-react";
 import { type Issue } from "@/data/issues";
 import { resolveIssueCover } from "@/lib/issue-assets";
-import { cn } from "@/lib/utils";
 import { IssueSectionContent } from "./IssueSectionContent";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -36,8 +35,8 @@ const formatDate = (date: string) =>
 const StoryCard = ({ issue }: { issue: Issue }) => {
   const cover = resolveIssueCover(issue.coverImage);
   return (
-    <Link to={`/issues/${issue.number}`} className="group grid grid-cols-[84px_minmax(0,1fr)] gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 transition-colors hover:border-[#ff8b4d]/50">
-      <div className="aspect-[2/3] overflow-hidden rounded-xl bg-black/80">
+    <Link to={`/issues/${issue.number}`} className="group grid grid-cols-[84px_minmax(0,1fr)] gap-3 rounded-[20px] border border-black/10 bg-white/75 p-3 transition-colors hover:border-[#ff8b4d]/50">
+      <div className="aspect-[2/3] overflow-hidden rounded-[14px] bg-black/85">
         {cover ? (
           <img src={cover} alt={`Issue ${issue.number} cover`} className="h-full w-full object-contain" />
         ) : (
@@ -50,10 +49,10 @@ const StoryCard = ({ issue }: { issue: Issue }) => {
         <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#ff8b4d]">
           Issue #{String(issue.number).padStart(2, "0")}
         </p>
-        <h3 className="text-sm font-semibold leading-5 text-white group-hover:text-[#f2e8d8]">
+        <h3 className="text-sm font-semibold leading-5 text-[#111111] group-hover:text-[#ff6a3d]">
           {issue.title}
         </h3>
-        <span className="inline-flex rounded-full border border-white/10 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/55">
+        <span className="inline-flex rounded-full border border-black/10 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-black/55">
           Read issue
         </span>
       </div>
@@ -67,7 +66,7 @@ export const Issue01Template = ({ issue, allIssues }: Issue01TemplateProps) => {
   const summary = getIssueSummary(issue);
   const shareTargets = shareLinks(issue.number, `BLACKFILES Issue #${String(issue.number).padStart(2, "0")}: ${issue.title}`);
   const issueSections = issue.sections.filter((section) => section.audienceLevel !== "restricted");
-  const tocSections = issueSections.filter((section) => section.type !== "sources");
+  const tocSections = issueSections;
   const readNext = [2, 3]
     .map((number) => allIssues.find((candidate) => candidate.number === number))
     .filter((candidate): candidate is Issue => Boolean(candidate));
@@ -78,39 +77,40 @@ export const Issue01Template = ({ issue, allIssues }: Issue01TemplateProps) => {
     <div className="min-h-screen bg-[#f4efe4] text-[#151311]">
       <Header />
 
-      <main className="mx-auto max-w-[1520px] px-4 pb-16 pt-24 sm:px-6 lg:px-8">
+      <main className="mx-auto max-w-[1520px] px-4 pb-16 pt-[72px] sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[72px_minmax(0,1fr)_340px]">
           <aside className="hidden lg:block">
-            <div className="sticky top-24 space-y-8">
-              <div className="flex flex-col items-center gap-4 text-[#151311]">
-                {[Bookmark, X, Linkedin, Facebook, Mail, Printer].map((Icon, index) => (
-                  <button key={index} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/60 transition-colors hover:border-[#ff8b4d]/40 hover:text-[#ff8b4d]">
-                    <Icon className="h-4 w-4" />
-                  </button>
-                ))}
+            <div className="sticky top-24 space-y-4">
+              <div className="rounded-[20px] border border-black/10 bg-white/65 p-4 text-center shadow-[0_18px_36px_rgba(0,0,0,0.05)]">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#a56b3b]">
+                  Issue 01
+                </p>
+                <div className="mt-2 font-serif text-[48px] leading-none tracking-[-0.08em] text-[#111111]">
+                  01
+                </div>
+                <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.28em] text-black/48">
+                  Public issue
+                </p>
               </div>
 
-              <div className="rounded-2xl border border-black/10 bg-white/50 p-4 shadow-[0_20px_40px_rgba(0,0,0,0.05)]">
-                <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.3em] text-black/45">
-                  On this page
+              <div className="rounded-[20px] border border-black/10 bg-white/65 p-4 shadow-[0_18px_36px_rgba(0,0,0,0.05)]">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#a56b3b]">
+                  Reading
                 </p>
-                <ol className="space-y-3">
-                  {tocSections.map((section, index) => (
-                    <li key={section.id}>
-                      <a href={`#${section.id}`} className={cn("block text-[12px] leading-5 transition-colors hover:text-[#ff6a3d]", index === 0 ? "text-[#ff6a3d]" : "text-black/75")}>
-                        <span className="mr-2 font-mono text-[10px] uppercase tracking-[0.24em] text-[#ff6a3d]">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        {section.title}
-                      </a>
-                    </li>
-                  ))}
-                </ol>
+                <div className="mt-3 font-serif text-[34px] leading-none tracking-[-0.06em] text-[#111111]">
+                  {readingTime}
+                </div>
+                <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.28em] text-black/48">
+                  min read
+                </p>
+                <p className="mt-3 text-[11px] leading-5 text-black/56">
+                  Published {formatDate(issue.publishDate)}
+                </p>
               </div>
             </div>
           </aside>
 
-          <div className="space-y-10">
+          <div className="min-w-0 space-y-10">
             <section className="grid gap-8 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)]">
               <div className="space-y-4">
                 <div className="overflow-hidden rounded-[26px] border border-black/10 bg-black p-4 shadow-[0_26px_60px_rgba(0,0,0,0.14)]">
@@ -183,13 +183,13 @@ export const Issue01Template = ({ issue, allIssues }: Issue01TemplateProps) => {
             </section>
 
             <section className="lg:hidden">
-              <div className="rounded-2xl border border-black/10 bg-white/60 p-4">
+              <div className="rounded-[20px] border border-black/10 bg-white/60 p-4 shadow-[0_18px_36px_rgba(0,0,0,0.05)]">
                 <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-black/45">
                   On this page
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {tocSections.map((section, index) => (
-                    <a key={section.id} href={`#${section.id}`} className="rounded-full border border-black/10 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-black/65">
+                    <a key={section.id} href={`#${section.id}`} className="rounded-full border border-black/10 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-black/65 transition-colors hover:border-[#ff8b4d]/40 hover:text-[#ff6a3d]">
                       {String(index + 1).padStart(2, "0")} {section.title}
                     </a>
                   ))}
@@ -213,43 +213,30 @@ export const Issue01Template = ({ issue, allIssues }: Issue01TemplateProps) => {
               ))}
             </section>
 
-            <section className="grid gap-6 border-t border-black/10 pt-10 lg:grid-cols-[minmax(0,1fr)_320px]">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff6a3d]">Previous / next</span>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  {previousIssue && (
-                    <Link to={`/issues/${previousIssue.number}`} className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/65 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.24em] text-black/75">
-                      <ArrowLeft className="h-3.5 w-3.5" />
-                      Previous issue
-                    </Link>
-                  )}
-                  {nextIssue && (
-                    <Link to={`/issues/${nextIssue.number}`} className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/65 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.24em] text-black/75">
-                      Next issue
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
-                  )}
-                </div>
+            <section className="border-t border-black/10 pt-10">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#ff6a3d]">Previous / next</span>
               </div>
-
-              <aside className="space-y-4">
-                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-black/45">
-                  Read next
-                </p>
-                <div className="space-y-3">
-                  {readNext.map((item) => (
-                    <StoryCard key={item.number} issue={item} />
-                  ))}
-                </div>
-              </aside>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {previousIssue && (
+                  <Link to={`/issues/${previousIssue.number}`} className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/65 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.24em] text-black/75 transition-colors hover:border-[#ff8b4d]/45 hover:text-[#ff6a3d]">
+                    <ArrowLeft className="h-3.5 w-3.5" />
+                    Previous issue
+                  </Link>
+                )}
+                {nextIssue && (
+                  <Link to={`/issues/${nextIssue.number}`} className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/65 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.24em] text-black/75 transition-colors hover:border-[#ff8b4d]/45 hover:text-[#ff6a3d]">
+                    Next issue
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                )}
+              </div>
             </section>
           </div>
 
           <aside className="hidden lg:block">
-            <div className="sticky top-24 space-y-5">
-              <section className="rounded-2xl bg-[#111111] p-5 text-[#f2e8d8] shadow-[0_30px_60px_rgba(0,0,0,0.18)]">
+            <div className="sticky top-24 max-h-[calc(100vh-7rem)] space-y-5 overflow-y-auto pr-1">
+              <section className="rounded-[22px] bg-[#111111] p-5 text-[#f2e8d8] shadow-[0_30px_60px_rgba(0,0,0,0.18)]">
                 <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-white/55">
                   In this issue
                 </p>
@@ -269,7 +256,7 @@ export const Issue01Template = ({ issue, allIssues }: Issue01TemplateProps) => {
                 </ol>
               </section>
 
-              <section className="rounded-2xl border border-black/10 bg-white/60 p-5 shadow-[0_20px_48px_rgba(0,0,0,0.06)]">
+              <section className="rounded-[22px] border border-black/10 bg-white/60 p-5 shadow-[0_20px_48px_rgba(0,0,0,0.06)]">
                 <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-black/45">
                   About this issue
                 </p>
@@ -278,7 +265,18 @@ export const Issue01Template = ({ issue, allIssues }: Issue01TemplateProps) => {
                 </p>
               </section>
 
-              <section className="rounded-2xl bg-[#111111] p-5 text-[#f2e8d8] shadow-[0_30px_60px_rgba(0,0,0,0.18)]">
+              <section className="rounded-[22px] border border-black/10 bg-white/60 p-5 shadow-[0_20px_48px_rgba(0,0,0,0.06)]">
+                <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-black/45">
+                  Read next
+                </p>
+                <div className="mt-4 space-y-3">
+                  {readNext.map((item) => (
+                    <StoryCard key={item.number} issue={item} />
+                  ))}
+                </div>
+              </section>
+
+              <section className="rounded-[22px] bg-[#111111] p-5 text-[#f2e8d8] shadow-[0_30px_60px_rgba(0,0,0,0.18)]">
                 <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-white/55">
                   Share this issue
                 </p>
