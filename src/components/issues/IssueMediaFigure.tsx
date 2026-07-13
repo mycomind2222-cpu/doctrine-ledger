@@ -18,7 +18,7 @@ export const IssueMediaFigure = ({ media, className }: IssueMediaFigureProps) =>
 
   return (
     <figure className={cn("space-y-3", className)}>
-      <div className={cn("overflow-hidden rounded-2xl border border-black/10 bg-[#0d1117] p-3 shadow-[0_24px_60px_rgba(0,0,0,0.12)]", aspectClass)}>
+      <div className={cn("overflow-hidden rounded-[22px] border border-black/10 bg-[#0d1117] p-3 shadow-[0_24px_60px_rgba(0,0,0,0.12)]", aspectClass)}>
         <img
           src={media.src}
           alt={media.alt}
@@ -27,9 +27,9 @@ export const IssueMediaFigure = ({ media, className }: IssueMediaFigureProps) =>
         />
       </div>
       {(media.caption || media.credit) && (
-        <figcaption className="space-y-1 text-xs leading-5 text-black/60">
-          {media.caption && <p>{media.caption}</p>}
-          {media.credit && <p className="font-mono uppercase tracking-widest">{media.credit}</p>}
+        <figcaption className="space-y-1.5 text-xs leading-5 text-black/60">
+          {media.caption && <p className="max-w-3xl">{media.caption}</p>}
+          {media.credit && <p className="font-mono uppercase tracking-[0.22em] text-black/42">{media.credit}</p>}
         </figcaption>
       )}
     </figure>

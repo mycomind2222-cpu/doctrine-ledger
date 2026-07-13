@@ -60,7 +60,7 @@ export const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) 
     .filter(Boolean);
 
   return (
-    <div className={cn("space-y-4", className)}>
+    <div className={cn("space-y-5", className)}>
       {blocks.map((block, blockIndex) => {
         const lines = block.split("\n").map((line) => line.trim()).filter(Boolean);
 
@@ -73,7 +73,13 @@ export const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) 
           const text = block.replace(/^#{1,3}\s+/, "");
           const HeadingTag = (`h${Math.min(level + 1, 3)}` as "h2" | "h3");
           return (
-            <HeadingTag key={blockIndex} className={level === 1 ? "text-3xl font-semibold" : "text-2xl font-semibold"}>
+            <HeadingTag
+              key={blockIndex}
+              className={cn(
+                "font-serif font-semibold tracking-[-0.03em] text-black",
+                level === 1 ? "text-3xl" : "text-2xl"
+              )}
+            >
               {renderInline(text)}
             </HeadingTag>
           );
@@ -81,9 +87,9 @@ export const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) 
 
         if (lines.length > 1 && lines.every(isBulletLine)) {
           return (
-            <ul key={blockIndex} className="space-y-3 pl-5 list-disc">
+            <ul key={blockIndex} className="space-y-3 pl-6 list-disc marker:text-black/45">
               {lines.map((line, lineIndex) => (
-                <li key={lineIndex} className="leading-relaxed">
+                <li key={lineIndex} className="leading-[1.75]">
                   {renderInline(line.replace(/^(\s*[-•]\s+)/, ""))}
                 </li>
               ))}
@@ -93,9 +99,9 @@ export const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) 
 
         if (lines.length > 1 && lines.every(isOrderedLine)) {
           return (
-            <ol key={blockIndex} className="space-y-3 pl-5 list-decimal">
+            <ol key={blockIndex} className="space-y-3 pl-6 list-decimal marker:text-black/45">
               {lines.map((line, lineIndex) => (
-                <li key={lineIndex} className="leading-relaxed">
+                <li key={lineIndex} className="leading-[1.75]">
                   {renderInline(line.replace(/^\s*\d+[.)]\s+/, ""))}
                 </li>
               ))}
@@ -104,7 +110,7 @@ export const MarkdownRenderer = ({ content, className }: MarkdownRendererProps) 
         }
 
         return (
-          <p key={blockIndex} className="leading-7">
+          <p key={blockIndex} className="leading-[1.82]">
             {renderInline(lines.join(" "))}
           </p>
         );

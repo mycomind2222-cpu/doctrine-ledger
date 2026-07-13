@@ -5,11 +5,11 @@ import { Mail, Linkedin, Twitter } from "lucide-react";
 export const Footer = forwardRef<HTMLElement>((_, ref) => {
   return (
     <footer ref={ref} className="border-t border-white/8 bg-[#050505] text-[#f1e5d6]">
-      <div className="mx-auto max-w-[1600px] px-4 py-10 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)_minmax(0,0.7fr)]">
+      <div className="mx-auto max-w-[1600px] px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)_minmax(0,0.7fr)] lg:items-start">
           <div className="space-y-4">
             <div>
-              <div className="font-serif text-[28px] font-semibold leading-none tracking-[-0.04em]">
+              <div className="font-serif text-[28px] font-semibold leading-none tracking-[-0.04em] sm:text-[30px]">
                 BLACKFILES
               </div>
               <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.4em] text-[#f1e5d6]/65">
@@ -21,7 +21,7 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.32em] text-[#ff8b4d]">
                 Navigation

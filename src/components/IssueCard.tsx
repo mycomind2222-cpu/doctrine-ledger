@@ -28,11 +28,11 @@ export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index
     <article
       ref={ref}
       className={cn(
-        "group h-full overflow-hidden rounded-[18px] border border-white/10 bg-white/[0.03] transition-colors duration-300 hover:border-[#ff8b4d]/45 hover:bg-white/[0.05]"
+        "group h-full overflow-hidden rounded-[20px] border border-white/10 bg-white/[0.035] transition-colors duration-300 hover:border-[#ff8b4d]/45 hover:bg-white/[0.05]"
       )}
     >
-      <Link to={`/issues/${issue.number}`} className="grid h-full grid-cols-[96px_minmax(0,1fr)] gap-4 p-4 sm:grid-cols-[112px_minmax(0,1fr)]">
-        <div className="overflow-hidden rounded-[14px] border border-white/8 bg-[#050505] p-2 shadow-[0_18px_30px_rgba(0,0,0,0.28)]">
+      <Link to={`/issues/${issue.number}`} className="grid h-full grid-cols-[92px_minmax(0,1fr)] gap-4 p-4 sm:grid-cols-[116px_minmax(0,1fr)] sm:gap-5">
+        <div className="flex aspect-[3/4] items-center justify-center overflow-hidden rounded-[15px] border border-white/8 bg-[#050505] p-2 shadow-[0_18px_30px_rgba(0,0,0,0.28)]">
           {coverImage ? (
             <img
               src={coverImage}
@@ -41,24 +41,25 @@ export const IssueCard = forwardRef<HTMLElement, IssueCardProps>(({ issue, index
               loading={index < 2 ? "eager" : "lazy"}
             />
           ) : (
-            <div className="flex h-full items-center justify-center rounded-[10px] border border-white/8 bg-black text-white/20">
-              <span className="font-serif text-4xl font-semibold">{String(issue.number).padStart(2, "0")}</span>
+            <div className="flex h-full w-full flex-col items-center justify-center rounded-[10px] border border-white/8 bg-[radial-gradient(circle_at_top,_rgba(255,140,77,0.14),_transparent_32%),linear-gradient(180deg,_rgba(255,255,255,0.04),_transparent)] text-center text-white/20">
+              <span className="font-serif text-4xl font-semibold leading-none tracking-[-0.08em] text-[#f3e8da]">{String(issue.number).padStart(2, "0")}</span>
+              <span className="mt-2 max-w-[10ch] font-mono text-[9px] uppercase tracking-[0.28em] text-[#ff8b4d]/75">{issue.theme}</span>
             </div>
           )}
         </div>
 
-        <div className="flex min-w-0 flex-col justify-between gap-3">
-          <div className="space-y-2">
+        <div className="flex min-w-0 flex-col justify-between gap-3 py-0.5">
+          <div className="space-y-3">
             <div className="flex items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[#ff8b4d]">
               <span>Issue #{String(issue.number).padStart(2, "0")}</span>
-              <span className="truncate">{issue.theme}</span>
+              <span className="truncate text-[#f2e7d8]/64">{issue.theme}</span>
             </div>
 
-            <h3 className="font-serif text-[20px] font-semibold leading-[1.02] tracking-[-0.04em] text-[#f3e8da] group-hover:text-[#ffad70]">
+            <h3 className="font-serif text-[21px] font-semibold leading-[1.02] tracking-[-0.04em] text-[#f3e8da] group-hover:text-[#ffad70]">
               {issue.title}
             </h3>
 
-            <p className="max-w-[34ch] text-[14px] leading-6 text-[#f2e7d8]/72">
+            <p className="max-w-[36ch] text-[14px] leading-6 text-[#f2e7d8]/72">
               {summary}
             </p>
           </div>
