@@ -1,0 +1,123 @@
+{
+  "issueId": "issue-01",
+  "issueNumber": 1,
+  "articleRevisionId": "rev-e299bee2cb64ddf6",
+  "visualProfileId": "editorial-cover-v2",
+  "visualProfileVersion": 1,
+  "planStatus": "approved",
+  "approvalStatus": "approved",
+  "coverPlan": {
+    "assetKey": "issue-01-cover",
+    "editorialPurpose": "Approved reference cover",
+    "artDirection": "Lock the current Issue 01 cover and preserve all supporting assets.",
+    "generationMethod": "editor-upload",
+    "prohibitedImplications": [
+      "No fabricated statistics",
+      "No automatic approval"
+    ],
+    "sourceIds": [
+      "issue-01-cover"
+    ],
+    "requiredLabels": [
+      "BLACKFILES",
+      "Issue #01"
+    ],
+    "altText": "Issue 01 cover",
+    "caption": "Approved Issue 01 reference cover.",
+    "placement": "cover",
+    "aspectRatio": "2:3",
+    "approvalStatus": "approved",
+    "source": {
+      "sourceKind": "legacy-ref",
+      "source": "issue-01"
+    }
+  },
+  "supportingAssetPlans": [
+    {
+      "assetKey": "issue-01-support-01",
+      "sectionKey": "mechanics-1",
+      "editorialPurpose": "The mechanics: how a fake person gets built",
+      "kind": "mechanism",
+      "generationMethod": "editor-upload",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [
+        "mechanics-diagram"
+      ],
+      "requiredLabels": [
+        "Issue #01",
+        "Section 01"
+      ],
+      "altText": "Four-step diagram showing how a synthetic identity is built from a stolen SSN, fabricated identity details, seasoning, and bust-out fraud.",
+      "caption": "Synthetic identities are built in stages, not instantly.",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "approved",
+      "source": {
+        "sourceKind": "remote-url",
+        "source": "file:///Users/macdizzle/Documents/Blackfiles%20Clone/doctrine-ledger/src/assets/issues/issue-01/supporting-image-01.svg"
+      }
+    },
+    {
+      "assetKey": "issue-01-support-02",
+      "sectionKey": "numbers-1",
+      "editorialPurpose": "What the numbers actually say",
+      "kind": "evidence",
+      "generationMethod": "editor-upload",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [
+        "numbers-chart"
+      ],
+      "requiredLabels": [
+        "Issue #01",
+        "Section 02"
+      ],
+      "altText": "Dark market chart showing synthetic identity fraud loss trends and survey signals across 2020 through 2026.",
+      "caption": "Losses are rising faster than most fraud teams can react.",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "approved",
+      "source": {
+        "sourceKind": "remote-url",
+        "source": "file:///Users/macdizzle/Documents/Blackfiles%20Clone/doctrine-ledger/src/assets/issues/issue-01/supporting-image-02.svg"
+      }
+    },
+    {
+      "assetKey": "issue-01-support-03",
+      "sectionKey": "defenses-1",
+      "editorialPurpose": "What actually helps — for institutions and for individuals",
+      "kind": "defense",
+      "generationMethod": "editor-upload",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [
+        "defenses-panel"
+      ],
+      "requiredLabels": [
+        "Issue #01",
+        "Section 03"
+      ],
+      "altText": "Editorial defense matrix showing institutional controls and personal protections against synthetic identity fraud.",
+      "caption": "The best defenses are layered before the file matures.",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "approved",
+      "source": {
+        "sourceKind": "remote-url",
+        "source": "file:///Users/macdizzle/Documents/Blackfiles%20Clone/doctrine-ledger/src/assets/issues/issue-01/supporting-image-03.svg"
+      }
+    }
+  ],
+  "createdAt": "2026-07-13T19:52:54.359Z",
+  "updatedAt": "2025-01-15T00:00:00.000Z",
+  "notes": [
+    "Approved visual reference"
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "issueId": "issue-10",
+  "issueNumber": 10,
+  "articleRevisionId": "rev-98de33e4d85a23fb",
+  "visualProfileId": "editorial-cover-v2",
+  "visualProfileVersion": 1,
+  "planStatus": "unplanned",
+  "approvalStatus": "draft",
+  "coverPlan": {
+    "assetKey": "issue-10-cover",
+    "editorialPurpose": "Preview baseline cover",
+    "artDirection": "Use the current public cover as a placeholder-safe baseline.",
+    "generationMethod": "editor-upload",
+    "prompt": "Placeholder-safe cover baseline for visual system scaffolding.",
+    "prohibitedImplications": [
+      "No fabricated statistics",
+      "No automatic approval"
+    ],
+    "sourceIds": [],
+    "requiredLabels": [
+      "BLACKFILES",
+      "Issue #10"
+    ],
+    "altText": "Issue 10 cover",
+    "caption": "Current cover baseline for visual scaffolding.",
+    "placement": "cover",
+    "aspectRatio": "2:3",
+    "approvalStatus": "draft",
+    "source": {
+      "sourceKind": "legacy-ref",
+      "source": "issue-10"
+    }
+  },
+  "supportingAssetPlans": [
+    {
+      "assetKey": "issue-10-support-01",
+      "sectionKey": "exec-10",
+      "editorialPurpose": "Executive Summary",
+      "kind": "action",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #10",
+        "Section 01"
+      ],
+      "altText": "What AI Crime Looks Like in 2030 (And Why You Should Care Now) supporting visual 1",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-10-support-02",
+      "sectionKey": "deep-10",
+      "editorialPurpose": "Converging Patterns",
+      "kind": "comparison",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #10",
+        "Section 02"
+      ],
+      "altText": "What AI Crime Looks Like in 2030 (And Why You Should Care Now) supporting visual 2",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-10-support-03",
+      "sectionKey": "case-10",
+      "editorialPurpose": "Speculative Future Scenario – 2035",
+      "kind": "consequence",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #10",
+        "Section 03"
+      ],
+      "altText": "What AI Crime Looks Like in 2030 (And Why You Should Care Now) supporting visual 3",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "draft",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    }
+  ],
+  "createdAt": "2026-07-13T19:52:54.377Z",
+  "updatedAt": "2025-10-31T00:00:00.000Z",
+  "notes": [
+    "Skeleton manifest for future visual planning"
+  ]
+}

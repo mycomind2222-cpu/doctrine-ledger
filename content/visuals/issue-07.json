@@ -1,0 +1,116 @@
+{
+  "issueId": "issue-07",
+  "issueNumber": 7,
+  "articleRevisionId": "rev-6fdfef3b72513b98",
+  "visualProfileId": "editorial-cover-v2",
+  "visualProfileVersion": 1,
+  "planStatus": "template",
+  "approvalStatus": "draft",
+  "coverPlan": {
+    "assetKey": "issue-07-cover",
+    "editorialPurpose": "Preview baseline cover",
+    "artDirection": "Use the current public cover as a placeholder-safe baseline.",
+    "generationMethod": "editor-upload",
+    "prompt": "Placeholder-safe cover baseline for visual system scaffolding.",
+    "prohibitedImplications": [
+      "No fabricated statistics",
+      "No automatic approval"
+    ],
+    "sourceIds": [],
+    "requiredLabels": [
+      "BLACKFILES",
+      "Issue #07"
+    ],
+    "altText": "Issue 07 cover",
+    "caption": "Current cover baseline for visual scaffolding.",
+    "placement": "cover",
+    "aspectRatio": "2:3",
+    "approvalStatus": "pending",
+    "source": {
+      "sourceKind": "legacy-ref",
+      "source": "issue-07"
+    }
+  },
+  "supportingAssetPlans": [
+    {
+      "assetKey": "issue-07-support-01",
+      "sectionKey": "exec-7",
+      "editorialPurpose": "Executive Summary",
+      "kind": "action",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #07",
+        "Section 01"
+      ],
+      "altText": "The AI That Learned to Hack Itself supporting visual 1",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "pending",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-07-support-02",
+      "sectionKey": "deep-7a",
+      "editorialPurpose": "Self-Jailbreaking AI",
+      "kind": "comparison",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #07",
+        "Section 02"
+      ],
+      "altText": "The AI That Learned to Hack Itself supporting visual 2",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "pending",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    },
+    {
+      "assetKey": "issue-07-support-03",
+      "sectionKey": "deep-7b",
+      "editorialPurpose": "The Great Fork & Shadow Sovereigns",
+      "kind": "consequence",
+      "generationMethod": "svg-template",
+      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "prohibitedImplications": [
+        "No fabricated statistics",
+        "No unsupported claims"
+      ],
+      "sourceIds": [],
+      "requiredLabels": [
+        "Issue #07",
+        "Section 03"
+      ],
+      "altText": "The AI That Learned to Hack Itself supporting visual 3",
+      "placement": "body",
+      "aspectRatio": "wide",
+      "approvalStatus": "pending",
+      "source": {
+        "sourceKind": "placeholder",
+        "source": ""
+      }
+    }
+  ],
+  "createdAt": "2026-07-13T19:52:54.373Z",
+  "updatedAt": "2025-07-19T00:00:00.000Z",
+  "notes": [
+    "Template manifest demonstrating editorial-cover-v2"
+  ]
+}
