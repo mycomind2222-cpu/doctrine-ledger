@@ -1,0 +1,75 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#05070d"/>
+      <stop offset="1" stop-color="#091827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="280" y1="120" x2="1320" y2="780" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff8b4d"/>
+      <stop offset="1" stop-color="#8ad0ff"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grid)" opacity="0.45"/>
+  <rect x="48" y="48" width="1504" height="804" rx="30" stroke="rgba(255,139,77,0.5)" stroke-width="2"/>
+  <rect x="70" y="70" width="1460" height="760" rx="24" stroke="rgba(138,208,255,0.12)" stroke-width="1"/>
+
+  <circle cx="800" cy="455" r="180" fill="rgba(255,139,77,0.06)"/>
+  <circle cx="800" cy="455" r="142" stroke="url(#accent)" stroke-width="3" opacity="0.7"/>
+  <circle cx="800" cy="455" r="106" stroke="rgba(255,255,255,0.16)" stroke-width="2" stroke-dasharray="8 10"/>
+  <circle cx="800" cy="455" r="68" stroke="rgba(138,208,255,0.75)" stroke-width="3" filter="url(#glow)"/>
+
+  <g fill="rgba(255,255,255,0.82)" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="420" y="205" font-size="34" letter-spacing="8">JAILBREAKING</text>
+    <text x="1180" y="205" font-size="34" letter-spacing="8">PROMPT INJECTION</text>
+  </g>
+
+  <g>
+    <rect x="220" y="260" width="360" height="310" rx="26" fill="rgba(255,255,255,0.04)" stroke="rgba(255,139,77,0.42)" stroke-width="2"/>
+    <rect x="1020" y="260" width="360" height="310" rx="26" fill="rgba(255,255,255,0.04)" stroke="rgba(138,208,255,0.42)" stroke-width="2"/>
+    <circle cx="800" cy="455" r="28" fill="#ff8b4d" opacity="0.9"/>
+    <path d="M 620 455 L 734 455" stroke="rgba(255,139,77,0.85)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 870 455 L 980 455" stroke="rgba(138,208,255,0.85)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 730 425 L 680 455 L 730 485" stroke="rgba(255,139,77,0.85)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 870 425 L 920 455 L 870 485" stroke="rgba(138,208,255,0.85)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(320 330)">
+      <rect x="0" y="0" width="140" height="124" rx="18" fill="rgba(255,255,255,0.05)" stroke="rgba(255,139,77,0.5)" stroke-width="2"/>
+      <circle cx="38" cy="42" r="20" stroke="#ff8b4d" stroke-width="3"/>
+      <path d="M 24 42 L 52 42" stroke="#ff8b4d" stroke-width="3"/>
+      <path d="M 38 28 L 38 56" stroke="#ff8b4d" stroke-width="3"/>
+      <text x="20" y="92" fill="#f4eadc" font-family="Arial, Helvetica, sans-serif" font-size="16" letter-spacing="3">OVERRIDE</text>
+    </g>
+    <g transform="translate(1120 330)">
+      <rect x="0" y="0" width="140" height="124" rx="18" fill="rgba(255,255,255,0.05)" stroke="rgba(138,208,255,0.5)" stroke-width="2"/>
+      <circle cx="38" cy="42" r="20" stroke="#8ad0ff" stroke-width="3"/>
+      <path d="M 28 42 L 36 50 L 50 32" stroke="#8ad0ff" stroke-width="3"/>
+      <text x="20" y="92" fill="#f4eadc" font-family="Arial, Helvetica, sans-serif" font-size="16" letter-spacing="3">HIDDEN TEXT</text>
+    </g>
+  </g>
+
+  <g stroke="rgba(255,255,255,0.14)" stroke-width="1">
+    <line x1="92" y1="120" x2="1508" y2="120"/>
+    <line x1="92" y1="780" x2="1508" y2="780"/>
+  </g>
+
+  <text x="800" y="650" fill="#f4eadc" font-family="Arial, Helvetica, sans-serif" font-size="28" text-anchor="middle" letter-spacing="2">
+    The distinction is operational, not cosmetic
+  </text>
+  <text x="800" y="688" fill="rgba(138,208,255,0.9)" font-family="Arial, Helvetica, sans-serif" font-size="18" text-anchor="middle" letter-spacing="6">
+    MODEL POLICY VS TOOL BEHAVIOR
+  </text>
+</svg>

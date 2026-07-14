@@ -94,12 +94,12 @@ describe("newsletter route parity", () => {
     expect(screen.getByText(issue1.title)).toBeInTheDocument();
   });
 
-  it("resolves /issues/2 with the legacy issue page", async () => {
+  it("resolves /issues/2 with the shared editorial article template", async () => {
     renderRoute("/issues/2");
 
     expect(await screen.findByText(issue2.title)).toBeInTheDocument();
-    expect(screen.getByAltText("Issue 2 cover")).toBeInTheDocument();
-    expect(screen.queryByText("Plain-English summary")).toBeNull();
+    expect(screen.getByAltText("BLACKFILES Issue 02 cover")).toBeInTheDocument();
+    expect(screen.getByText("Plain-English summary")).toBeInTheDocument();
   });
 
   it("keeps missing issue behavior compatible", async () => {

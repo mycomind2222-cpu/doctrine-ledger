@@ -22,19 +22,21 @@ describe("newsletter canonical validation", () => {
     expect(canonical.accessLevel).toBe("public");
   });
 
-  it("keeps legacy Issue 02 and Issue 03 content intact in canonical form", () => {
+  it("keeps the rewritten Issue 02 and Issue 03 content intact in canonical form", () => {
     const issue2Canonical = staticIssueToCanonical(issue2);
     const issue3Canonical = staticIssueToCanonical(issue3);
 
     expect(issue2Canonical.title).toBe(issue2.title);
     expect(issue2Canonical.coverAsset?.legacyRef).toBe("issue-02");
     expect(issue2Canonical.origin).toBe("static");
-    expect(issue2Canonical.accessLevel).toBe("restricted");
+    expect(issue2Canonical.accessLevel).toBe("public");
+    expect(issue2Canonical.supportingAssets).toHaveLength(3);
 
     expect(issue3Canonical.title).toBe(issue3.title);
     expect(issue3Canonical.coverAsset?.legacyRef).toBe("issue-03");
     expect(issue3Canonical.origin).toBe("static");
-    expect(issue3Canonical.accessLevel).toBe("professional");
+    expect(issue3Canonical.accessLevel).toBe("public");
+    expect(issue3Canonical.supportingAssets).toHaveLength(3);
   });
 
   it("converts a Supabase-shaped row into canonical form", () => {

@@ -1,14 +1,14 @@
 {
   "issueId": "issue-02",
   "issueNumber": 2,
-  "articleRevisionId": "rev-8ff8a0efea0779df",
+  "articleRevisionId": "rev-aba333c4b08adfe5",
   "visualProfileId": "editorial-cover-v2",
   "visualProfileVersion": 1,
-  "planStatus": "unplanned",
-  "approvalStatus": "draft",
+  "planStatus": "approved",
+  "approvalStatus": "approved",
   "coverPlan": {
     "assetKey": "issue-02-cover",
-    "editorialPurpose": "Preview baseline cover",
+    "editorialPurpose": "Approved reference cover",
     "artDirection": "Use the current public cover as a placeholder-safe baseline.",
     "generationMethod": "editor-upload",
     "prompt": "Placeholder-safe cover baseline for visual system scaffolding.",
@@ -25,7 +25,7 @@
     "caption": "Current cover baseline for visual scaffolding.",
     "placement": "cover",
     "aspectRatio": "2:3",
-    "approvalStatus": "draft",
+    "approvalStatus": "approved",
     "source": {
       "sourceKind": "legacy-ref",
       "source": "issue-02"
@@ -35,82 +35,88 @@
     {
       "assetKey": "issue-02-support-01",
       "sectionKey": "exec-2",
-      "editorialPurpose": "Executive Summary",
-      "kind": "action",
-      "generationMethod": "svg-template",
-      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "editorialPurpose": "What jailbreaking and prompt injection actually mean",
+      "kind": "mechanism",
+      "generationMethod": "editor-upload",
       "prohibitedImplications": [
         "No fabricated statistics",
         "No unsupported claims"
       ],
-      "sourceIds": [],
+      "sourceIds": [
+        "issue-02-framework-diagram"
+      ],
       "requiredLabels": [
         "Issue #02",
         "Section 01"
       ],
-      "altText": "How to Jailbreak Any AI: The Tricks Hackers Actually Use supporting visual 1",
+      "altText": "Split editorial diagram showing the difference between model-policy jailbreaking and prompt injection in agentic systems.",
+      "caption": "The category split is the starting point for any serious defense strategy.",
       "placement": "body",
       "aspectRatio": "wide",
-      "approvalStatus": "draft",
+      "approvalStatus": "approved",
       "source": {
-        "sourceKind": "placeholder",
-        "source": ""
+        "sourceKind": "remote-url",
+        "source": "file:///Users/macdizzle/Documents/Blackfiles%20Clone/doctrine-ledger/src/assets/issues/issue-02/supporting-image-01.svg"
       }
     },
     {
       "assetKey": "issue-02-support-02",
-      "sectionKey": "deep-2",
-      "editorialPurpose": "The Anatomy of AI Jailbreaks",
-      "kind": "comparison",
-      "generationMethod": "svg-template",
-      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "sectionKey": "incidents-2",
+      "editorialPurpose": "Documented real-world incidents",
+      "kind": "evidence",
+      "generationMethod": "editor-upload",
       "prohibitedImplications": [
         "No fabricated statistics",
         "No unsupported claims"
       ],
-      "sourceIds": [],
+      "sourceIds": [
+        "issue-02-incidents-timeline"
+      ],
       "requiredLabels": [
         "Issue #02",
         "Section 02"
       ],
-      "altText": "How to Jailbreak Any AI: The Tricks Hackers Actually Use supporting visual 2",
+      "altText": "Timeline-style editorial visual summarizing documented prompt-injection and AI-agent incidents.",
+      "caption": "The attack surface is now documented in public incident reporting, not speculation.",
       "placement": "body",
       "aspectRatio": "wide",
-      "approvalStatus": "draft",
+      "approvalStatus": "approved",
       "source": {
-        "sourceKind": "placeholder",
-        "source": ""
+        "sourceKind": "remote-url",
+        "source": "file:///Users/macdizzle/Documents/Blackfiles%20Clone/doctrine-ledger/src/assets/issues/issue-02/supporting-image-02.svg"
       }
     },
     {
       "assetKey": "issue-02-support-03",
-      "sectionKey": "case-2a",
-      "editorialPurpose": "The \"Rogue Tutor\" Prompt – Beginner-Friendly Jailbreak",
-      "kind": "consequence",
-      "generationMethod": "svg-template",
-      "prompt": "Placeholder-safe supporting visual for manifest scaffolding.",
+      "sectionKey": "defenses-2",
+      "editorialPurpose": "What genuinely helps",
+      "kind": "defense",
+      "generationMethod": "editor-upload",
       "prohibitedImplications": [
         "No fabricated statistics",
         "No unsupported claims"
       ],
-      "sourceIds": [],
+      "sourceIds": [
+        "issue-02-defense-matrix"
+      ],
       "requiredLabels": [
         "Issue #02",
         "Section 03"
       ],
-      "altText": "How to Jailbreak Any AI: The Tricks Hackers Actually Use supporting visual 3",
+      "altText": "Layered defense matrix showing application controls, privilege limits, and red-team testing for AI systems.",
+      "caption": "Defenses work best when they reduce privilege before the model sees the prompt.",
       "placement": "body",
       "aspectRatio": "wide",
-      "approvalStatus": "draft",
+      "approvalStatus": "approved",
       "source": {
-        "sourceKind": "placeholder",
-        "source": ""
+        "sourceKind": "remote-url",
+        "source": "file:///Users/macdizzle/Documents/Blackfiles%20Clone/doctrine-ledger/src/assets/issues/issue-02/supporting-image-03.svg"
       }
     }
   ],
-  "createdAt": "2026-07-13T19:52:54.366Z",
+  "createdAt": "2026-07-13T23:33:46.641Z",
   "updatedAt": "2025-02-12T00:00:00.000Z",
   "notes": [
-    "Skeleton manifest for future visual planning"
+    "Approved pilot visual package"
   ]
 }

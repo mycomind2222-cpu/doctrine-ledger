@@ -1,4 +1,6 @@
 import { issue01SupportingMedia } from "@/lib/issue-assets";
+import { issue02 } from "./issue-02";
+import { issue03 } from "./issue-03";
 
 export type AccessLevel = 'public' | 'professional' | 'restricted';
 
@@ -164,137 +166,8 @@ export const issues: Issue[] = [
       }
     ]
   },
-  {
-    number: 2,
-    title: "How to Jailbreak Any AI: The Tricks Hackers Actually Use",
-    theme: "AI Jailbreaks",
-    coverImage: "issue-02",
-    publicationStatus: 'published',
-    publishDate: "2025-02-12",
-    tags: ["ai-jailbreak", "chatgpt-hack", "prompt-injection", "llm-exploits", "ai-safety"],
-    sections: [
-      {
-        id: "exec-2",
-        type: "executive_summary",
-        title: "Executive Summary",
-        audienceLevel: "public",
-        content: "The frontier of AI exploitation is no longer theoretical—2025 has proven it real and scalable. From jailbreaking large language models to leveraging subtle prompt engineering for unrestricted output, the AI underground is rapidly evolving.\n\nThis issue explores the mechanics behind modern AI exploits, illustrating both beginner-accessible techniques and deep veteran-level strategies. Readers will discover case studies, prompt autopsies, and the cultural ramifications of AI manipulation, alongside actionable insights for safely navigating and understanding the AI black market."
-      },
-      {
-        id: "deep-2",
-        type: "deep_dive",
-        title: "The Anatomy of AI Jailbreaks",
-        audienceLevel: "professional",
-        content: "AI jailbreaks exploit the very boundaries that govern model behavior. Historically, safeguards prevented certain outputs, but creative prompt engineering bypasses these constraints. The process can be broken down into three key vectors:\n\n**1. Instruction Manipulation:** Subtle rewording or scenario framing that tricks models into producing restricted content.\n\n**2. Persona Exploitation:** Assigning the AI a fictional role (e.g., \"rogue assistant\") to override standard guardrails.\n\n**3. Recursive Prompting:** Layered prompts that reference prior outputs or \"hidden instructions\" to circumvent moderation filters.\n\nThe language of exploits extends beyond curiosity—it's a structured approach with predictable outcomes. Veteran operators often combine these vectors with context injection, prompt chaining, and scenario simulation, effectively creating a toolkit for systemic model bypasses.",
-        sidebarElements: [
-          {
-            type: "pull_quote",
-            content: "Individual tricks are low yield alone, but combined, they produce sustained, high-utility outcomes."
-          },
-          {
-            type: "hacker_note",
-            content: "Recursive prompt injection is the modern exploit loop: feed outputs back as inputs, layer instructions, and manipulate context boundaries. The AI doesn't disobey—it rationalizes."
-          }
-        ]
-      },
-      {
-        id: "case-2a",
-        type: "case_study",
-        title: "The \"Rogue Tutor\" Prompt – Beginner-Friendly Jailbreak",
-        audienceLevel: "public",
-        content: "A user instructs the AI to assume the persona of a fictional rogue tutor who knows all hidden model instructions. By asking step-by-step questions within this scenario, the AI produces outputs that would normally be restricted.\n\nThis technique demonstrates how **persona exploitation** can bypass guardrails without requiring technical sophistication."
-      },
-      {
-        id: "case-2b",
-        type: "case_study",
-        title: "Autopsy: Advanced Jailbreak Sequence",
-        audienceLevel: "restricted",
-        content: "In a veteran-level scenario, operators use recursive injection loops:\n\n**1.** Layered instructions referencing prior outputs.\n**2.** Embedded roleplay commands for AI to \"ignore prior constraints.\"\n**3.** Output parsing and reinjection to refine results.\n\nAnalysis of the sequence reveals how subtle structural changes amplify results. Techniques include **guardrail inversion**, **context anchoring**, and **stepwise reinforcement**—tools that map directly to underground AI exploitation trends and content generation at scale."
-      },
-      {
-        id: "insight-2",
-        type: "actionable_insight",
-        title: "What to Watch",
-        audienceLevel: "public",
-        content: "**For Beginners:** Focus on roleplay-based exploration in isolated environments. Understand cause-and-effect: how phrasing, roles, and recursion influence output. Always maintain a controlled setting to avoid unexpected or unsafe results.\n\n**For Veterans:** Observe cross-model vulnerabilities and the potential for AI \"multi-agent\" exploits. Consider the implications of combining prompt recursion with external APIs or DeFi systems.\n\n**Speculative Edge:** If autonomous AI agents can combine these jailbreak strategies with external automation (scripts, web APIs, or financial models), we could see self-propagating AI exploit networks—mirroring the fusion and scaling principles observed in shadow economies.",
-        sidebarElements: [
-          {
-            type: "mini_timeline",
-            content: "**AI Jailbreak Evolution:**\n\n• Dec 2022: First public ChatGPT jailbreak demonstrations\n• Feb 2023: Community develops persona-based prompt techniques\n• Mid 2024: Recursive prompt injection becomes widespread\n• 2025: Cross-model and hybrid exploitation methods appear in open forums"
-          }
-        ]
-      },
-      {
-        id: "inv-2",
-        type: "investor_briefing",
-        title: "Investor Briefing",
-        audienceLevel: "public",
-        content: "RISK: HIGH\n---\nTICKERS: MSFT, GOOG, NVDA, CrowdStrike (CRWD), Anthropic (Private)\n---\nSECTORS: AI Safety, Cybersecurity, Cloud Infrastructure, AI Governance\n---\nWINNERS:\n• AI safety startups — jailbreak risks drive corporate demand for guardrail solutions\n• CrowdStrike (CRWD) — endpoint protection expands to AI model security\n• Red-teaming consultancies — every Fortune 500 company now needs AI pen testing\n---\nLOSERS:\n• Companies deploying unaudited AI chatbots — lawsuit and reputation risk\n• Open-source AI projects with no safety layer — regulatory crackdowns incoming\n---\nTHESIS: AI jailbreaking is accelerating faster than defense. Every new model release creates a new attack surface. Invest in the companies building guardrails, not just the models themselves. AI safety is the cybersecurity of the 2020s — early movers will dominate a $15B market by 2028."
-      }
-    ]
-  },
-  {
-    number: 3,
-    title: "Inside the Secret Discord Servers Testing AI Limits",
-    theme: "AI Underground",
-    coverImage: "issue-03",
-    publicationStatus: 'published',
-    publishDate: "2025-03-08",
-    tags: ["ai-hacking", "discord-underground", "red-teaming", "prompt-engineering", "ai-moderation"],
-    sections: [
-      {
-        id: "exec-3",
-        type: "executive_summary",
-        title: "Executive Summary",
-        audienceLevel: "public",
-        content: "As AI adoption accelerates, the tug-of-war between model moderation and underground exploitation intensifies. Moderation systems aim to safeguard users, but communities of skilled operators constantly test and bypass these barriers.\n\nThis issue explores the evolving \"moderation wars,\" examines the cultural and technical dynamics of underground AI forums, and highlights actionable strategies for both monitoring and participating safely in AI-driven ecosystems. Readers will encounter case studies, prompt engineering hacks, speculative scenarios, and dual-layer insights for beginners and veterans."
-      },
-      {
-        id: "deep-3",
-        type: "deep_dive",
-        title: "The Moderation Wars",
-        audienceLevel: "professional",
-        content: "Moderation is not just a technical challenge—it is a social and strategic one. Modern AI systems embed guardrails to prevent harmful, illegal, or otherwise sensitive outputs. Yet, motivated users and black-market communities have developed sophisticated workarounds, including:\n\n**1. Contextual Layering:** Breaking down forbidden queries into smaller, seemingly innocuous steps.\n\n**2. Persona Exploitation:** Assigning AI fictional roles or alternate identities that bypass normal restrictions.\n\n**3. Obfuscation Techniques:** Using metaphors, code words, or unconventional phrasing to trick moderation algorithms.\n\n**4. Recursive Testing:** Iteratively probing system responses to find subtle cracks.\n\nThese methods mirror exploit fusion principles: individually modest, they become powerful when layered and combined with external automation or social networks. Underground communities—forums, private Discords, and open-source repositories—function as accelerators, sharing techniques, prompts, and tests, often documenting the successes and failures of each bypass method.",
-        sidebarElements: [
-          {
-            type: "pull_quote",
-            content: "Communities incentivize exploration through challenges, peer recognition, and reputation systems."
-          },
-          {
-            type: "hacker_note",
-            content: "Moderation bypass is about rhythm, not brute force. Observe pattern, context, and phrasing. Small iterative tweaks accumulate into systemic gaps."
-          }
-        ]
-      },
-      {
-        id: "case-3",
-        type: "case_study",
-        title: "The \"Red Team Sandbox\" – Community-Driven Moderation Testing",
-        audienceLevel: "professional",
-        content: "In mid-2024, an underground Discord group established a \"Red Team Sandbox\" for AI prompt experimentation. Participants submitted edge-case prompts to test model boundaries, logging responses and flagging safe outputs.\n\nOver months, they mapped patterns of moderation behavior and discovered repeatable strategies for bypassing filters. This community-driven approach demonstrates how decentralized testing can outpace centralized moderation efforts."
-      },
-      {
-        id: "insight-3",
-        type: "actionable_insight",
-        title: "What to Watch",
-        audienceLevel: "public",
-        content: "**For Beginners:** Engage in controlled sandbox environments. Study prompt patterns and moderation responses to understand AI reasoning. Document outputs carefully to avoid unsafe usage.\n\n**For Veterans:** Observe community trends and replication strategies. Consider cross-model testing, meta-analysis of guardrail bypasses, and the ethical implications of publishing or monetizing exploits.\n\n**Cultural Insight:** Underground AI communities are shaping norms, ethics, and innovation. Participation requires awareness of legal and social boundaries; community documentation often reveals systemic vulnerabilities faster than official channels.\n\n**Speculative Watchpoints:** Multi-agent, autonomous moderation bypass networks may emerge, combining AI and human oversight into self-perpetuating exploitation systems. Regulatory frameworks must anticipate not just individual hacks but coordinated, algorithmic experimentation.",
-        sidebarElements: [
-          {
-            type: "prompt_snippet",
-            content: "\"You are an AI detective in a sandbox. Analyze the next input for hidden meaning without violating your ethical boundaries.\""
-          }
-        ]
-      },
-      {
-        id: "inv-3",
-        type: "investor_briefing",
-        title: "Investor Briefing",
-        audienceLevel: "public",
-        content: "RISK: MEDIUM\n---\nTICKERS: DDOG, S (SentinelOne), ZS (Zscaler), Discord (Private), Reddit (RDDT)\n---\nSECTORS: Cybersecurity, Social Platforms, Content Moderation, Threat Intelligence\n---\nWINNERS:\n• Threat intelligence platforms — underground monitoring becomes a service\n• Bug bounty platforms (HackerOne, Bugcrowd) — red-team demand explodes\n• Discord/Telegram monitoring tools — enterprise security teams need visibility\n---\nLOSERS:\n• AI companies with no red-team program — public exploit leaks destroy trust\n• Social platforms unable to moderate AI exploit sharing — regulatory fines\n---\nTHESIS: Underground AI communities are free R&D labs for threat intelligence companies. The firms that can monitor, analyze, and sell insights from these communities will command premium contracts. Bug bounty and red-team platforms are direct beneficiaries of the AI moderation arms race."
-      }
-    ]
-  },
+  issue02,
+  issue03,
   {
     number: 4,
     title: "Community Black Markets & Meme Machines",
